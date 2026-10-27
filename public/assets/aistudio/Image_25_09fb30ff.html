@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-primary":"#ffffff","on-background":"#161616","outline-variant":"#e0e0e0","on-secondary-container":"#525252","primary-fixed":"#d0e2ff","tertiary-container":"#a7f0ba","secondary-fixed":"#e0e0e0","inverse-on-surface":"#f4f4f4","surface-tint":"#0f62fe","inverse-surface":"#393939","on-tertiary":"#ffffff","on-secondary-fixed-variant":"#525252","surface-container-highest":"#c6c6c6","secondary":"#6f6f6f","error":"#da1e28","secondary-container":"#e0e0e0","surface":"#ffffff","on-tertiary-fixed-variant":"#044317","on-surface":"#161616","tertiary":"#198038","on-secondary":"#ffffff","on-primary-fixed":"#001d6c","secondary-fixed-dim":"#c6c6c6","on-secondary-fixed":"#161616","surface-container":"#f4f4f4","on-tertiary-container":"#044317","on-tertiary-fixed":"#022d0d","primary":"#0f62fe","surface-container-high":"#e0e0e0","surface-container-low":"#f4f4f4","outline":"#8d8d8d","surface-dim":"#e0e0e0","inverse-primary":"#78a9ff","primary-container":"#d0e2ff","surface-variant":"#f4f4f4","on-error-container":"#750e13","surface-bright":"#ffffff","error-container":"#fff1f1","on-primary-container":"#161616","background":"#ffffff","primary-fixed-dim":"#78a9ff","surface-container-lowest":"#ffffff","on-error":"#ffffff","on-surface-variant":"#525252","on-primary-fixed-variant":"#0043ce","tertiary-fixed":"#a7f0ba","tertiary-fixed-dim":"#42be65"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{},fontFamily:{headline:["IBM Plex Sans"],display:["IBM Plex Sans"],body:["IBM Plex Sans"],label:["IBM Plex Sans"]},fontSize:{}}}}</script></head><body class="bg-surface font-body text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 h-16 bg-surface z-50 flex items-center justify-between px-4 lg:px-6 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-4"><div class="flex items-center gap-3 pr-4"><img alt="ObraSync Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1V1rtPWhd7WNs8YkyzCaeFp-ulWzm0w3nQAZyFqauCXz5iL7vz-ghXMPYhHV0_qbo8cnuOHtbeQ4VmEHA9VQ7hCerNjMg9OVF5XOw-fWnZ9IDHsUni9EWpd8cUWF1VyUu7O4McUolzAuqUpBfyl4CPD6i_WEXLSvNYZmqa9fbgBMZqsRoHnOiH2kLwqmJ4NcOfwXzg5u7KUPj-WzctEO68g-WdJO4zTNGrIm3ZwZxuPoPoZX-Qi4EGSsI0"/><span class="font-headline font-semibold text-lg text-on-surface tracking-tight hidden sm:inline">ObraSync</span></div><div class="hidden md:flex items-center gap-2 bg-surface-container px-3 py-1.5"><span class="material-symbols-outlined text-primary text-xl">apartment</span><div class="flex flex-col"><span class="text-[11px] text-on-surface-variant leading-none uppercase font-semibold">Obra Ativa</span><span class="text-xs font-medium text-on-surface leading-tight">Residencial Horizonte - Torre A &amp; B</span></div><span class="material-symbols-outlined text-on-surface-variant text-base cursor-pointer ml-1">expand_more</span></div></div><div class="flex items-center gap-3 lg:gap-5"><div class="hidden xl:flex items-center gap-2 px-2.5 py-1 bg-surface-container"><span class="w-2 h-2 rounded-full bg-tertiary"></span><span class="text-xs font-medium text-on-surface">Online</span><span class="text-xs text-on-surface-variant font-light">• 14 itens sincronizados</span></div><div class="hidden sm:flex items-center gap-2"><a class="inline-flex items-center gap-1.5 px-3 py-2 bg-primary text-on-primary text-xs font-medium hover:bg-primary/90 transition-colors" data-path="diario-de-obra-rdo" href="#"><span class="material-symbols-outlined text-sm">post_add</span><span>+ Novo RDO</span></a><a class="inline-flex items-center gap-1.5 px-3 py-2 bg-surface-container text-on-surface text-xs font-medium hover:bg-surface-container-high transition-colors" data-path="relatorio-fotografico" href="#"><span class="material-symbols-outlined text-sm">add_a_photo</span><span>+ Subir Fotos</span></a></div><div class="flex items-center gap-1 text-on-surface-variant"><button aria-label="Notificações de Canteiro" class="p-2 hover:bg-surface-container transition-colors relative" type="button"><span class="material-symbols-outlined text-xl text-on-surface">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full"></span></button><button aria-label="Ajuda e Suporte" class="p-2 hover:bg-surface-container transition-colors hidden sm:block" type="button"><span class="material-symbols-outlined text-xl text-on-surface">help_outline</span></button></div><div class="flex items-center gap-3 pl-2 sm:pl-4 bg-surface"><div class="hidden lg:flex flex-col text-right"><span class="text-xs font-semibold text-on-surface leading-tight">Eng. Ricardo Souza</span><span class="text-[11px] text-on-surface-variant leading-none">Engenheiro Residente</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOGd0SEmkgPx7MrGzaf5IoWSQzu7CbKZzyJi_HPjeJTNnyNI8CqfbmreMfLvcwCjmOLuwbov9uUSRl-8IU2UA0EG7CYz0Wa_6Io7wxVujYfLueor9-aLfs-tBbiyMGayOM0fOrb03ckgrpJfUfFRm224tdxYKkgpbssppZxxXaxBCC9eWFXv0sKonkHFh7kdNQIATYzFSimPFV1FCIlsuEEnaeSAqqp_eFiJbBKu3OC6YWvKsBouE3"/></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-64 bg-surface-container-low z-40 flex flex-col justify-between overflow-y-auto"><div class="py-4"><div class="px-4 pb-3 mb-2"><span class="text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider">Navegação de Campo</span></div><nav class="space-y-0.5 px-2" data-active-classes="bg-primary-container text-on-primary-container font-semibold"><a class="flex items-center px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="dashboard-gerencial" href="#">Dashboard Gerencial</a><a class="flex items-center px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="diario-de-obra-rdo" href="#">Diário de Obra (RDO)</a><a class="flex items-center px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="relatorio-fotografico" href="#">Relatório Fotográfico</a><a class="flex items-center px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="auditorias-inspecoes-fvs" href="#">Auditorias &amp; Inspeções (FVS)</a><a class="flex items-center px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="nao-conformidades-rnc" href="#">Não Conformidades (RNC)</a><a class="flex items-center px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="efetivo-e-equipamentos" href="#">Efetivo &amp; Equipamentos</a><a class="flex items-center px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="clima-e-chuvas" href="#">Clima &amp; Chuvas</a><a class="flex items-center px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="relatorios-executivos" href="#">Relatórios Executivos</a><a class="flex items-center px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="configuracoes" href="#">Configurações</a></nav></div><div class="p-4 bg-surface-container m-3"><div class="flex items-center justify-between text-xs text-on-surface-variant mb-1.5"><span class="font-medium">Conexão Canteiro</span><span class="text-[11px] font-semibold text-tertiary">Ativa</span></div><div class="w-full bg-surface-container-highest h-1"><div class="bg-tertiary h-1 w-full"></div></div><p class="text-[11px] text-on-surface-variant mt-2 leading-relaxed">Sincronismo automático a cada 5 min. Modo offline operacional.</p></div></aside><div class="pl-64"><main class="relative pt-16 min-h-[calc(100vh-3rem)] w-full px-6 lg:px-8 py-6 bg-surface"><div class="flex flex-col w-full">
+<!-- Top Navigation & Page Context -->
+<section class="flex flex-col gap-4 pb-6">
+<!-- Breadcrumb & System Tags -->
+<div class="flex flex-wrap items-center justify-between gap-3">
+<nav class="flex items-center gap-2 text-xs text-on-surface-variant font-medium">
+<span class="hover:text-primary cursor-pointer transition-colors">Controle de Qualidade</span>
+<span class="material-symbols-outlined text-[14px] text-outline">chevron_right</span>
+<span class="hover:text-primary cursor-pointer transition-colors">Gestão de RNCs</span>
+<span class="material-symbols-outlined text-[14px] text-outline">chevron_right</span>
+<span class="text-on-surface font-semibold">Auditoria FVS &amp; Tolerâncias Construtivas</span>
+</nav>
+<div class="flex items-center gap-2 text-[11px] font-mono uppercase tracking-wider text-on-surface-variant bg-surface-container px-2.5 py-1">
+<span class="w-1.5 h-1.5 bg-error rounded-full animate-ping"></span>
+<span>Normas Auditadas: NBR 15575 / PBQP-H SiAC Nível A</span>
+</div>
+</div>
+<!-- Title, Description & Action Buttons -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+<div class="max-w-3xl">
+<h1 class="text-2xl sm:text-3xl font-semibold tracking-tight text-on-surface font-headline">
+          Gestão de Não Conformidades de Obra (RNC — FVS)
+        </h1>
+<p class="text-xs sm:text-sm text-on-surface-variant mt-1.5 leading-relaxed">
+          Identificação, segregação pericial de risco construtivo, carimbo fotográfico georreferenciado e plano de ação corretiva compulsório para desvios detectados em fichas de verificação técnica.
+        </p>
+</div>
+<div class="flex flex-wrap items-center gap-2.5 shrink-0">
+<button class="inline-flex items-center gap-2 px-3.5 py-2.5 bg-surface-container hover:bg-surface-container-high text-on-surface text-xs font-semibold tracking-wide transition-colors" type="button">
+<span class="material-symbols-outlined text-base">tune</span>
+<span>Matriz de Severidade (GUT)</span>
+</button>
+<button class="inline-flex items-center gap-2 px-3.5 py-2.5 bg-surface-container hover:bg-surface-container-high text-on-surface text-xs font-semibold tracking-wide transition-colors" type="button">
+<span class="material-symbols-outlined text-base">ios_share</span>
+<span>Exportar Livro (.PDF/XLS)</span>
+</button>
+<button class="inline-flex items-center gap-2 px-4 py-2.5 bg-primary hover:bg-on-primary-fixed-variant text-on-primary text-xs font-semibold tracking-wide shadow-sm transition-colors" id="toggle-form-btn" type="button">
+<span class="material-symbols-outlined text-base">notification_important</span>
+<span>+ Abrir Nova RNC</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Executive KPIs Ribbon -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 pb-6">
+<!-- KPI 1 -->
+<div class="bg-surface-container p-4 flex flex-col justify-between shadow-sm">
+<div class="flex items-center justify-between text-xs text-on-surface-variant font-medium">
+<span>Total de RNCs Ativas</span>
+<span class="material-symbols-outlined text-base text-primary">pending_actions</span>
+</div>
+<div class="my-3 flex items-baseline gap-2">
+<span class="text-3xl font-bold font-headline text-on-surface tracking-tight">12</span>
+<span class="text-xs text-on-surface-variant">casos abertos</span>
+</div>
+<div class="flex items-center justify-between text-[11px] bg-surface px-2 py-1">
+<span class="text-on-surface-variant">Em validação técnica:</span>
+<span class="font-semibold text-primary">3 fichas</span>
+</div>
+</div>
+<!-- KPI 2: Crítica -->
+<div class="bg-surface-container p-4 flex flex-col justify-between shadow-sm">
+<div class="flex items-center justify-between text-xs font-medium text-error">
+<span class="flex items-center gap-1 font-semibold uppercase tracking-wider text-[11px]">
+<span class="material-symbols-outlined text-sm">dangerous</span> Bloqueio Crítico
+        </span>
+<span class="w-2 h-2 rounded-full bg-error animate-pulse"></span>
+</div>
+<div class="my-3 flex items-baseline gap-2">
+<span class="text-3xl font-bold font-headline text-error tracking-tight">03</span>
+<span class="text-xs text-error font-medium">Frentes Retidas</span>
+</div>
+<div class="text-[11px] bg-error-container text-on-error-container px-2 py-1 flex items-center justify-between font-medium">
+<span>Concretagem impedida</span>
+<span class="font-mono text-[10px]">T-A Pav.14</span>
+</div>
+</div>
+<!-- KPI 3: Média -->
+<div class="bg-surface-container p-4 flex flex-col justify-between shadow-sm">
+<div class="flex items-center justify-between text-xs text-on-surface-variant font-medium">
+<span>Média Severidade</span>
+<span class="material-symbols-outlined text-base text-[#b25e09]">warning</span>
+</div>
+<div class="my-3 flex items-baseline gap-2">
+<span class="text-3xl font-bold font-headline text-on-surface tracking-tight">06</span>
+<span class="text-xs text-on-surface-variant">Retrabalhos 48h</span>
+</div>
+<div class="text-[11px] bg-[#fef3c7] text-[#92400e] px-2 py-1 font-medium flex items-center justify-between">
+<span>Sem paralisação geral</span>
+<span class="font-semibold">6 frentes</span>
+</div>
+</div>
+<!-- KPI 4: Leve -->
+<div class="bg-surface-container p-4 flex flex-col justify-between shadow-sm">
+<div class="flex items-center justify-between text-xs text-on-surface-variant font-medium">
+<span>Leve / Observação</span>
+<span class="material-symbols-outlined text-base text-primary">visibility</span>
+</div>
+<div class="my-3 flex items-baseline gap-2">
+<span class="text-3xl font-bold font-headline text-on-surface tracking-tight">03</span>
+<span class="text-xs text-on-surface-variant">Ajustes Finos</span>
+</div>
+<div class="text-[11px] bg-primary-container text-on-primary-container px-2 py-1 font-medium flex items-center justify-between">
+<span>Arremates estéticos</span>
+<span class="font-semibold">Baixo Risco</span>
+</div>
+</div>
+<!-- KPI 5: Resolução -->
+<div class="bg-surface-container p-4 flex flex-col justify-between shadow-sm">
+<div class="flex items-center justify-between text-xs text-on-surface-variant font-medium">
+<span>Resolução no Prazo</span>
+<span class="material-symbols-outlined text-base text-tertiary">check_circle</span>
+</div>
+<div class="my-3 flex items-baseline gap-2">
+<span class="text-3xl font-bold font-headline text-tertiary tracking-tight">89.4%</span>
+<span class="text-xs text-on-surface-variant">Meta: &gt;85%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 overflow-hidden">
+<div class="bg-tertiary h-full" style="width: 89.4%;"></div>
+</div>
+</div>
+</section>
+<!-- Featured Section: Registration / Detailed Drawer Form -->
+<section class="mb-8 bg-surface-container p-5 sm:p-7 shadow-sm transition-all duration-300" id="rnc-form-panel">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pb-5 mb-5 bg-surface-container-low px-4 py-3 gap-3">
+<div class="flex items-center gap-3">
+<div class="p-2 bg-error text-on-error">
+<span class="material-symbols-outlined text-xl">report_problem</span>
+</div>
+<div>
+<h2 class="text-base font-semibold text-on-surface font-headline leading-tight">
+            Formulário de Abertura / Detalhamento de RNC Técnica
+          </h2>
+<span class="text-xs text-on-surface-variant">Registro rastreável com bloqueio preventivo de concretagem e notificação automática de subempreiteiro.</span>
+</div>
+</div>
+<div class="flex items-center gap-2 self-end sm:self-auto">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 bg-surface text-on-surface font-mono text-[11px] font-semibold">
+          AUTO-ID: RNC-2024-090
+        </span>
+</div>
+</div>
+<form class="space-y-6" onsubmit="event.preventDefault();">
+<!-- Grid Inputs Row 1 -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<!-- FVS Dropdown -->
+<div class="flex flex-col gap-1.5 lg:col-span-2">
+<label class="text-xs font-semibold text-on-surface flex items-center justify-between">
+<span>FVS de Origem (Inspeção Técnica de Campo) *</span>
+<span class="text-[11px] text-primary cursor-pointer hover:underline">Consultar histórico da ficha</span>
+</label>
+<div class="relative">
+<select class="w-full h-11 bg-surface px-3 pr-10 text-xs font-medium text-on-surface focus:outline-none focus:bg-surface-container-lowest transition-colors appearance-none cursor-pointer">
+<option selected="">[FVS-EST-042] Espaçamento e cobrimento de armadura negativa (Laje Pav. 14 - Torre A)</option>
+<option>[FVS-IMP-029] Teste de estanqueidade 72h em jardineiras impermeabilizadas (Torre B)</option>
+<option>[FVS-ALV-118] Controle de prumo e espessura de junta de assentamento bloco cerâmico (Pav. 8)</option>
+<option>[FVS-ELE-034] Verificação de bandejamento e anilhamento de cabos QGBT</option>
+<option>[FVS-REV-091] Teste de percussão e aderência de reboco externo em fachada leste</option>
+</select>
+<span class="material-symbols-outlined text-on-surface-variant absolute right-3 top-3 pointer-events-none text-base">expand_more</span>
+</div>
+</div>
+<!-- Localização Física -->
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-semibold text-on-surface">Frente / Local Físico da Ocorrência *</label>
+<input class="w-full h-11 bg-surface px-3 text-xs text-on-surface focus:outline-none focus:bg-surface-container-lowest transition-colors font-medium" type="text" value="Torre A - Pavimento 14 - Laje e Vigas de Borda"/>
+</div>
+</div>
+<!-- Severity Toggle Selector -->
+<div class="flex flex-col gap-2">
+<label class="text-xs font-semibold text-on-surface flex items-center gap-2">
+<span>Grau de Severidade &amp; Impacto na Frente de Trabalho *</span>
+<span class="text-[11px] text-on-surface-variant font-normal">(Determina bloqueio compulsório de avanço executivo)</span>
+</label>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+<!-- Critical Button (Selected state) -->
+<button class="flex items-center justify-between p-3.5 bg-error text-on-error text-left transition-all shadow-sm" type="button">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-xl">block</span>
+<div>
+<div class="text-xs font-bold uppercase tracking-wider">Crítica (Bloqueio Imediato)</div>
+<div class="text-[11px] text-on-error/80 leading-tight">Impede concretagem/fechamento</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-lg">check_circle</span>
+</button>
+<!-- Medium Button -->
+<button class="flex items-center justify-between p-3.5 bg-surface hover:bg-surface-container-high text-on-surface text-left transition-all" type="button">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-xl text-[#b25e09]">error_outline</span>
+<div>
+<div class="text-xs font-bold uppercase tracking-wider">Média (Retrabalho c/ Prazo)</div>
+<div class="text-[11px] text-on-surface-variant leading-tight">Prazo executivo até 48h sem travar obra</div>
+</div>
+</div>
+<span class="w-4 h-4 rounded-full bg-surface-container-highest"></span>
+</button>
+<!-- Minor Button -->
+<button class="flex items-center justify-between p-3.5 bg-surface hover:bg-surface-container-high text-on-surface text-left transition-all" type="button">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-xl text-primary">info</span>
+<div>
+<div class="text-xs font-bold uppercase tracking-wider">Leve (Correção sem Paralisação)</div>
+<div class="text-[11px] text-on-surface-variant leading-tight">Desvios estéticos ou arremates pontuais</div>
+</div>
+</div>
+<span class="w-4 h-4 rounded-full bg-surface-container-highest"></span>
+</button>
+</div>
+</div>
+<!-- Description & Suggested Action Plan -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+<!-- Descrição do Desvio -->
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-semibold text-on-surface">Descrição Pericial do Desvio / Ocorrência *</label>
+<textarea class="w-full bg-surface p-3 text-xs leading-relaxed text-on-surface focus:outline-none focus:bg-surface-container-lowest resize-none font-body" rows="4">Verificado cobrimento inferior a 15mm em armaduras negativas próximas aos pilares P-12 e P-14, em desacordo com os 30mm exigidos pelo projeto estrutural e NBR 6118. Risco de corrosão prematura por carbonatação e deficiência mecânica. Frente bloqueada para lançamento de concreto até revalidação.</textarea>
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant px-1">
+<span>Fundamento: NBR 6118:2023 Item 7.4.7</span>
+<span>285 caracteres digitados</span>
+</div>
+</div>
+<!-- Plano de Ação Sugerido -->
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-semibold text-on-surface">Plano de Ação Corretiva Imediato *</label>
+<textarea class="w-full bg-surface p-3 text-xs leading-relaxed text-on-surface focus:outline-none focus:bg-surface-container-lowest resize-none font-body" rows="4">Substituição e reposicionamento imediato das pastilhas plásticas espaçadoras tipo cadeirinha para garantir recobrimento mínimo de 30mm; inserção de cavaletes metálicos adicionais; repassar verificação com paquímetro digital e esquadro perante o Eng. Residente antes do descarregamento da betoneira.</textarea>
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant px-1">
+<span>Ação mandatória para liberação</span>
+<span class="text-tertiary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">verified</span> Requer reinspeção presencial
+            </span>
+</div>
+</div>
+</div>
+<!-- Photographic Pericial Evidence (Drag and drop with real preview tags) -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<label class="text-xs font-semibold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-primary">add_a_photo</span>
+<span>Evidência Fotográfica Pericial (Com Carimbo Indelével de Campo)</span>
+</label>
+<span class="text-[11px] text-on-surface-variant font-mono">GPS + Data/Hora + Azimute integrados</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-3">
+<!-- Photo 1 preview with stamp -->
+<div class="relative bg-surface group overflow-hidden">
+<img class="w-full h-36 object-cover" data-alt="High-detail forensic macro photograph of exposed reinforced steel rebar on a building concrete slab construction site with a yellow digital caliper measuring rebar clearance depth of 15mm with concrete chairs in the background, sharp technical industrial aesthetic, cold daylight, realistic architectural quality" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkgZJcR-bxItELn6oaszBA6_GXwFBnf4QCDvgaCf1vrCAdu76oPe-ORwZM7SzYNfLtKPsJ5b7wHRYiBzwooqcFBFczJf-CPrPxri7ivwC371pVdtMgC_-pe4p6_kKT-HvBVPjQSaEhe_MDvY88mMLB_hdx06nB5DeBK9kHGdlLB9pUixvy1g5mz6LvTK9xD0EoiRWxhxunWOGCsG0-tQrFDbt_OvD1hTWfxOUYE6i_ik7okRiQMrR7"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent flex flex-col justify-end p-2 text-white">
+<div class="flex items-center justify-between font-mono text-[9px] uppercase tracking-tight text-white/90">
+<span class="bg-error px-1 py-0.5 font-bold">DESVIO: 15mm</span>
+<span>LAT -23.58741°</span>
+</div>
+<p class="font-mono text-[9px] text-white/80 leading-none mt-1">LONG -46.68239° • 14:32h • Pav.14</p>
+</div>
+<button class="absolute top-1 right-1 bg-on-background/80 hover:bg-error text-white p-1 transition-colors" type="button">
+<span class="material-symbols-outlined text-xs">close</span>
+</button>
+</div>
+<!-- Photo 2 preview with stamp -->
+<div class="relative bg-surface group overflow-hidden">
+<img class="w-full h-36 object-cover" data-alt="Technical inspection photograph on construction site showing structural steel reinforcement mesh on floor slab, workers in safety boots and orange reflective vests holding measuring tape near concrete column formwork, high clarity, realistic shadows, engineering documentation style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzjedldefdgTb2novZyEr4XPhm2nX3D_MZWxirNBRAwvXO71FXJNsbGFDgflBWbE-9oztyv4Nss5T97XqrFtxiiPeLG1WtVsiUlVIu8TVO1-CfEmk-1cRFsh2hGPeGHn97IFuRPLb0zKC3zuCyslBwT44aj79lYGNFoqli_6eme7bxw9fKROpZEXPWTtZkKKwRr1sjAr6fQTax9lg1jkmx2lEuA8HFS-MZqxNo3mpBtCDvMpCq-LZ5"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent flex flex-col justify-end p-2 text-white">
+<div class="flex items-center justify-between font-mono text-[9px] uppercase tracking-tight text-white/90">
+<span class="bg-primary px-1 py-0.5 font-bold">VISTA GERAL PILAR P-12</span>
+<span>14:35h</span>
+</div>
+<p class="font-mono text-[9px] text-white/80 leading-none mt-1">Laje Sul Torre A • Azimute 182° S</p>
+</div>
+<button class="absolute top-1 right-1 bg-on-background/80 hover:bg-error text-white p-1 transition-colors" type="button">
+<span class="material-symbols-outlined text-xs">close</span>
+</button>
+</div>
+<!-- Drag and Drop Dropzone -->
+<div class="md:col-span-2 flex flex-col items-center justify-center p-4 bg-surface hover:bg-surface-container-highest cursor-pointer transition-colors text-center">
+<div class="p-2.5 bg-primary-container text-on-primary-fixed mb-2">
+<span class="material-symbols-outlined text-2xl">cloud_upload</span>
+</div>
+<p class="text-xs font-semibold text-on-surface">Arraste fotos periciais ou clique para capturar via câmera</p>
+<p class="text-[11px] text-on-surface-variant mt-0.5">Metadados EXIF e coordenadas de geolocalização serão gravados na imagem.</p>
+<div class="mt-2.5 inline-flex items-center gap-1.5 px-3 py-1.5 bg-surface-container text-on-surface hover:bg-surface-container-high text-xs font-semibold">
+<span class="material-symbols-outlined text-sm">my_location</span>
+<span>+ Adicionar Fotos com GPS</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Responsible party & Deadlines -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-semibold text-on-surface">Responsável pelo Reparo / Empreiteira Notificada *</label>
+<div class="relative">
+<input class="w-full h-11 bg-surface px-3 text-xs text-on-surface focus:outline-none focus:bg-surface-container-lowest font-medium" type="text" value="Mestre Valdir — Aço &amp; Forma Estruturas Ltda."/>
+<span class="material-symbols-outlined text-on-surface-variant absolute right-3 top-3 pointer-events-none text-base">badge</span>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-semibold text-on-surface">Engenheiro / Fiscal Emitente *</label>
+<div class="relative">
+<input class="w-full h-11 bg-surface-container-low px-3 text-xs text-on-surface focus:outline-none font-medium cursor-not-allowed" readonly="" type="text" value="Eng. Ricardo Souza (CREA-SP 506922)"/>
+<span class="material-symbols-outlined text-tertiary absolute right-3 top-3 pointer-events-none text-base">verified_user</span>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-semibold text-on-surface text-error flex items-center justify-between">
+<span>Prazo Fatal para Reinspeção *</span>
+<span class="text-[11px] font-mono uppercase bg-error-container text-on-error-container px-1.5 py-0.2">Bloqueio Ativo</span>
+</label>
+<div class="relative">
+<input class="w-full h-11 bg-surface px-3 text-xs text-error font-semibold focus:outline-none focus:bg-surface-container-lowest" type="text" value="Hoje — 24/10/2024 às 16:30 (Antes da concretagem)"/>
+<span class="material-symbols-outlined text-error absolute right-3 top-3 pointer-events-none text-base">event_busy</span>
+</div>
+</div>
+</div>
+<!-- Action buttons for form -->
+<div class="flex flex-wrap items-center justify-between gap-3 pt-4 bg-surface px-4 py-3">
+<button class="px-4 py-2.5 bg-surface-container hover:bg-surface-container-high text-on-surface text-xs font-semibold transition-colors" type="button">
+          Salvar Rascunho Interno
+        </button>
+<div class="flex flex-wrap items-center gap-2.5">
+<button class="inline-flex items-center gap-1.5 px-3.5 py-2.5 bg-surface-container hover:bg-surface-container-high text-on-surface text-xs font-semibold transition-colors" type="button">
+<span class="material-symbols-outlined text-sm text-tertiary">chat</span>
+<span>Notificar Encarregado via WhatsApp/Push</span>
+</button>
+<button class="inline-flex items-center gap-2 px-5 py-2.5 bg-error hover:bg-on-error-container text-on-error text-xs font-bold tracking-wide transition-colors shadow-sm" type="submit">
+<span class="material-symbols-outlined text-base">gavel</span>
+<span>Formalizar RNC e Bloquear Frente de Obra</span>
+</button>
+</div>
+</div>
+</form>
+</section>
+<!-- Control Filter Bar & Pending Non-Conformity Cards -->
+<section class="flex flex-col gap-4">
+<!-- Filter Tabs Bar -->
+<div class="flex flex-col xl:flex-row xl:items-center justify-between gap-3 bg-surface-container p-2.5">
+<!-- Status Tabs -->
+<div class="flex flex-wrap items-center gap-1 text-xs">
+<button class="px-3.5 py-2 font-semibold bg-surface text-on-surface shadow-sm">
+          Todas as RNCs <span class="ml-1 px-1.5 py-0.2 bg-surface-container text-on-surface text-[11px] font-mono">12</span>
+</button>
+<button class="px-3.5 py-2 font-medium text-error hover:bg-surface transition-colors flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+          Críticas / Bloqueadas <span class="ml-1 px-1.5 py-0.2 bg-error text-on-error text-[11px] font-mono font-bold">3</span>
+</button>
+<button class="px-3.5 py-2 font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface transition-colors">
+          Em Retrabalho <span class="ml-1 px-1.5 py-0.2 bg-surface-container text-on-surface-variant text-[11px] font-mono">6</span>
+</button>
+<button class="px-3.5 py-2 font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface transition-colors">
+          Aguardando Reinspeção <span class="ml-1 px-1.5 py-0.2 bg-surface-container text-on-surface-variant text-[11px] font-mono">3</span>
+</button>
+<button class="px-3.5 py-2 font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface transition-colors">
+          Encerradas no Mês <span class="ml-1 px-1.5 py-0.2 bg-surface-container text-on-surface-variant text-[11px] font-mono">45</span>
+</button>
+</div>
+<!-- Quick filters: Search & Dropdowns -->
+<div class="flex flex-wrap items-center gap-2">
+<div class="relative min-w-[200px]">
+<input class="w-full h-9 bg-surface pl-8 pr-3 text-xs text-on-surface placeholder:text-outline focus:outline-none" placeholder="Buscar por código, FVS ou responsável..." type="text"/>
+<span class="material-symbols-outlined text-outline absolute left-2.5 top-2 text-base">search</span>
+</div>
+<select class="h-9 bg-surface px-2.5 text-xs text-on-surface focus:outline-none cursor-pointer">
+<option>Todas as Empreiteiras</option>
+<option>Aço &amp; Forma Estruturas</option>
+<option>Vedamax Impermeabilizações</option>
+<option>Arte &amp; Bloco Alvenarias</option>
+<option>Volt Engenharia</option>
+</select>
+<select class="h-9 bg-surface px-2.5 text-xs text-on-surface focus:outline-none cursor-pointer">
+<option>Todos os Pavimentos</option>
+<option>Subsolo 2 &amp; 1</option>
+<option>Pavimento 14 (Torre A)</option>
+<option>Pavimento 8 (Torre A)</option>
+<option>Cobertura (Torre B)</option>
+</select>
+</div>
+</div>
+<!-- Active RNC Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- CARD 1: CRÍTICA (Bloqueio de Concretagem) -->
+<div class="bg-surface-container flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+<div>
+<!-- Card Header Bar -->
+<div class="flex items-center justify-between p-3.5 bg-surface-container-high">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 bg-error text-on-error text-[10px] font-bold font-mono tracking-wider">
+<span class="w-1.5 h-1.5 bg-white rounded-full animate-ping"></span>
+                CRÍTICA
+              </span>
+<span class="text-xs font-mono font-bold text-on-surface">#RNC-2024-089</span>
+<span class="text-[11px] font-mono text-on-surface-variant bg-surface px-1.5 py-0.5">FVS-EST-042</span>
+</div>
+<div class="flex items-center gap-1 text-[11px] font-medium text-error bg-error-container px-2 py-0.5">
+<span class="material-symbols-outlined text-xs">timer</span>
+<span>Reinspeção: Hoje 16:30 (Faltam 2h)</span>
+</div>
+</div>
+<!-- Card Content Body -->
+<div class="p-4 flex flex-col sm:flex-row gap-4">
+<!-- Thumbnail photo with Stamp -->
+<div class="w-full sm:w-44 h-36 shrink-0 relative bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Forensic structural engineering photograph showing workers in yellow hardhats pointing to deficient reinforcement clearance under rebar mesh with a millimeter ruler in low ambient light on concrete slab construction deck" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA47JgxJRSNTIdp7tAF6Pg8BgnVpZSwr8Vmm_3NBlLy6jh9dl7M3_54caZ8DITyFqggza1YiWCr_oLCbqY1LENOPZ9sMIqHdsry_-OCnZeiEDzw1nRTS7zwrGlvXwrLS6JDhxZZBrUd7SLloZOJN46Ab8-z-UDBsZKen6D0vI7MLrDHbtJiaG7aHP9qp9KXvtyNNc0yRFBqkBOWV3QRx6CUvKuctDDc48I8SeUQWzACOEmY2LSL-n-J"/>
+<div class="absolute bottom-0 inset-x-0 bg-black/75 text-white font-mono text-[9px] px-1.5 py-0.5 flex justify-between">
+<span>GPS -23.5874°</span>
+<span>14:32h</span>
+</div>
+</div>
+<!-- Descriptive Metadata -->
+<div class="flex-1 flex flex-col justify-between min-w-0">
+<div>
+<div class="flex items-center gap-1.5 text-[11px] text-on-surface-variant font-medium">
+<span class="material-symbols-outlined text-xs text-primary">location_on</span>
+<span class="truncate">Torre A — Pavimento 14 (Laje Sul &amp; Vigas V-102 a V-106)</span>
+</div>
+<h3 class="text-sm font-semibold text-on-surface font-headline mt-1 leading-snug">
+                  Cobrimento insuficiente de armaduras negativas da laje
+                </h3>
+<p class="text-xs text-on-surface-variant mt-1.5 line-clamp-2 leading-relaxed">
+<strong class="text-on-surface font-medium">Causa &amp; Risco:</strong> Afastadores plásticos rompidos pela circulação da equipe de formas. Risco de patologia precoce e carbonatação.
+                </p>
+<div class="mt-2 text-xs bg-surface p-2 text-on-surface leading-tight">
+<strong class="text-primary font-semibold">Plano Corretivo:</strong> Colocação de caranguejos adicionais de aço CA-50 e espaçadores de concreto tipo pastilha 30mm.
+                </div>
+</div>
+</div>
+</div>
+<!-- Personnel Info Strip -->
+<div class="px-4 py-2 bg-surface text-xs text-on-surface-variant flex flex-wrap items-center justify-between gap-2">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs">engineering</span>
+<span>Empreiteira: <strong class="text-on-surface">Aço &amp; Forma Estruturas</strong></span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs text-tertiary">how_to_reg</span>
+<span>Fiscal: <strong class="text-on-surface">Eng. Ricardo Souza</strong></span>
+</div>
+</div>
+</div>
+<!-- Card Footer Actions -->
+<div class="p-3 bg-surface-container flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2 py-1 bg-surface text-on-surface text-[11px] font-semibold">
+<span class="material-symbols-outlined text-xs text-error">lock</span>
+              Frente Bloqueada
+            </span>
+<span class="text-[11px] text-on-surface-variant font-medium hidden sm:inline">Status: Em Retrabalho</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-2.5 py-1.5 bg-surface hover:bg-surface-container-high text-on-surface text-xs font-semibold transition-colors">
+              Mural de Fotos (4)
+            </button>
+<button class="px-3 py-1.5 bg-primary hover:bg-on-primary-fixed-variant text-on-primary text-xs font-semibold transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">playlist_add_check</span>
+<span>Registrar Reinspeção FVS</span>
+</button>
+</div>
+</div>
+</div>
+<!-- CARD 2: CRÍTICA (Impermeabilização Jardineira) -->
+<div class="bg-surface-container flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+<div>
+<!-- Card Header Bar -->
+<div class="flex items-center justify-between p-3.5 bg-surface-container-high">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 bg-error text-on-error text-[10px] font-bold font-mono tracking-wider">
+                CRÍTICA
+              </span>
+<span class="text-xs font-mono font-bold text-on-surface">#RNC-2024-088</span>
+<span class="text-[11px] font-mono text-on-surface-variant bg-surface px-1.5 py-0.5">FVS-IMP-029</span>
+</div>
+<div class="flex items-center gap-1 text-[11px] font-medium text-error bg-error-container px-2 py-0.5">
+<span class="material-symbols-outlined text-xs">calendar_clock</span>
+<span>Prazo Limite: 26/10/2024</span>
+</div>
+</div>
+<!-- Card Content Body -->
+<div class="p-4 flex flex-col sm:flex-row gap-4">
+<!-- Thumbnail photo with Stamp -->
+<div class="w-full sm:w-44 h-36 shrink-0 relative bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Technical inspection photograph on rooftop garden construction showing water ponding leak test on dark asphalt bituminous waterproof membrane, water level indicator ruler showing drop in water line, damp perimeter wall joint, realistic industrial detail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwi1OyYaOEYt9UkiV42RsbdodOUqXjIHeNvB9SOdvBhS664jL0DEK4khZhORyuNBVsCUWKXVwtEIIR15B5y_VBvmgmjr3kDqqhbklEPFE1Dvkak_VK2tqO8Wnq7KLilbW2K2Y1Ru44ppeXIFcRyKbKAKzmFBpPzdtgXyzf7sgEYXAFnaoLzjVXQMmBQZZZqUMpa80YUDqeouLMygL0EmxBP7dttHvTPi6o7ye6F_8yPUCO338872Ga"/>
+<div class="absolute bottom-0 inset-x-0 bg-black/75 text-white font-mono text-[9px] px-1.5 py-0.5 flex justify-between">
+<span>TESTE 72H: -32mm</span>
+<span>Ontem 17:10</span>
+</div>
+</div>
+<!-- Descriptive Metadata -->
+<div class="flex-1 flex flex-col justify-between min-w-0">
+<div>
+<div class="flex items-center gap-1.5 text-[11px] text-on-surface-variant font-medium">
+<span class="material-symbols-outlined text-xs text-primary">location_on</span>
+<span class="truncate">Torre B — Cobertura &amp; Jardineiras Técnicas</span>
+</div>
+<h3 class="text-sm font-semibold text-on-surface font-headline mt-1 leading-snug">
+                  Falha de estanqueidade na manta asfáltica 4mm
+                </h3>
+<p class="text-xs text-on-surface-variant mt-1.5 line-clamp-2 leading-relaxed">
+<strong class="text-on-surface font-medium">Causa &amp; Risco:</strong> Redução acelerada da lâmina d'água no ensaio hidrostático de 72h. Infiltração identificada no ralo de drenagem pluvial.
+                </p>
+<div class="mt-2 text-xs bg-surface p-2 text-on-surface leading-tight">
+<strong class="text-primary font-semibold">Plano Corretivo:</strong> Secagem total da laje, queima de remendo em manta de poliéster com maçarico e reexecução do teste de estanqueidade.
+                </div>
+</div>
+</div>
+</div>
+<!-- Personnel Info Strip -->
+<div class="px-4 py-2 bg-surface text-xs text-on-surface-variant flex flex-wrap items-center justify-between gap-2">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs">engineering</span>
+<span>Empreiteira: <strong class="text-on-surface">Vedamax Impermeabilizações</strong></span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs text-tertiary">how_to_reg</span>
+<span>Fiscal: <strong class="text-on-surface">Engª Larissa Mendes</strong></span>
+</div>
+</div>
+</div>
+<!-- Card Footer Actions -->
+<div class="p-3 bg-surface-container flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2 py-1 bg-[#fef3c7] text-[#92400e] text-[11px] font-semibold">
+<span class="material-symbols-outlined text-xs">hourglass_top</span>
+              Aguardando Aprovação do Plano
+            </span>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-2.5 py-1.5 bg-surface hover:bg-surface-container-high text-on-surface text-xs font-semibold transition-colors">
+              Histórico de Ensaios
+            </button>
+<button class="px-3 py-1.5 bg-primary hover:bg-on-primary-fixed-variant text-on-primary text-xs font-semibold transition-colors">
+              Validar Reparo
+            </button>
+</div>
+</div>
+</div>
+<!-- CARD 3: MÉDIA (Alvenaria de Vedação / NBR 15575) -->
+<div class="bg-surface-container flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+<div>
+<!-- Card Header Bar -->
+<div class="flex items-center justify-between p-3.5 bg-surface-container-high">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 bg-[#b25e09] text-white text-[10px] font-bold font-mono tracking-wider">
+                MÉDIA
+              </span>
+<span class="text-xs font-mono font-bold text-on-surface">#RNC-2024-085</span>
+<span class="text-[11px] font-mono text-on-surface-variant bg-surface px-1.5 py-0.5">FVS-ALV-118</span>
+</div>
+<div class="flex items-center gap-1 text-[11px] font-medium text-[#b25e09] bg-[#fef3c7] px-2 py-0.5">
+<span class="material-symbols-outlined text-xs">schedule</span>
+<span>Prazo: 25/10/2024 (Amanhã 18:00)</span>
+</div>
+</div>
+<!-- Card Content Body -->
+<div class="p-4 flex flex-col sm:flex-row gap-4">
+<!-- Thumbnail photo with Stamp -->
+<div class="w-full sm:w-44 h-36 shrink-0 relative bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Technical building site photo showing red ceramic brick block masonry wall with a vertical green laser level beam projected across the doorway reveal, plumb line rule displaying out of plumb deviation, construction interior apartment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX2Er033wA49VARsqpyDoV6Q8DvARFLpOl3OoX7XoY2NqvEp0UV5PysRkOnZ-jx2W_F95gHUq5ja0uM-JCcKxusJtiq1TGyk8orzQcPY5t4xDf3fJcGMqpOQ8iKeDBxo6VwrlHdv4QQcBHJ80igWBUp8uRFNAtw_ADAqhJ6Pr-9IblN2gwxvdUpJjDIAc42U8KagLIQIf9I54WQNOguIyS7OtlPyHOjduRb5twlqcGc8gCLbWCmNOq"/>
+<div class="absolute bottom-0 inset-x-0 bg-black/75 text-white font-mono text-[9px] px-1.5 py-0.5 flex justify-between">
+<span>DESVIO: +6mm</span>
+<span>T-A Apt 804</span>
+</div>
+</div>
+<!-- Descriptive Metadata -->
+<div class="flex-1 flex flex-col justify-between min-w-0">
+<div>
+<div class="flex items-center gap-1.5 text-[11px] text-on-surface-variant font-medium">
+<span class="material-symbols-outlined text-xs text-primary">location_on</span>
+<span class="truncate">Torre A — Apartamento 804 (Vão da Suíte Principal)</span>
+</div>
+<h3 class="text-sm font-semibold text-on-surface font-headline mt-1 leading-snug">
+                  Desaprumo em alvenaria acima da tolerância NBR 15575
+                </h3>
+<p class="text-xs text-on-surface-variant mt-1.5 line-clamp-2 leading-relaxed">
+<strong class="text-on-surface font-medium">Causa &amp; Risco:</strong> Desvio de 6mm na prumada do vão de esquadria metálica. Impactará instalação de caixilhos e aumentará consumo de emboço.
+                </p>
+<div class="mt-2 text-xs bg-surface p-2 text-on-surface leading-tight">
+<strong class="text-primary font-semibold">Plano Corretivo:</strong> Retificação da fiada de respaldo com corte de disco e sarrafeamento com mestras metálicas reguladas a laser.
+                </div>
+</div>
+</div>
+</div>
+<!-- Personnel Info Strip -->
+<div class="px-4 py-2 bg-surface text-xs text-on-surface-variant flex flex-wrap items-center justify-between gap-2">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs">engineering</span>
+<span>Empreiteira: <strong class="text-on-surface">Arte &amp; Bloco Alvenarias</strong></span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs text-tertiary">how_to_reg</span>
+<span>Fiscal: <strong class="text-on-surface">Téc. Marcos Vinícius</strong></span>
+</div>
+</div>
+</div>
+<!-- Card Footer Actions -->
+<div class="p-3 bg-surface-container flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2 py-1 bg-surface text-on-surface text-[11px] font-semibold">
+<span class="material-symbols-outlined text-xs text-primary">build</span>
+              Retrabalho em Execução
+            </span>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-2.5 py-1.5 bg-surface hover:bg-surface-container-high text-on-surface text-xs font-semibold transition-colors">
+              FVS Detalhada
+            </button>
+<button class="px-3 py-1.5 bg-primary hover:bg-on-primary-fixed-variant text-on-primary text-xs font-semibold transition-colors">
+              Solicitar Reavaliação
+            </button>
+</div>
+</div>
+</div>
+<!-- CARD 4: LEVE (Instalações Elétricas / QGBT) -->
+<div class="bg-surface-container flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+<div>
+<!-- Card Header Bar -->
+<div class="flex items-center justify-between p-3.5 bg-surface-container-high">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 bg-primary-container text-on-primary-fixed text-[10px] font-bold font-mono tracking-wider">
+                LEVE
+              </span>
+<span class="text-xs font-mono font-bold text-on-surface">#RNC-2024-081</span>
+<span class="text-[11px] font-mono text-on-surface-variant bg-surface px-1.5 py-0.5">FVS-ELE-034</span>
+</div>
+<div class="flex items-center gap-1 text-[11px] font-medium text-primary bg-primary-container px-2 py-0.5">
+<span class="material-symbols-outlined text-xs">event</span>
+<span>Prazo: 28/10/2024</span>
+</div>
+</div>
+<!-- Card Content Body -->
+<div class="p-4 flex flex-col sm:flex-row gap-4">
+<!-- Thumbnail photo with Stamp -->
+<div class="w-full sm:w-44 h-36 shrink-0 relative bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Technical close-up photograph of an electrical industrial cable tray installation inside a basement generator room, thick multicolored copper power cables neatly organized but lacking identification label ferrules, crisp studio industrial lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBLmweLU9ZMKN5uDzdcYuhOpSG5Xx0kCACDmouF3tZawNUfExjW38rZaaDtHdxCsSCaPHpKjj6w78nwqzMeopZ019vdWL-faggXLq6pqulQMyoarCiZkOUuKawLU6E7g8Tka-MQxz2A39JjqmmSu71jZeS-pd2JnklFuI-rllVBmOYUjgXZlJcxw79RYyleQu1_KPWplJBls-AZS75wa0_yUAq21f0VchQolRydpNmgHQbp7R18mFz"/>
+<div class="absolute bottom-0 inset-x-0 bg-black/75 text-white font-mono text-[9px] px-1.5 py-0.5 flex justify-between">
+<span>SS-2 QGBT</span>
+<span>21/10 11:15</span>
+</div>
+</div>
+<!-- Descriptive Metadata -->
+<div class="flex-1 flex flex-col justify-between min-w-0">
+<div>
+<div class="flex items-center gap-1.5 text-[11px] text-on-surface-variant font-medium">
+<span class="material-symbols-outlined text-xs text-primary">location_on</span>
+<span class="truncate">Subsolo 2 — Sala do QGBT &amp; Grupo Gerador</span>
+</div>
+<h3 class="text-sm font-semibold text-on-surface font-headline mt-1 leading-snug">
+                  Ausência de anilhamento em cabos alimentadores
+                </h3>
+<p class="text-xs text-on-surface-variant mt-1.5 line-clamp-2 leading-relaxed">
+<strong class="text-on-surface font-medium">Causa &amp; Risco:</strong> Circuitos do gerador lançados sem etiquetas de termoencolhível. Descumprimento da NBR 5410 quanto à rastreabilidade de manobra.
+                </p>
+<div class="mt-2 text-xs bg-surface p-2 text-on-surface leading-tight">
+<strong class="text-primary font-semibold">Plano Corretivo:</strong> Instalação imediata das anilhas termoretráteis amarelas conforme projeto executivo unifilar PE-ELE-03.
+                </div>
+</div>
+</div>
+</div>
+<!-- Personnel Info Strip -->
+<div class="px-4 py-2 bg-surface text-xs text-on-surface-variant flex flex-wrap items-center justify-between gap-2">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs">engineering</span>
+<span>Empreiteira: <strong class="text-on-surface">Volt Engenharia &amp; Montagens</strong></span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs text-tertiary">how_to_reg</span>
+<span>Fiscal: <strong class="text-on-surface">Eng. Roberto Dias</strong></span>
+</div>
+</div>
+</div>
+<!-- Card Footer Actions -->
+<div class="p-3 bg-surface-container flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2 py-1 bg-tertiary-container text-on-tertiary-container text-[11px] font-semibold">
+<span class="material-symbols-outlined text-xs">done_all</span>
+              Pronto p/ Reinspeção
+            </span>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-2.5 py-1.5 bg-surface hover:bg-surface-container-high text-on-surface text-xs font-semibold transition-colors">
+              Diagrama Unifilar
+            </button>
+<button class="px-3 py-1.5 bg-tertiary text-on-tertiary hover:bg-on-tertiary-container text-xs font-semibold transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">check</span>
+<span>Dar Baixa Definitiva</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Audit & Compliance Footer Strip -->
+<section class="mt-8 bg-surface-container p-4 flex flex-col md:flex-row items-center justify-between text-xs text-on-surface-variant gap-3">
+<div class="flex items-center gap-3">
+<div class="p-2 bg-surface">
+<span class="material-symbols-outlined text-tertiary text-lg">gavel</span>
+</div>
+<div>
+<span class="font-semibold text-on-surface">Conformidade e Rastreabilidade Jurídica:</span>
+<p class="text-[11px] text-on-surface-variant">Todos os registros fotográficos e laudos periciais são assinados com carimbo de tempo ICP-Brasil e possuem valor probatório em caso de glosa contratual.</p>
+</div>
+</div>
+<div class="flex items-center gap-4 shrink-0 font-mono text-[11px]">
+<span class="flex items-center gap-1 text-tertiary">
+<span class="material-symbols-outlined text-sm">format_image_left</span>
+        Auditoria PBQP-H Ativa
+      </span>
+<span>•</span>
+<span class="text-on-surface">Blockchain Hash: 7c4e...89a1</span>
+</div>
+</section>
+</div>
+<script>
+  // Simple toggle behavior for registration panel view
+  const toggleBtn = document.getElementById('toggle-form-btn');
+  const formPanel = document.getElementById('rnc-form-panel');
+
+  if (toggleBtn && formPanel) {
+    toggleBtn.addEventListener('click', () => {
+      formPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      formPanel.classList.add('ring-2', 'ring-primary');
+      setTimeout(() => {
+        formPanel.classList.remove('ring-2', 'ring-primary');
+      }, 1500);
+    });
+  }
+</script></main><footer class="h-12 w-full bg-surface-container-low px-6 lg:px-8 flex items-center justify-between text-xs text-on-surface-variant"><div class="flex items-center gap-4"><span>ObraSync Enterprise v2.4.0</span><span class="hidden sm:inline">•</span><span class="hidden sm:inline flex items-center gap-1"><span class="material-symbols-outlined text-sm text-tertiary">verified</span>Integridade de Dados Auditada</span></div><div class="flex items-center gap-4"><span class="hidden md:inline">Ambiente Corporativo Seguro</span><span>Residencial Horizonte - Torre A &amp; B</span></div></footer></div></body></html>

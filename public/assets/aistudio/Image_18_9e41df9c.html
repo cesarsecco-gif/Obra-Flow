@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-bright":"#ffffff","surface-container-low":"#f4f4f4","tertiary-fixed-dim":"#42be65","surface":"#ffffff","tertiary-fixed":"#a7f0ba","surface-variant":"#f4f4f4","on-primary":"#ffffff","on-error-container":"#750e13","on-secondary-container":"#525252","primary-fixed-dim":"#78a9ff","error":"#da1e28","on-surface":"#161616","background":"#ffffff","secondary-fixed-dim":"#c6c6c6","primary":"#0f62fe","secondary-container":"#e0e0e0","surface-container-high":"#e0e0e0","on-secondary":"#ffffff","on-error":"#ffffff","on-tertiary-fixed":"#022d0d","on-primary-container":"#161616","on-secondary-fixed":"#161616","surface-container":"#f4f4f4","secondary-fixed":"#e0e0e0","outline-variant":"#e0e0e0","outline":"#8d8d8d","on-primary-fixed-variant":"#0043ce","inverse-on-surface":"#f4f4f4","tertiary":"#198038","on-primary-fixed":"#001d6c","on-surface-variant":"#525252","surface-container-highest":"#c6c6c6","on-tertiary":"#ffffff","on-tertiary-fixed-variant":"#044317","surface-tint":"#0f62fe","inverse-surface":"#393939","on-secondary-fixed-variant":"#525252","primary-fixed":"#d0e2ff","on-background":"#161616","on-tertiary-container":"#044317","inverse-primary":"#78a9ff","tertiary-container":"#a7f0ba","primary-container":"#d0e2ff","surface-dim":"#e0e0e0","secondary":"#6f6f6f","surface-container-lowest":"#ffffff","error-container":"#fff1f1"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{},fontFamily:{headline:["IBM Plex Sans"],display:["IBM Plex Sans"],body:["IBM Plex Sans"],label:["IBM Plex Sans"]},fontSize:{}}}}</script></head><body class="bg-surface font-body text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 h-16 bg-surface z-50 flex items-center justify-between px-4 lg:px-6 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-4"><div class="flex items-center gap-3 pr-4"><img alt="ObraSync Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1V1rtPWhd7WNs8YkyzCaeFp-ulWzm0w3nQAZyFqauCXz5iL7vz-ghXMPYhHV0_qbo8cnuOHtbeQ4VmEHA9VQ7hCerNjMg9OVF5XOw-fWnZ9IDHsUni9EWpd8cUWF1VyUu7O4McUolzAuqUpBfyl4CPD6i_WEXLSvNYZmqa9fbgBMZqsRoHnOiH2kLwqmJ4NcOfwXzg5u7KUPj-WzctEO68g-WdJO4zTNGrIm3ZwZxuPoPoZX-Qi4EGSsI0"/><span class="font-headline font-semibold text-lg text-on-surface tracking-tight hidden sm:inline">ObraSync</span></div><div class="hidden md:flex items-center gap-2 bg-surface-container px-3 py-1.5"><span class="material-symbols-outlined text-primary text-xl">apartment</span><div class="flex flex-col"><span class="text-[11px] text-on-surface-variant leading-none uppercase font-semibold">Obra Ativa</span><span class="text-xs font-medium text-on-surface leading-tight">Residencial Horizonte - Torre A &amp; B</span></div><span class="material-symbols-outlined text-on-surface-variant text-base cursor-pointer ml-1">expand_more</span></div></div><div class="flex items-center gap-3 lg:gap-5"><div class="hidden xl:flex items-center gap-2 px-2.5 py-1 bg-surface-container"><span class="w-2 h-2 rounded-full bg-tertiary"></span><span class="text-xs font-medium text-on-surface">Online</span><span class="text-xs text-on-surface-variant font-light">• 14 itens sincronizados</span></div><div class="hidden sm:flex items-center gap-2"><a class="inline-flex items-center gap-1.5 px-3 py-2 bg-primary text-on-primary text-xs font-medium hover:bg-primary/90 transition-colors" data-path="diario-de-obra-rdo" href="#"><span class="material-symbols-outlined text-sm">post_add</span><span>+ Novo RDO</span></a><a class="inline-flex items-center gap-1.5 px-3 py-2 bg-surface-container text-on-surface text-xs font-medium hover:bg-surface-container-high transition-colors" data-path="relatorio-fotografico" href="#"><span class="material-symbols-outlined text-sm">add_a_photo</span><span>+ Subir Fotos</span></a></div><div class="flex items-center gap-1 text-on-surface-variant"><button aria-label="Notificações de Canteiro" class="p-2 hover:bg-surface-container transition-colors relative" type="button"><span class="material-symbols-outlined text-xl text-on-surface">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full"></span></button><button aria-label="Ajuda e Suporte" class="p-2 hover:bg-surface-container transition-colors hidden sm:block" type="button"><span class="material-symbols-outlined text-xl text-on-surface">help_outline</span></button></div><div class="flex items-center gap-3 pl-2 sm:pl-4 bg-surface"><div class="hidden lg:flex flex-col text-right"><span class="text-xs font-semibold text-on-surface leading-tight">Eng. Ricardo Souza</span><span class="text-[11px] text-on-surface-variant leading-none">Engenheiro Residente</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOGd0SEmkgPx7MrGzaf5IoWSQzu7CbKZzyJi_HPjeJTNnyNI8CqfbmreMfLvcwCjmOLuwbov9uUSRl-8IU2UA0EG7CYz0Wa_6Io7wxVujYfLueor9-aLfs-tBbiyMGayOM0fOrb03ckgrpJfUfFRm224tdxYKkgpbssppZxxXaxBCC9eWFXv0sKonkHFh7kdNQIATYzFSimPFV1FCIlsuEEnaeSAqqp_eFiJbBKu3OC6YWvKsBouE3"/></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-64 bg-surface-container-low z-40 flex flex-col justify-between overflow-y-auto"><div class="py-4"><div class="px-4 pb-3 mb-2"><span class="text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider">Navegação de Campo</span></div><nav class="space-y-0.5 px-2" data-active-classes="bg-primary-container text-on-primary-container font-semibold"><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="dashboard-gerencial" href="#"><span class="material-symbols-outlined text-lg">dashboard</span><span>Dashboard Gerencial</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="diario-de-obra-rdo" href="#"><span class="material-symbols-outlined text-lg">menu_book</span><span>Diário de Obra (RDO)</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="relatorio-fotografico" href="#"><span class="material-symbols-outlined text-lg">photo_camera</span><span>Relatório Fotográfico</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="efetivo-e-equipamentos" href="#"><span class="material-symbols-outlined text-lg">engineering</span><span>Efetivo &amp; Equipamentos</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="clima-e-chuvas" href="#"><span class="material-symbols-outlined text-lg">rainy</span><span>Clima &amp; Chuvas</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="relatorios-executivos" href="#"><span class="material-symbols-outlined text-lg">assessment</span><span>Relatórios Executivos</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="configuracoes" href="#"><span class="material-symbols-outlined text-lg">settings</span><span>Configurações</span></a></nav></div><div class="p-4 bg-surface-container m-3"><div class="flex items-center justify-between text-xs text-on-surface-variant mb-1.5"><span class="font-medium">Conexão Canteiro</span><span class="text-[11px] font-semibold text-tertiary">Ativa</span></div><div class="w-full bg-surface-container-highest h-1"><div class="bg-tertiary h-1 w-full"></div></div><p class="text-[11px] text-on-surface-variant mt-2 leading-relaxed">Sincronismo automático a cada 5 min. Modo offline operacional.</p></div></aside><div class="pl-64"><main class="relative pt-16 min-h-[calc(100vh-3rem)] w-full px-6 lg:px-8 py-6 bg-surface"><div class="flex flex-col w-full">
+<!-- Toast Notifier (Interactive Demo Feedback) -->
+<div class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-3 bg-inverse-surface text-inverse-on-surface px-4 py-3 shadow-lg" id="toast-notification">
+<span class="material-symbols-outlined text-tertiary-fixed text-lg" id="toast-icon">check_circle</span>
+<span class="text-xs font-medium" id="toast-message">Preferências sincronizadas com sucesso.</span>
+</div>
+<!-- Breadcrumbs & Meta Bar -->
+<div class="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-surface-container-high">
+<div class="flex items-center gap-2 text-xs">
+<span class="text-on-surface-variant">Configurações Corporativas</span>
+<span class="text-surface-container-highest">/</span>
+<span class="text-on-surface-variant font-medium">Gestão de Identidade &amp; Acesso</span>
+<span class="text-surface-container-highest">/</span>
+<span class="text-on-surface font-semibold">Perfil Profissional</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 bg-surface-container text-[11px] font-mono text-on-surface-variant">
+<span class="w-1.5 h-1.5 bg-tertiary"></span>
+        SESSÃO AUDITADA #BR-7741
+      </span>
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 bg-surface-container text-[11px] font-mono text-on-surface-variant">
+        ICP-BRASIL A3: VÁLIDO
+      </span>
+</div>
+</div>
+<!-- Hero / Header Section: Profile Banner & Quick Actions -->
+<div class="mt-4 bg-surface-container-low p-6 lg:p-8 flex flex-col xl:flex-row items-start xl:items-center justify-between gap-6 shadow-sm">
+<div class="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+<!-- Profile Picture with Status Ring -->
+<div class="relative group">
+<div class="w-24 h-24 sm:w-28 sm:h-28 overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="Close-up professional portrait of a Brazilian civil engineer in his late 30s wearing a clean white industrial safety hardhat and navy blue high-visibility reflective vest on a modern construction site. Natural daytime lighting, sharp focus, neutral authoritative expression, corporate architectural background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9Zsh9fle7sHbr608EYk2BQMIQMvRznhSDJcNWVRKHJaAt_Tn-pF2lACM-Z1VvfKozuqwu1tMC7pbvBUDej_90z-mNRCG5jsAfzWuQbj1wErHmJpBqGMDFTlmTv1b0IMC-wq4_ZrHvOepQ3Cv-tCBiXYZsRmJmAoDPDrYxA4rVtCp7UmrzukfuXxU5wcg6kd15xNfuxl5vJLECFjVQj1Sr_NGvuKZPgi_BtmT1I6Y"/>
+</div>
+<button class="absolute bottom-0 right-0 p-1.5 bg-primary text-on-primary hover:bg-primary/90 transition-colors shadow" title="Substituir foto de perfil" type="button">
+<span class="material-symbols-outlined text-sm">photo_camera</span>
+</button>
+</div>
+<!-- Identity & Role Credentials -->
+<div class="flex flex-col gap-1.5">
+<div class="flex flex-wrap items-center gap-2">
+<h1 class="font-headline text-xl sm:text-2xl font-semibold text-on-surface tracking-tight">
+            Eng. Ricardo Alcantara Souza
+          </h1>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 bg-primary-container text-on-primary-container text-[11px] font-semibold tracking-wide uppercase">
+<span class="material-symbols-outlined text-xs text-primary">verified</span>
+            RT Titular
+          </span>
+</div>
+<p class="text-xs text-on-surface-variant font-medium flex flex-wrap items-center gap-x-3 gap-y-1">
+<span>Engenheiro Residente Titular &amp; RT de Obra</span>
+<span class="text-surface-container-highest">•</span>
+<span class="font-mono text-on-surface">CREA-SP 506.924.810-D</span>
+<span class="text-surface-container-highest">•</span>
+<span>Construtora Horizonte Brasil S/A</span>
+</p>
+<!-- Access Badges Row -->
+<div class="flex flex-wrap items-center gap-1.5 pt-2">
+<span class="px-2 py-0.5 bg-surface-container-high text-on-surface text-[10px] font-semibold tracking-wider uppercase font-mono">
+            SUPERVISOR TÉCNICO NÍVEL 4
+          </span>
+<span class="px-2 py-0.5 bg-tertiary-container text-on-tertiary-container text-[10px] font-semibold tracking-wider uppercase font-mono">
+            LIBERADOR DE RDO &amp; ART
+          </span>
+<span class="px-2 py-0.5 bg-primary-fixed text-on-primary-fixed text-[10px] font-semibold tracking-wider uppercase font-mono">
+            ASSINATURA QUALIFICADA ICP-BRASIL
+          </span>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-wrap sm:flex-nowrap items-center gap-2.5 w-full xl:w-auto self-stretch xl:self-auto pt-2 xl:pt-0">
+<button class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-3.5 py-2.5 bg-surface text-on-surface text-xs font-semibold hover:bg-surface-container-high transition-colors shadow-sm" onclick="triggerAction('Exportando Credencial Digital Segura...')" type="button">
+<span class="material-symbols-outlined text-sm">badge</span>
+<span>Exportar Credencial (PDF)</span>
+</button>
+<button class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-3.5 py-2.5 bg-surface-container-high text-error text-xs font-semibold hover:bg-error-container hover:text-on-error-container transition-colors shadow-sm" onclick="triggerAction('Acessos temporários expirados revogados.')" type="button">
+<span class="material-symbols-outlined text-sm">lock_reset</span>
+<span>Revogar Temporários</span>
+</button>
+<button class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-primary text-on-primary text-xs font-semibold hover:bg-primary/90 transition-colors shadow-sm" onclick="triggerAction('Todas as alterações salvas com sucesso!')" type="button">
+<span class="material-symbols-outlined text-sm">save</span>
+<span>Salvar Alterações</span>
+</button>
+</div>
+</div>
+<!-- Main Grid Content: Form + Site Matrix + Offline & Security -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
+<!-- Left Column (8 cols): Personal Info & Canteiros Permissions -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<!-- SECTION 1: Personal Data & Technical Records -->
+<div class="bg-surface-container-low p-6">
+<div class="flex items-center justify-between pb-4 border-b border-surface-container-high">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-lg">person_pin</span>
+<h2 class="font-headline text-sm font-semibold text-on-surface uppercase tracking-wider">
+              1. Dados Pessoais &amp; Registro Profissional
+            </h2>
+</div>
+<span class="text-[11px] font-mono text-tertiary flex items-center gap-1 font-medium">
+<span class="material-symbols-outlined text-sm">verified_user</span>
+            Identidade Certificada
+          </span>
+</div>
+<form class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-5" onsubmit="event.preventDefault();">
+<!-- Full Name -->
+<div class="flex flex-col gap-1.5">
+<label class="text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider">
+              Nome Completo do Engenheiro
+            </label>
+<div class="bg-surface px-3 py-2.5 flex items-center justify-between shadow-sm">
+<input class="bg-transparent text-xs text-on-surface font-medium focus:outline-none w-full" type="text" value="Ricardo Alcantara Souza"/>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">edit</span>
+</div>
+</div>
+<!-- Corporate Email -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<label class="text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider">
+                E-mail Corporativo
+              </label>
+<span class="text-[10px] text-tertiary font-bold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-xs">check_circle</span>
+                Verificado
+              </span>
+</div>
+<div class="bg-surface px-3 py-2.5 flex items-center justify-between shadow-sm">
+<input class="bg-transparent text-xs text-on-surface font-medium focus:outline-none w-full font-mono" type="email" value="ricardo.souza@construtora.com.br"/>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">mail</span>
+</div>
+</div>
+<!-- Phone / Field WhatsApp -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<label class="text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider">
+                Telefone / WhatsApp de Campo
+              </label>
+<span class="text-[10px] text-primary font-medium">2FA SMS/Push Ativo</span>
+</div>
+<div class="bg-surface px-3 py-2.5 flex items-center justify-between shadow-sm">
+<input class="bg-transparent text-xs text-on-surface font-medium focus:outline-none w-full font-mono" type="text" value="+55 (11) 98765-4321"/>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">smartphone</span>
+</div>
+</div>
+<!-- CREA / Professional Council -->
+<div class="flex flex-col gap-1.5">
+<label class="text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider">
+              Conselho Regional / Órgão Emissor
+            </label>
+<div class="bg-surface px-3 py-2.5 flex items-center justify-between shadow-sm">
+<input class="bg-transparent text-xs text-on-surface font-medium focus:outline-none w-full" type="text" value="CREA-SP / CONFEA (Vigência 2026)"/>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">history_edu</span>
+</div>
+</div>
+<!-- Active Linked ART -->
+<div class="flex flex-col gap-1.5">
+<label class="text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider">
+              ART de Desempenho de Cargo Técnico
+            </label>
+<div class="bg-surface px-3 py-2.5 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-2 truncate">
+<span class="font-mono text-xs font-semibold text-primary">ART nº 2024.088219-SP</span>
+<span class="text-[10px] px-1.5 py-0.2 bg-tertiary-container text-on-tertiary-container font-mono">HOMOLOGADA</span>
+</div>
+<button class="text-primary hover:text-primary/80" title="Ver certidão ART" type="button">
+<span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+</div>
+<!-- Business Unit / Department -->
+<div class="flex flex-col gap-1.5">
+<label class="text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider">
+              Diretoria &amp; Unidade Regional
+            </label>
+<div class="bg-surface px-3 py-2.5 flex items-center justify-between shadow-sm">
+<input class="bg-transparent text-xs text-on-surface font-medium focus:outline-none w-full truncate" type="text" value="UN Edificações Verticais — Regional São Paulo Metropolitana"/>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">domain</span>
+</div>
+</div>
+</form>
+<!-- Functional Badging & Biometrics Mini-Card -->
+<div class="mt-5 p-4 bg-surface flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-sm">
+<div class="flex items-center gap-3">
+<div class="p-2.5 bg-surface-container text-primary">
+<span class="material-symbols-outlined text-xl">contactless</span>
+</div>
+<div>
+<p class="text-xs font-semibold text-on-surface">Crachá Digital &amp; Biometria Integrada</p>
+<p class="text-[11px] text-on-surface-variant">Catraca Facial #01 (Guarita Sul) + Token TOTP Físico vinculado</p>
+</div>
+</div>
+<div class="flex items-center gap-3 w-full md:w-auto justify-between md:justify-end">
+<span class="text-[11px] font-mono text-tertiary bg-tertiary-container px-2 py-1 font-semibold">ATIVO / CATRACA LIBERADA</span>
+<button class="text-xs text-primary font-semibold hover:underline flex items-center gap-1" onclick="triggerAction('Sincronizando chave de catraca biométrica...')" type="button">
+<span class="material-symbols-outlined text-sm">sync</span> Recalibrar
+            </button>
+</div>
+</div>
+</div>
+<!-- SECTION 2: Active Site Permissions Matrix -->
+<div class="bg-surface-container-low p-6">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-surface-container-high">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-lg">admin_panel_settings</span>
+<div>
+<h2 class="font-headline text-sm font-semibold text-on-surface uppercase tracking-wider">
+                2. Permissões Ativas nos Canteiros
+              </h2>
+<p class="text-[11px] text-on-surface-variant">Matriz de segregação de funções e alçada de aprovação por empreendimento</p>
+</div>
+</div>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-surface text-primary text-xs font-semibold hover:bg-surface-container-high transition-colors shadow-sm self-start sm:self-auto" onclick="triggerAction('Solicitação de nova alçada enviada à Diretoria de Engenharia.')" type="button">
+<span class="material-symbols-outlined text-sm">upgrade</span>
+<span>Solicitar Elevação</span>
+</button>
+</div>
+<!-- Table Container -->
+<div class="mt-4 overflow-x-auto">
+<table class="w-full text-left text-xs border-collapse">
+<thead>
+<tr class="bg-surface-container-high text-on-surface-variant font-semibold text-[11px] uppercase tracking-wider">
+<th class="p-3">Canteiro de Obras</th>
+<th class="p-3">Nível de Atribuição</th>
+<th class="p-3">Permissões Específicas Concedidas</th>
+<th class="p-3 text-right">Ações</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<!-- Site 1: Active RT -->
+<tr class="bg-surface hover:bg-surface-container-low transition-colors">
+<td class="p-3">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-primary rounded-full" title="Canteiro Primário Atual"></span>
+<div>
+<p class="font-semibold text-on-surface">Residencial Horizonte - Torre A &amp; B</p>
+<p class="text-[11px] text-on-surface-variant font-mono">São Paulo/SP • Cód. #OBR-094</p>
+</div>
+</div>
+</td>
+<td class="p-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 bg-tertiary-container text-on-tertiary-container text-[10px] font-semibold font-mono tracking-wider">
+                    RT — ACESSO TOTAL
+                  </span>
+</td>
+<td class="p-3">
+<div class="flex flex-wrap gap-1">
+<span class="px-1.5 py-0.5 bg-surface-container text-on-surface text-[10px] font-mono">Assinar RDO</span>
+<span class="px-1.5 py-0.5 bg-surface-container text-on-surface text-[10px] font-mono">Liberar Concretagem</span>
+<span class="px-1.5 py-0.5 bg-surface-container text-on-surface text-[10px] font-mono">Folha Efetivo</span>
+<span class="px-1.5 py-0.5 bg-surface-container text-on-surface text-[10px] font-mono">Medição Terceiros</span>
+</div>
+</td>
+<td class="p-3 text-right">
+<span class="text-[10px] font-semibold text-on-surface-variant bg-surface-container px-2 py-1">CANTEIRO ATUAL</span>
+</td>
+</tr>
+<!-- Site 2: Parque das Águas -->
+<tr class="bg-surface hover:bg-surface-container-low transition-colors">
+<td class="p-3">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-surface-container-highest rounded-full"></span>
+<div>
+<p class="font-semibold text-on-surface">Condomínio Parque das Águas</p>
+<p class="text-[11px] text-on-surface-variant font-mono">Campinas/SP • Cód. #OBR-102</p>
+</div>
+</div>
+</td>
+<td class="p-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 bg-primary-container text-on-primary-container text-[10px] font-semibold font-mono tracking-wider">
+                    CONSULTA &amp; VISTORIA
+                  </span>
+</td>
+<td class="p-3">
+<div class="flex flex-wrap gap-1">
+<span class="px-1.5 py-0.5 bg-surface-container text-on-surface text-[10px] font-mono">Visualizar Laudos</span>
+<span class="px-1.5 py-0.5 bg-surface-container text-on-surface text-[10px] font-mono">Mural Fotográfico</span>
+</div>
+</td>
+<td class="p-3 text-right">
+<button class="text-[11px] font-semibold text-primary hover:underline" onclick="triggerAction('Alternando canteiro de trabalho para Parque das Águas...')" type="button">
+                    Alternar Primário
+                  </button>
+</td>
+</tr>
+<!-- Site 3: Infinity Tower -->
+<tr class="bg-surface hover:bg-surface-container-low transition-colors">
+<td class="p-3">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-surface-container-highest rounded-full"></span>
+<div>
+<p class="font-semibold text-on-surface">Edifício Infinity Tower</p>
+<p class="text-[11px] text-on-surface-variant font-mono">Santos/SP • Cód. #OBR-078</p>
+</div>
+</div>
+</td>
+<td class="p-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 bg-secondary-fixed text-on-secondary-fixed text-[10px] font-semibold font-mono tracking-wider">
+                    FISCAL ESTRUTURAL
+                  </span>
+</td>
+<td class="p-3">
+<div class="flex flex-wrap gap-1">
+<span class="px-1.5 py-0.5 bg-surface-container text-on-surface text-[10px] font-mono">Aprovar Armaduras</span>
+<span class="px-1.5 py-0.5 bg-surface-container text-on-surface text-[10px] font-mono">RNCs de Obra</span>
+</div>
+</td>
+<td class="p-3 text-right">
+<button class="text-[11px] font-semibold text-primary hover:underline" onclick="triggerAction('Alternando canteiro de trabalho para Infinity Tower...')" type="button">
+                    Alternar Primário
+                  </button>
+</td>
+</tr>
+<!-- Site 4: Complexo Logístico RodoAnel -->
+<tr class="bg-surface hover:bg-surface-container-low transition-colors">
+<td class="p-3">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-surface-container-highest rounded-full"></span>
+<div>
+<p class="font-semibold text-on-surface">Complexo Logístico RodoAnel Leste</p>
+<p class="text-[11px] text-on-surface-variant font-mono">Guarulhos/SP • Cód. #OBR-055</p>
+</div>
+</div>
+</td>
+<td class="p-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 bg-surface-container-high text-on-surface-variant text-[10px] font-semibold font-mono tracking-wider">
+                    STANDBY / BACKUP
+                  </span>
+</td>
+<td class="p-3">
+<div class="flex flex-wrap gap-1">
+<span class="px-1.5 py-0.5 bg-surface-container text-on-surface-variant text-[10px] font-mono">Acesso Condicional sob Acionamento</span>
+</div>
+</td>
+<td class="p-3 text-right">
+<span class="text-[10px] font-mono text-on-surface-variant">Inativo</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between text-[11px] text-on-surface-variant gap-2 pt-2 border-t border-surface-container-high">
+<span>Regra de Governança: Assinaturas de RDO exigem vínculo de ART registrado no CREA-SP.</span>
+<span class="font-mono text-on-surface font-medium">4 canteiros autorizados</span>
+</div>
+</div>
+</div>
+<!-- Right Column (4 cols): SECTION 3: Offline Sync & Site Environment -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- SECTION 3: Offline Sync Engine Preferences -->
+<div class="bg-surface-container-low p-6 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-4 border-b border-surface-container-high">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">wifi_off</span>
+<h2 class="font-headline text-sm font-semibold text-on-surface uppercase tracking-wider">
+                3. Operação Offline de Canteiro
+              </h2>
+</div>
+<span class="w-2 h-2 rounded-full bg-tertiary" title="Engine Offline Ativa"></span>
+</div>
+<!-- Storage Meter Card -->
+<div class="mt-5 p-4 bg-surface shadow-sm">
+<div class="flex items-center justify-between text-xs">
+<span class="font-semibold text-on-surface">Armazenamento Local (IndexedDB)</span>
+<span class="font-mono font-medium text-on-surface-variant">412 MB / 2.048 MB</span>
+</div>
+<!-- High-contrast progress bar -->
+<div class="w-full bg-surface-container-high h-2 mt-2">
+<div class="bg-primary h-2" style="width: 20.1%"></div>
+</div>
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant mt-2">
+<span>Espaço alocado para RDOs e Fotos</span>
+<span class="font-mono text-tertiary">80% Livre</span>
+</div>
+</div>
+<!-- Configuration Controls List -->
+<div class="mt-5 space-y-4">
+<!-- Toggle 1: Faraday / Basement Mode -->
+<div class="flex items-start justify-between gap-3 p-3 bg-surface shadow-sm">
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-primary">cell_tower</span>
+                  Modo Subsolo &amp; Gaiola de Faraday
+                </span>
+<span class="text-[11px] text-on-surface-variant leading-tight mt-0.5">
+                  Suspende tentativas contínuas de 4G/5G em poços e subsolos para preservar a bateria do coletor.
+                </span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer flex-shrink-0 mt-0.5">
+<input checked="" class="sr-only peer" id="toggle-subsolo" onchange="triggerAction(this.checked ? 'Modo Subsolo ativado.' : 'Modo Subsolo desativado.')" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Toggle 2: Smart Photo Compression -->
+<div class="flex items-start justify-between gap-3 p-3 bg-surface shadow-sm">
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-primary">aspect_ratio</span>
+                  Compressão Inteligente de Fotos
+                </span>
+<span class="text-[11px] text-on-surface-variant leading-tight mt-0.5">
+                  Otimiza para 1600px preservando carimbo de data/hora, coordenadas GPS e metadados EXIF.
+                </span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer flex-shrink-0 mt-0.5">
+<input checked="" class="sr-only peer" id="toggle-compress" onchange="triggerAction(this.checked ? 'Compressão inteligente ativada.' : 'Compressão inteligente desativada.')" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Selector: Sync Interval -->
+<div class="p-3 bg-surface shadow-sm flex flex-col gap-2">
+<label class="text-xs font-semibold text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-primary">schedule</span>
+                Frequência de Sincronismo Automático
+              </label>
+<select class="w-full bg-surface-container text-xs text-on-surface px-2.5 py-2 focus:outline-none font-medium">
+<option selected="" value="5">A cada 5 minutos (Recomendado em Obra)</option>
+<option value="15">A cada 15 minutos (Economia moderada)</option>
+<option value="30">A cada 30 minutos (Economia agressiva)</option>
+<option value="manual">Apenas Manual (Conexão crítica)</option>
+</select>
+<span class="text-[10px] text-on-surface-variant">Sincroniza automaticamente quando houver Wi-Fi de canteiro estável.</span>
+</div>
+<!-- Outbox Queue Box -->
+<div class="p-3 bg-surface shadow-sm">
+<div class="flex items-center justify-between pb-2 border-b border-surface-container">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-base">outgoing_mail</span>
+<span class="text-xs font-semibold text-on-surface">Fila de Envio Pendente</span>
+</div>
+<span class="text-[10px] font-mono font-bold px-1.5 py-0.5 bg-error-container text-on-error-container">
+                  4 ITENS PENDENTES
+                </span>
+</div>
+<div class="space-y-1.5 py-2 text-[11px] text-on-surface-variant">
+<div class="flex items-center justify-between">
+<span>3x Relatórios Fotográficos (Torre A - 12º Pav.)</span>
+<span class="font-mono text-[10px]">Aguardando</span>
+</div>
+<div class="flex items-center justify-between">
+<span>1x Rascunho RDO #184 (Concretagem Bloco C)</span>
+<span class="font-mono text-[10px]">Local</span>
+</div>
+</div>
+<button class="w-full mt-2 py-2 bg-primary text-on-primary text-xs font-semibold hover:bg-primary/90 transition-colors flex items-center justify-center gap-1.5" onclick="triggerAction('Sincronizando 4 itens locais com a nuvem ObraSync...')" type="button">
+<span class="material-symbols-outlined text-sm">sync</span>
+<span>Sincronizar Fila Agora</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Hardware Identity Tag -->
+<div class="mt-4 pt-3 border-t border-surface-container-high flex items-center justify-between text-[11px] text-on-surface-variant font-mono">
+<span>Terminal: CAT S62 Pro Rugged</span>
+<span class="text-tertiary">IP Canteiro Conectado</span>
+</div>
+</div>
+<!-- Quick Emergency Key Export Card -->
+<div class="bg-surface-container-low p-5 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface text-xl">key</span>
+<div>
+<p class="text-xs font-semibold text-on-surface">Chave Criptográfica de Assinatura</p>
+<p class="text-[11px] text-on-surface-variant">Certificado ICP-Brasil em token de canteiro</p>
+</div>
+</div>
+<button class="px-2.5 py-1.5 bg-surface text-xs font-medium text-on-surface hover:bg-surface-container-high transition-colors" onclick="triggerAction('Status do certificado: Válido até 18/11/2026.')" type="button">
+          Verificar
+        </button>
+</div>
+</div>
+</div>
+<!-- SECTION 4: Security Audit Trail & Device Footprint Footer -->
+<div class="mt-6 bg-surface-container-low p-5 shadow-sm">
+<div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary text-xl">security</span>
+<div>
+<h3 class="text-xs font-semibold text-on-surface uppercase tracking-wider">
+            Logs de Auditoria de Segurança &amp; Integridade
+          </h3>
+<p class="text-[11px] text-on-surface-variant font-mono mt-0.5">
+            Último Login: 14/05/2024 às 06:48 • 2FA TOTP Validado • Terminal de Campo: CAT S62 Pro Rugged (Obra 094)
+          </p>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-3 text-[11px] font-mono text-on-surface-variant">
+<span class="bg-surface px-2.5 py-1 shadow-sm">IP: 187.102.44.18 (Fibra Canteiro Horizonte)</span>
+<span class="bg-surface px-2.5 py-1 shadow-sm" title="Hash criptográfico da sessão ativa">SHA-256: 7f8a9...c4b2</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Micro-Interactions Script -->
+<script>
+  function triggerAction(message) {
+    const toast = document.getElementById('toast-notification');
+    const toastMsg = document.getElementById('toast-message');
+    if (!toast || !toastMsg) return;
+
+    toastMsg.innerText = message;
+    toast.classList.remove('opacity-0', 'translate-y-24', 'pointer-events-none');
+    toast.classList.add('opacity-100', 'translate-y-0');
+
+    setTimeout(() => {
+      toast.classList.remove('opacity-100', 'translate-y-0');
+      toast.classList.add('opacity-0', 'translate-y-24', 'pointer-events-none');
+    }, 3200);
+  }
+</script></main><footer class="h-12 w-full bg-surface-container-low px-6 lg:px-8 flex items-center justify-between text-xs text-on-surface-variant"><div class="flex items-center gap-4"><span>ObraSync Enterprise v2.4.0</span><span class="hidden sm:inline">•</span><span class="hidden sm:inline flex items-center gap-1"><span class="material-symbols-outlined text-sm text-tertiary">verified</span>Integridade de Dados Auditada</span></div><div class="flex items-center gap-4"><span class="hidden md:inline">Ambiente Corporativo Seguro</span><span>Residencial Horizonte - Torre A &amp; B</span></div></footer></div></body></html>

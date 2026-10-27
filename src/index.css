@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+@theme {
+  --font-body: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-headline: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  --color-primary: #0f62fe;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #d0e2ff;
+  --color-primary-fixed: #d0e2ff;
+  --color-primary-fixed-dim: #78a9ff;
+  --color-on-primary-fixed: #001d6c;
+  --color-on-primary-fixed-variant: #0043ce;
+
+  --color-tertiary: #198038;
+  --color-tertiary-container: #a7f0ba;
+  --color-tertiary-fixed: #a7f0ba;
+  --color-tertiary-fixed-dim: #42be65;
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-container: #044317;
+  --color-on-tertiary-fixed: #022d0d;
+  --color-on-tertiary-fixed-variant: #044317;
+
+  --color-error: #da1e28;
+  --color-error-container: #fff1f1;
+  --color-on-error: #ffffff;
+  --color-on-error-container: #750e13;
+
+  --color-surface: #ffffff;
+  --color-surface-bright: #ffffff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f4f4f4;
+  --color-surface-container: #f4f4f4;
+  --color-surface-container-high: #e0e0e0;
+  --color-surface-container-highest: #c6c6c6;
+  --color-surface-variant: #f4f4f4;
+  --color-surface-dim: #e0e0e0;
+
+  --color-on-surface: #161616;
+  --color-on-surface-variant: #525252;
+  --color-background: #ffffff;
+  --color-on-background: #161616;
+
+  --color-secondary: #6f6f6f;
+  --color-secondary-container: #e0e0e0;
+  --color-secondary-fixed: #e0e0e0;
+  --color-secondary-fixed-dim: #c6c6c6;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #525252;
+  --color-on-secondary-fixed: #161616;
+  --color-on-secondary-fixed-variant: #525252;
+
+  --color-outline: #8d8d8d;
+  --color-outline-variant: #e0e0e0;
+  --color-inverse-surface: #393939;
+  --color-inverse-on-surface: #f4f4f4;
+  --color-inverse-primary: #78a9ff;
+}
+
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    color: var(--color-on-surface);
+    background-color: var(--color-surface);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Material symbol baseline alignment */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  vertical-align: middle;
+}
+
+/* Print Styles for Executive PDF reports */
+@media print {
+  header, aside, .no-print {
+    display: none !important;
+  }
+  .pl-64 {
+    padding-left: 0 !important;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+}
+
+/* Clean subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f4f4f4;
+}
+::-webkit-scrollbar-thumb {
+  background: #c6c6c6;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8d8d8d;
+}

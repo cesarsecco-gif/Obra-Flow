@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-bright":"#ffffff","surface-container-low":"#f4f4f4","tertiary-fixed-dim":"#42be65","surface":"#ffffff","tertiary-fixed":"#a7f0ba","surface-variant":"#f4f4f4","on-primary":"#ffffff","on-error-container":"#750e13","on-secondary-container":"#525252","primary-fixed-dim":"#78a9ff","error":"#da1e28","on-surface":"#161616","background":"#ffffff","secondary-fixed-dim":"#c6c6c6","primary":"#0f62fe","secondary-container":"#e0e0e0","surface-container-high":"#e0e0e0","on-secondary":"#ffffff","on-error":"#ffffff","on-tertiary-fixed":"#022d0d","on-primary-container":"#161616","on-secondary-fixed":"#161616","surface-container":"#f4f4f4","secondary-fixed":"#e0e0e0","outline-variant":"#e0e0e0","outline":"#8d8d8d","on-primary-fixed-variant":"#0043ce","inverse-on-surface":"#f4f4f4","tertiary":"#198038","on-primary-fixed":"#001d6c","on-surface-variant":"#525252","surface-container-highest":"#c6c6c6","on-tertiary":"#ffffff","on-tertiary-fixed-variant":"#044317","surface-tint":"#0f62fe","inverse-surface":"#393939","on-secondary-fixed-variant":"#525252","primary-fixed":"#d0e2ff","on-background":"#161616","on-tertiary-container":"#044317","inverse-primary":"#78a9ff","tertiary-container":"#a7f0ba","primary-container":"#d0e2ff","surface-dim":"#e0e0e0","secondary":"#6f6f6f","surface-container-lowest":"#ffffff","error-container":"#fff1f1"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{},fontFamily:{headline:["IBM Plex Sans"],display:["IBM Plex Sans"],body:["IBM Plex Sans"],label:["IBM Plex Sans"]},fontSize:{}}}}</script></head><body class="bg-surface font-body text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 h-16 bg-surface z-50 flex items-center justify-between px-4 lg:px-6 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-4"><div class="flex items-center gap-3 pr-4"><img alt="ObraSync Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1V1rtPWhd7WNs8YkyzCaeFp-ulWzm0w3nQAZyFqauCXz5iL7vz-ghXMPYhHV0_qbo8cnuOHtbeQ4VmEHA9VQ7hCerNjMg9OVF5XOw-fWnZ9IDHsUni9EWpd8cUWF1VyUu7O4McUolzAuqUpBfyl4CPD6i_WEXLSvNYZmqa9fbgBMZqsRoHnOiH2kLwqmJ4NcOfwXzg5u7KUPj-WzctEO68g-WdJO4zTNGrIm3ZwZxuPoPoZX-Qi4EGSsI0"/><span class="font-headline font-semibold text-lg text-on-surface tracking-tight hidden sm:inline">ObraSync</span></div><div class="hidden md:flex items-center gap-2 bg-surface-container px-3 py-1.5"><span class="material-symbols-outlined text-primary text-xl">apartment</span><div class="flex flex-col"><span class="text-[11px] text-on-surface-variant leading-none uppercase font-semibold">Obra Ativa</span><span class="text-xs font-medium text-on-surface leading-tight">Residencial Horizonte - Torre A &amp; B</span></div><span class="material-symbols-outlined text-on-surface-variant text-base cursor-pointer ml-1">expand_more</span></div></div><div class="flex items-center gap-3 lg:gap-5"><div class="hidden xl:flex items-center gap-2 px-2.5 py-1 bg-surface-container"><span class="w-2 h-2 rounded-full bg-tertiary"></span><span class="text-xs font-medium text-on-surface">Online</span><span class="text-xs text-on-surface-variant font-light">• 14 itens sincronizados</span></div><div class="hidden sm:flex items-center gap-2"><a class="inline-flex items-center gap-1.5 px-3 py-2 bg-primary text-on-primary text-xs font-medium hover:bg-primary/90 transition-colors" data-path="diario-de-obra-rdo" href="#"><span class="material-symbols-outlined text-sm">post_add</span><span>+ Novo RDO</span></a><a class="inline-flex items-center gap-1.5 px-3 py-2 bg-surface-container text-on-surface text-xs font-medium hover:bg-surface-container-high transition-colors" data-path="relatorio-fotografico" href="#"><span class="material-symbols-outlined text-sm">add_a_photo</span><span>+ Subir Fotos</span></a></div><div class="flex items-center gap-1 text-on-surface-variant"><button aria-label="Notificações de Canteiro" class="p-2 hover:bg-surface-container transition-colors relative" type="button"><span class="material-symbols-outlined text-xl text-on-surface">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full"></span></button><button aria-label="Ajuda e Suporte" class="p-2 hover:bg-surface-container transition-colors hidden sm:block" type="button"><span class="material-symbols-outlined text-xl text-on-surface">help_outline</span></button></div><div class="flex items-center gap-3 pl-2 sm:pl-4 bg-surface"><div class="hidden lg:flex flex-col text-right"><span class="text-xs font-semibold text-on-surface leading-tight">Eng. Ricardo Souza</span><span class="text-[11px] text-on-surface-variant leading-none">Engenheiro Residente</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOGd0SEmkgPx7MrGzaf5IoWSQzu7CbKZzyJi_HPjeJTNnyNI8CqfbmreMfLvcwCjmOLuwbov9uUSRl-8IU2UA0EG7CYz0Wa_6Io7wxVujYfLueor9-aLfs-tBbiyMGayOM0fOrb03ckgrpJfUfFRm224tdxYKkgpbssppZxxXaxBCC9eWFXv0sKonkHFh7kdNQIATYzFSimPFV1FCIlsuEEnaeSAqqp_eFiJbBKu3OC6YWvKsBouE3"/></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-64 bg-surface-container-low z-40 flex flex-col justify-between overflow-y-auto"><div class="py-4"><div class="px-4 pb-3 mb-2"><span class="text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider">Navegação de Campo</span></div><nav class="space-y-0.5 px-2" data-active-classes="bg-primary-container text-on-primary-container font-semibold"><a aria-current="page" class="flex items-center gap-3 px-3 py-2.5 transition-colors bg-primary-container text-on-primary-container font-semibold" data-path="dashboard-gerencial" href="#"><span class="material-symbols-outlined text-lg">dashboard</span><span>Dashboard Gerencial</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="diario-de-obra-rdo" href="#"><span class="material-symbols-outlined text-lg">menu_book</span><span>Diário de Obra (RDO)</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="relatorio-fotografico" href="#"><span class="material-symbols-outlined text-lg">photo_camera</span><span>Relatório Fotográfico</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="efetivo-e-equipamentos" href="#"><span class="material-symbols-outlined text-lg">engineering</span><span>Efetivo &amp; Equipamentos</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="clima-e-chuvas" href="#"><span class="material-symbols-outlined text-lg">rainy</span><span>Clima &amp; Chuvas</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="relatorios-executivos" href="#"><span class="material-symbols-outlined text-lg">assessment</span><span>Relatórios Executivos</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="configuracoes" href="#"><span class="material-symbols-outlined text-lg">settings</span><span>Configurações</span></a></nav></div><div class="p-4 bg-surface-container m-3"><div class="flex items-center justify-between text-xs text-on-surface-variant mb-1.5"><span class="font-medium">Conexão Canteiro</span><span class="text-[11px] font-semibold text-tertiary">Ativa</span></div><div class="w-full bg-surface-container-highest h-1"><div class="bg-tertiary h-1 w-full"></div></div><p class="text-[11px] text-on-surface-variant mt-2 leading-relaxed">Sincronismo automático a cada 5 min. Modo offline operacional.</p></div></aside><div class="pl-64"><main class="relative pt-16 min-h-[calc(100vh-3rem)] w-full px-6 lg:px-8 py-6 bg-surface"><div class="flex flex-col w-full space-y-6">
+<!-- Control & Filter Bar -->
+<section class="bg-surface-container-low p-4 shadow-sm flex flex-col xl:flex-row xl:items-center justify-between gap-4">
+<div class="flex flex-wrap items-center gap-3">
+<div class="flex items-center gap-2 bg-surface px-3 py-2 shadow-sm min-w-[240px]">
+<span class="material-symbols-outlined text-primary text-xl">location_city</span>
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant uppercase font-semibold leading-none tracking-wider">Empreendimento</span>
+<select class="bg-transparent text-xs font-semibold text-on-surface focus:outline-none cursor-pointer pr-4">
+<option selected="">Residencial Horizonte - Torre A &amp; B</option>
+<option>Parque das Flores - Fase 2</option>
+<option>Complexo Logístico Alpha</option>
+</select>
+</div>
+</div>
+<div class="flex items-center gap-2 bg-surface px-3 py-2 shadow-sm">
+<span class="material-symbols-outlined text-on-surface-variant text-xl">calendar_month</span>
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant uppercase font-semibold leading-none tracking-wider">Período de Análise</span>
+<select class="bg-transparent text-xs font-medium text-on-surface focus:outline-none cursor-pointer">
+<option>Hoje (Tempo Real)</option>
+<option>Últimos 7 dias</option>
+<option selected="">Últimos 30 dias</option>
+<option>Mês Vigente (Maio/2025)</option>
+</select>
+</div>
+</div>
+<div class="flex items-center gap-2 bg-surface px-3 py-2 shadow-sm">
+<span class="material-symbols-outlined text-on-surface-variant text-xl">schedule</span>
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant uppercase font-semibold leading-none tracking-wider">Turno Operacional</span>
+<select class="bg-transparent text-xs font-medium text-on-surface focus:outline-none cursor-pointer">
+<option selected="">Integral (07:00 - 17:00)</option>
+<option>Manhã (07:00 - 12:00)</option>
+<option>Tarde (13:00 - 17:00)</option>
+<option>Hora Extra / Noturno</option>
+</select>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 self-end xl:self-auto">
+<div class="hidden sm:flex flex-col items-end mr-1">
+<span class="text-[11px] text-on-surface-variant">Último fechamento de campo:</span>
+<span class="text-xs font-medium text-on-surface">Hoje às 11:45 • Eng. Ricardo</span>
+</div>
+<button class="inline-flex items-center gap-2 px-4 py-2.5 bg-primary text-on-primary text-xs font-semibold hover:bg-primary/90 shadow-sm transition-all active:scale-[0.98]" type="button">
+<span class="material-symbols-outlined text-base">picture_as_pdf</span>
+<span>Exportar Resumo Executivo PDF</span>
+</button>
+</div>
+</section>
+<!-- Metric / KPI Cards Bento Grid -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
+<!-- KPI 1: Avanço Físico -->
+<div class="bg-surface-container-low p-4 shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="text-[11px] font-semibold tracking-wider uppercase text-on-surface-variant">Avanço Físico</span>
+<span class="text-[11px] text-on-surface-variant">Real vs. Linha Base</span>
+</div>
+<span class="inline-flex items-center px-1.5 py-0.5 text-[10px] font-semibold bg-error-container text-on-error-container">
+          -2.6% Desvio
+        </span>
+</div>
+<div class="my-3">
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-semibold tracking-tight text-on-surface">72.4%</span>
+<span class="text-xs text-on-surface-variant">/ 75.0% meta</span>
+</div>
+<!-- Micro bar -->
+<div class="w-full bg-surface-container-highest h-1.5 mt-2 overflow-hidden flex">
+<div class="bg-primary h-1.5" style="width: 72.4%"></div>
+<div class="bg-error/70 h-1.5" style="width: 2.6%"></div>
+</div>
+</div>
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant pt-2 border-t border-outline-variant/30">
+<span class="flex items-center gap-1 text-error font-medium">
+<span class="material-symbols-outlined text-xs">trending_down</span>
+          Atenção Cronograma
+        </span>
+<span>TORRE A: 78%</span>
+</div>
+</div>
+<!-- KPI 2: Efetivo Total Presente -->
+<div class="bg-surface-container-low p-4 shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="text-[11px] font-semibold tracking-wider uppercase text-on-surface-variant">Efetivo de Campo</span>
+<span class="text-[11px] text-on-surface-variant">Canteiro &amp; Subcontratos</span>
+</div>
+<span class="inline-flex items-center px-1.5 py-0.5 text-[10px] font-semibold bg-tertiary-container text-on-tertiary-container">
+          98% Presença
+        </span>
+</div>
+<div class="my-3">
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-semibold tracking-tight text-on-surface">148</span>
+<span class="text-xs text-on-surface-variant font-medium">trabalhadores</span>
+</div>
+<div class="flex items-center gap-3 text-xs mt-2 text-on-surface-variant">
+<span class="flex items-center gap-1 font-medium text-on-surface"><span class="w-2 h-2 bg-primary"></span> 42 Próprios</span>
+<span class="flex items-center gap-1 font-medium text-on-surface"><span class="w-2 h-2 bg-secondary"></span> 106 Terceirizados</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant pt-2 border-t border-outline-variant/30">
+<span class="flex items-center gap-1 text-tertiary font-medium">
+<span class="material-symbols-outlined text-xs">check_circle</span>
+          3 faltas registradas
+        </span>
+<span class="text-xs font-semibold">12 Equipes</span>
+</div>
+</div>
+<!-- KPI 3: Pluviometria -->
+<div class="bg-surface-container-low p-4 shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="text-[11px] font-semibold tracking-wider uppercase text-on-surface-variant">Pluviometria Acumulada</span>
+<span class="text-[11px] text-on-surface-variant">Estação Meteorológica Local</span>
+</div>
+<span class="p-1 bg-surface-container text-primary">
+<span class="material-symbols-outlined text-base">cloud</span>
+</span>
+</div>
+<div class="my-3">
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-semibold tracking-tight text-on-surface">48<span class="text-lg font-normal">mm</span></span>
+<span class="text-xs text-on-surface-variant">no mês atual</span>
+</div>
+<p class="text-[11px] text-error font-medium mt-1">3 dias de paralisação total</p>
+</div>
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant pt-2 border-t border-outline-variant/30">
+<span class="text-on-surface font-medium">Solo: Tratável</span>
+<span class="text-error font-semibold">Impacto: -14h</span>
+</div>
+</div>
+<!-- KPI 4: RDOs Emitidos -->
+<div class="bg-surface-container-low p-4 shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="text-[11px] font-semibold tracking-wider uppercase text-on-surface-variant">Conformidade RDO</span>
+<span class="text-[11px] text-on-surface-variant">Diário Digital Auditado</span>
+</div>
+<span class="inline-flex items-center px-1.5 py-0.5 text-[10px] font-semibold bg-tertiary-container text-on-tertiary-container">
+          100% OK
+        </span>
+</div>
+<div class="my-3">
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-semibold tracking-tight text-on-surface">26/26</span>
+<span class="text-xs text-on-surface-variant">dias úteis</span>
+</div>
+<p class="text-[11px] text-tertiary font-medium mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">verified</span>
+          Todos assinados e validados
+        </p>
+</div>
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant pt-2 border-t border-outline-variant/30">
+<span class="text-on-surface-variant">Último aprovado:</span>
+<span class="text-on-surface font-semibold">Ontem 18:20</span>
+</div>
+</div>
+<!-- KPI 5: Equipamentos -->
+<div class="bg-surface-container-low p-4 shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="text-[11px] font-semibold tracking-wider uppercase text-on-surface-variant">Maquinário Ativo</span>
+<span class="text-[11px] text-on-surface-variant">Disponibilidade Operacional</span>
+</div>
+<span class="p-1 bg-surface-container text-on-surface-variant">
+<span class="material-symbols-outlined text-base">precision_manufacturing</span>
+</span>
+</div>
+<div class="my-3">
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-semibold tracking-tight text-on-surface">18</span>
+<span class="text-xs text-on-surface-variant">/ 20 frota total</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 mt-2 overflow-hidden flex">
+<div class="bg-tertiary h-1.5" style="width: 90%"></div>
+<div class="bg-surface-container-highest h-1.5" style="width: 10%"></div>
+</div>
+</div>
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant pt-2 border-t border-outline-variant/30">
+<span class="text-on-surface-variant">Manutenção prev.:</span>
+<span class="text-primary font-semibold">2 em oficina</span>
+</div>
+</div>
+</section>
+<!-- Central Analytical Grid -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Left Column: Curva S Analítica (7 cols) -->
+<div class="lg:col-span-7 bg-surface-container-low p-5 shadow-sm flex flex-col">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 pb-3 border-b border-outline-variant/40">
+<div>
+<div class="flex items-center gap-2">
+<h2 class="text-base font-semibold text-on-surface">Curva S de Avanço Físico Ponderado</h2>
+<span class="px-2 py-0.5 text-[10px] bg-primary-container text-on-primary-container font-semibold">Acumulado</span>
+</div>
+<p class="text-xs text-on-surface-variant">Comparativo cronograma base x execução registrada em campo</p>
+</div>
+<div class="flex items-center gap-4 text-xs">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-0.5 bg-outline"></span>
+<span class="text-on-surface-variant">Planejado</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-1 bg-primary"></span>
+<span class="text-on-surface font-medium">Realizado</span>
+</div>
+</div>
+</div>
+<!-- SVG Chart Canvas Area -->
+<div class="w-full h-64 bg-surface p-4 relative flex flex-col justify-between">
+<div class="absolute inset-0 p-4 pointer-events-none flex flex-col justify-between">
+<div class="w-full border-b border-surface-container-high/60 flex justify-end text-[10px] text-on-surface-variant">100%</div>
+<div class="w-full border-b border-surface-container-high/60 flex justify-end text-[10px] text-on-surface-variant">75%</div>
+<div class="w-full border-b border-surface-container-high/60 flex justify-end text-[10px] text-on-surface-variant">50%</div>
+<div class="w-full border-b border-surface-container-high/60 flex justify-end text-[10px] text-on-surface-variant">25%</div>
+<div class="w-full border-b border-surface-container-high/60 flex justify-end text-[10px] text-on-surface-variant">0%</div>
+</div>
+<!-- Inline SVG Curves & Milestone Points -->
+<svg class="w-full h-full relative z-10 overflow-visible" preserveaspectratio="none" viewbox="0 0 600 200">
+<!-- Planned Line (dashed/solid gray) -->
+<path d="M 0 190 Q 150 170 300 110 T 600 20" fill="none" stroke="#8d8d8d" stroke-dasharray="4 3" stroke-width="2"></path>
+<!-- Actual Area Fill -->
+<path d="M 0 190 Q 150 175 300 120 L 440 85 L 440 200 L 0 200 Z" fill="rgba(15, 98, 254, 0.08)"></path>
+<!-- Actual Line -->
+<path d="M 0 190 Q 150 175 300 120 L 440 85" fill="none" stroke="#0f62fe" stroke-linecap="round" stroke-width="3"></path>
+<!-- Current Date Indicator Dot -->
+<circle cx="440" cy="85" fill="#0f62fe" r="5" stroke="#ffffff" stroke-width="2"></circle>
+<line stroke="#da1e28" stroke-dasharray="3 3" stroke-width="1.5" x1="440" x2="440" y1="20" y2="195"></line>
+<text fill="#da1e28" font-family="IBM Plex Sans" font-size="10" font-weight="600" x="445" y="32">Hoje (Semana 18)</text>
+<!-- Milestone Marks -->
+<g transform="translate(130, 155)">
+<rect fill="#161616" height="8" transform="rotate(45)" width="8" x="-4" y="-4"></rect>
+<text fill="#525252" font-family="IBM Plex Sans" font-size="9" x="-15" y="-10">M1: Fundação</text>
+</g>
+<g transform="translate(290, 105)">
+<rect fill="#161616" height="8" transform="rotate(45)" width="8" x="-4" y="-4"></rect>
+<text fill="#525252" font-family="IBM Plex Sans" font-size="9" x="-20" y="-10">M2: Estrutura T.A</text>
+</g>
+</svg>
+<div class="flex justify-between items-center text-[10px] text-on-surface-variant pt-2 border-t border-surface-container-high/80 relative z-10">
+<span>Semana 01 (Jan)</span>
+<span>Semana 06 (Fev)</span>
+<span>Semana 12 (Mar)</span>
+<span>Semana 18 (Atual)</span>
+<span>Semana 24 (Jul)</span>
+</div>
+</div>
+<!-- Milestone Stage Progress Strip -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-4 pt-3 border-t border-outline-variant/30 text-xs">
+<div class="p-2 bg-surface">
+<div class="text-[10px] text-on-surface-variant uppercase font-semibold">1. Fundações</div>
+<div class="text-xs font-semibold text-tertiary mt-0.5 flex items-center justify-between">
+<span>100% Concluído</span>
+<span class="material-symbols-outlined text-xs">done_all</span>
+</div>
+</div>
+<div class="p-2 bg-surface">
+<div class="text-[10px] text-on-surface-variant uppercase font-semibold">2. Estrutura R.C.</div>
+<div class="text-xs font-semibold text-on-surface mt-0.5 flex items-center justify-between">
+<span>89.2% Executado</span>
+<span class="text-[10px] text-error font-normal">-1 pav</span>
+</div>
+</div>
+<div class="p-2 bg-surface">
+<div class="text-[10px] text-on-surface-variant uppercase font-semibold">3. Alvenaria/Vedação</div>
+<div class="text-xs font-semibold text-on-surface mt-0.5 flex items-center justify-between">
+<span>64.0% Executado</span>
+<span class="text-[10px] text-tertiary font-normal">Em dia</span>
+</div>
+</div>
+<div class="p-2 bg-surface">
+<div class="text-[10px] text-on-surface-variant uppercase font-semibold">4. Instalações MEP</div>
+<div class="text-xs font-semibold text-on-surface mt-0.5 flex items-center justify-between">
+<span>38.5% Executado</span>
+<span class="text-[10px] text-on-surface-variant font-normal">Previsto</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Status das Frentes de Serviço Ativas (5 cols) -->
+<div class="lg:col-span-5 bg-surface-container-low p-5 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-3 pb-3 border-b border-outline-variant/40">
+<div>
+<h2 class="text-base font-semibold text-on-surface">Frentes de Serviço Ativas</h2>
+<span class="text-xs text-on-surface-variant">Monitoramento setorial das equipes</span>
+</div>
+<span class="text-xs font-semibold px-2 py-0.5 bg-surface text-on-surface">4 Frentes</span>
+</div>
+<div class="space-y-3">
+<!-- Frente 1 -->
+<div class="bg-surface p-3 transition-colors hover:bg-surface-bright shadow-sm">
+<div class="flex items-start justify-between">
+<div>
+<span class="text-xs font-bold text-on-surface">Concretagem Laje 14º Pav. - Torre A</span>
+<p class="text-[11px] text-on-surface-variant mt-0.5">Encarregado: Mestre Valdir • 22 Operários</p>
+</div>
+<span class="inline-flex items-center gap-1 text-[10px] font-semibold text-tertiary bg-tertiary-container/40 px-1.5 py-0.5">
+<span class="w-1.5 h-1.5 bg-tertiary rounded-full"></span>
+                Em Dia
+              </span>
+</div>
+<div class="mt-2.5">
+<div class="flex justify-between text-[11px] font-medium text-on-surface-variant mb-1">
+<span>Volume previsto: 90 m³</span>
+<span class="text-on-surface font-semibold">82%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5">
+<div class="bg-tertiary h-1.5" style="width: 82%"></div>
+</div>
+</div>
+</div>
+<!-- Frente 2 -->
+<div class="bg-surface p-3 transition-colors hover:bg-surface-bright shadow-sm">
+<div class="flex items-start justify-between">
+<div>
+<span class="text-xs font-bold text-on-surface">Alvenaria Estrutural 8º Pav. - Torre B</span>
+<p class="text-[11px] text-on-surface-variant mt-0.5">Encarregado: Marcílio Dias • 18 Alvenaristas</p>
+</div>
+<span class="inline-flex items-center gap-1 text-[10px] font-semibold text-error bg-error-container px-1.5 py-0.5">
+<span class="w-1.5 h-1.5 bg-error rounded-full"></span>
+                Em Atraso (-3 dias)
+              </span>
+</div>
+<div class="mt-2.5">
+<div class="flex justify-between text-[11px] font-medium text-on-surface-variant mb-1">
+<span>Blocagem e prumada</span>
+<span class="text-on-surface font-semibold">54%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5">
+<div class="bg-error h-1.5" style="width: 54%"></div>
+</div>
+</div>
+</div>
+<!-- Frente 3 -->
+<div class="bg-surface p-3 transition-colors hover:bg-surface-bright shadow-sm">
+<div class="flex items-start justify-between">
+<div>
+<span class="text-xs font-bold text-on-surface">Drenagem &amp; Terraplenagem Acesso Norte</span>
+<p class="text-[11px] text-on-surface-variant mt-0.5">Encarregado: Carlos Alberto • 2 Escavadeiras</p>
+</div>
+<span class="inline-flex items-center gap-1 text-[10px] font-semibold text-on-surface-variant bg-surface-container-highest px-1.5 py-0.5">
+<span class="material-symbols-outlined text-[10px]">rainy</span>
+                Paralisação Chuva
+              </span>
+</div>
+<div class="mt-2.5">
+<div class="flex justify-between text-[11px] font-medium text-on-surface-variant mb-1">
+<span>Aguardando secagem de base</span>
+<span class="text-on-surface font-semibold">40%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5">
+<div class="bg-secondary h-1.5" style="width: 40%"></div>
+</div>
+</div>
+</div>
+<!-- Frente 4 -->
+<div class="bg-surface p-3 transition-colors hover:bg-surface-bright shadow-sm">
+<div class="flex items-start justify-between">
+<div>
+<span class="text-xs font-bold text-on-surface">Passagem de Prumadas Hidráulicas - T.A</span>
+<p class="text-[11px] text-on-surface-variant mt-0.5">Subempreiteira: HidroTech • 10 Encanadores</p>
+</div>
+<span class="inline-flex items-center gap-1 text-[10px] font-semibold text-tertiary bg-tertiary-container/40 px-1.5 py-0.5">
+<span class="w-1.5 h-1.5 bg-tertiary rounded-full"></span>
+                Em Dia
+              </span>
+</div>
+<div class="mt-2.5">
+<div class="flex justify-between text-[11px] font-medium text-on-surface-variant mb-1">
+<span>Pavimentos 04 ao 11</span>
+<span class="text-on-surface font-semibold">91%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5">
+<div class="bg-tertiary h-1.5" style="width: 91%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<a class="mt-3 block text-center py-2 text-xs font-medium text-primary hover:bg-surface transition-colors" href="#">
+        Ver todas as 11 frentes de serviço detalhadas →
+      </a>
+</div>
+</section>
+<!-- Bottom Section: Alertas Críticos & Últimas Ocorrências com Fotos -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Critical Alerts (5 cols) -->
+<div class="lg:col-span-5 bg-surface-container-low p-5 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4 pb-3 border-b border-outline-variant/40">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-error">warning</span>
+<h2 class="text-base font-semibold text-on-surface">Alertas Críticos de Canteiro</h2>
+</div>
+<span class="text-[11px] font-semibold px-2 py-0.5 bg-error text-on-error">2 Prioridades</span>
+</div>
+<div class="space-y-2.5">
+<!-- Alert 1 -->
+<div class="bg-surface p-3.5 border-l-4 border-error flex items-start gap-3 shadow-sm">
+<span class="material-symbols-outlined text-error text-xl shrink-0 mt-0.5">thunderstorm</span>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between gap-1">
+<span class="text-xs font-semibold text-on-surface truncate">Risco Climático: Tempestade Prevista</span>
+<span class="text-[10px] text-error font-semibold uppercase shrink-0">15:00 - 18:00</span>
+</div>
+<p class="text-xs text-on-surface-variant mt-1 leading-relaxed">
+                Previsão de 25mm de precipitação com ventos fortes. Recomenda-se adiar a concretagem dos pilares da Torre B para a manhã seguinte e ancorar guincho cremalheira.
+              </p>
+<div class="flex items-center gap-2 mt-2 pt-2 border-t border-surface-container">
+<button class="text-[11px] font-semibold text-primary hover:underline" type="button">Notificar Encarregado</button>
+<span class="text-outline-variant text-[10px]">•</span>
+<button class="text-[11px] text-on-surface-variant hover:text-on-surface" type="button">Reprogramar Caminhões Betoneira</button>
+</div>
+</div>
+</div>
+<!-- Alert 2 -->
+<div class="bg-surface p-3.5 border-l-4 border-primary flex items-start gap-3 shadow-sm">
+<span class="material-symbols-outlined text-primary text-xl shrink-0 mt-0.5">local_shipping</span>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between gap-1">
+<span class="text-xs font-semibold text-on-surface truncate">Logística: Carga de Aço CA-50</span>
+<span class="text-[10px] text-primary font-semibold uppercase shrink-0">Hoje 14:00</span>
+</div>
+<p class="text-xs text-on-surface-variant mt-1 leading-relaxed">
+                Entrega de 16 toneladas (Gerdau) com carreta bitrem. Portão 2 deve ser liberado pelo almoxarifado até as 13:45 para descarga imediata via grua 01.
+              </p>
+<div class="flex items-center gap-2 mt-2 pt-2 border-t border-surface-container">
+<span class="text-[11px] text-tertiary font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">done</span> Espaço demarcado no pátio
+                </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/30 flex items-center justify-between text-xs text-on-surface-variant">
+<span>Histórico de 28 alertas resolvidos este mês</span>
+<button class="font-medium text-primary hover:underline" type="button">Ver Log Geral</button>
+</div>
+</div>
+<!-- Live Photo Field Reports (7 cols) -->
+<div class="lg:col-span-7 bg-surface-container-low p-5 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4 pb-3 border-b border-outline-variant/40">
+<div>
+<h2 class="text-base font-semibold text-on-surface">Registros Fotográficos de Hoje</h2>
+<span class="text-xs text-on-surface-variant">Evidências vinculadas aos RDOs e medições</span>
+</div>
+<a class="text-xs font-semibold text-primary hover:underline flex items-center gap-1" data-path="relatorio-fotografico" href="#">
+            Galeria Completa (46 fotos)
+            <span class="material-symbols-outlined text-xs">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+<!-- Photo Card 1 -->
+<div class="bg-surface overflow-hidden shadow-sm flex flex-col group">
+<div class="relative h-32 w-full overflow-hidden bg-surface-container-high">
+<img alt="Concretagem Laje 14" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Close up photo of reinforced concrete slab pouring with construction workers wearing yellow helmets, steel rebar grid visible, bright natural daylight on a modern building construction site, crisp details." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDChHZQXA9bZ27qMJqXzgkvmTMoc1SKrPGkDTSB0J4GVS5Ygkmc_BcLLR99v0l0XdGbhIEQlaHM12qVJInMzgT-RFIoaKEziwKhN7vSpkB9vhiW1mYL4RkoUh9aHC-Q3mCqudiJoSEcKQ4wCupRVWRVj0eK_RrvXw90N1rtTgBbqNQRhIjPfbXheAq8yopMsEvjbfJocIt2CaZhEZ9YDQZy-Py8pQVvuzPnoSU1wYYu88GCf9Ws-_O8"/>
+<span class="absolute top-2 left-2 bg-inverse-surface/80 text-inverse-on-surface text-[10px] px-1.5 py-0.5 font-medium tracking-wide">
+                11:15 • Torre A
+              </span>
+</div>
+<div class="p-2.5 flex flex-col justify-between flex-1">
+<div>
+<span class="text-xs font-semibold text-on-surface line-clamp-1">Armação e Concretagem Laje 14</span>
+<p class="text-[11px] text-on-surface-variant mt-0.5 line-clamp-2 leading-relaxed">
+                  Conferência de recobrimento das armaduras positivas e ensaio de abatimento tronco de cone (slump test 12cm).
+                </p>
+</div>
+<div class="mt-2 pt-2 border-t border-surface-container flex items-center justify-between text-[10px] text-on-surface-variant">
+<span>RDO #142/2025</span>
+<span class="text-tertiary font-semibold">Auditado</span>
+</div>
+</div>
+</div>
+<!-- Photo Card 2 -->
+<div class="bg-surface overflow-hidden shadow-sm flex flex-col group">
+<div class="relative h-32 w-full overflow-hidden bg-surface-container-high">
+<img alt="Alvenaria Torre B" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Construction site interior with neatly stacked red clay bricks and masonry mortar work along a corridor in an apartment tower, clean industrial look with safety signage on wall." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1ez-Z3oi3q3HbGnjECy481HJiOY8L1GGCh65K_ku-06hXLLk0EnQyuR9LC8x9FL6q8RvFvnexfUuy3M3iAHCM0bkNAO0KvP7zVYuE80tMB92VfyLcnBsbkCsiRGM0eY-O94RL5Yww47Ug9X_cmNKSBLf6XTleV_jnf-vyL8vzMOdyQSHQSZhOUKvT0YW6F4Li1mgTDPfXe-FfhouwAf9tJrdgrNGZ0j295vvf-QWJnHCGLt22R82D"/>
+<span class="absolute top-2 left-2 bg-inverse-surface/80 text-inverse-on-surface text-[10px] px-1.5 py-0.5 font-medium tracking-wide">
+                09:40 • Torre B
+              </span>
+</div>
+<div class="p-2.5 flex flex-col justify-between flex-1">
+<div>
+<span class="text-xs font-semibold text-on-surface line-clamp-1">Alvenaria 8º Pavimento</span>
+<p class="text-[11px] text-on-surface-variant mt-0.5 line-clamp-2 leading-relaxed">
+                  Inspeção de prumo e amarração de alvenaria de vedação nos blocos residenciais 801 e 802.
+                </p>
+</div>
+<div class="mt-2 pt-2 border-t border-surface-container flex items-center justify-between text-[10px] text-on-surface-variant">
+<span>RDO #142/2025</span>
+<span class="text-tertiary font-semibold">Auditado</span>
+</div>
+</div>
+</div>
+<!-- Photo Card 3 -->
+<div class="bg-surface overflow-hidden shadow-sm flex flex-col group">
+<div class="relative h-32 w-full overflow-hidden bg-surface-container-high">
+<img alt="Inspeção Grua" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Safety engineer inspector with digital tablet reviewing heavy tower crane anchor and cable tension outdoors on high rise building construction site under partly cloudy sky." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3cjQVTgUPSJFXsITo__g4fPEL_N4yxiL_I0SNHtiRVzVBEb1bh_irfu0QdwD4ja1zxOxjaDr0P4h1IwboXjv9zAVLXcikJVz9AaGHFh6CTcShgacBv60rB4ekgQoCaDfZCXqWYT3tDrFyMW-cCVj2qI_NPnr8qj7lXGxiE9UatbwGkLi56l11gorBCyFCKJMWLlQRah-KdUGQPD6axYWRnC75vColL4VMTqf-SyOSvvxCQTMpHtCU"/>
+<span class="absolute top-2 left-2 bg-inverse-surface/80 text-inverse-on-surface text-[10px] px-1.5 py-0.5 font-medium tracking-wide">
+                08:10 • Pátio Central
+              </span>
+</div>
+<div class="p-2.5 flex flex-col justify-between flex-1">
+<div>
+<span class="text-xs font-semibold text-on-surface line-clamp-1">Checklist Preventivo Grua 01</span>
+<p class="text-[11px] text-on-surface-variant mt-0.5 line-clamp-2 leading-relaxed">
+                  Verificação de cabos de sustentação, guincho de tração e freios com técnico credenciado.
+                </p>
+</div>
+<div class="mt-2 pt-2 border-t border-surface-container flex items-center justify-between text-[10px] text-on-surface-variant">
+<span>NR-18 Conformidade</span>
+<span class="text-primary font-semibold">Liberado</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/30 flex flex-wrap items-center justify-between gap-2 text-xs">
+<span class="text-on-surface-variant">Todas as fotos são criptografadas com coordenadas GPS e carimbo digital indelével.</span>
+<button class="inline-flex items-center gap-1.5 px-3 py-1 bg-surface text-on-surface hover:bg-surface-container-high font-medium transition-colors" type="button">
+<span class="material-symbols-outlined text-sm">cloud_upload</span>
+          Subir mais fotos
+        </button>
+</div>
+</div>
+</section>
+</div></main><footer class="h-12 w-full bg-surface-container-low px-6 lg:px-8 flex items-center justify-between text-xs text-on-surface-variant"><div class="flex items-center gap-4"><span>ObraSync Enterprise v2.4.0</span><span class="hidden sm:inline">•</span><span class="hidden sm:inline flex items-center gap-1"><span class="material-symbols-outlined text-sm text-tertiary">verified</span>Integridade de Dados Auditada</span></div><div class="flex items-center gap-4"><span class="hidden md:inline">Ambiente Corporativo Seguro</span><span>Residencial Horizonte - Torre A &amp; B</span></div></footer></div></body></html>

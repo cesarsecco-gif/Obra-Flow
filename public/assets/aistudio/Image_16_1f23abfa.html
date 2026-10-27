@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-bright":"#ffffff","surface-container-low":"#f4f4f4","tertiary-fixed-dim":"#42be65","surface":"#ffffff","tertiary-fixed":"#a7f0ba","surface-variant":"#f4f4f4","on-primary":"#ffffff","on-error-container":"#750e13","on-secondary-container":"#525252","primary-fixed-dim":"#78a9ff","error":"#da1e28","on-surface":"#161616","background":"#ffffff","secondary-fixed-dim":"#c6c6c6","primary":"#0f62fe","secondary-container":"#e0e0e0","surface-container-high":"#e0e0e0","on-secondary":"#ffffff","on-error":"#ffffff","on-tertiary-fixed":"#022d0d","on-primary-container":"#161616","on-secondary-fixed":"#161616","surface-container":"#f4f4f4","secondary-fixed":"#e0e0e0","outline-variant":"#e0e0e0","outline":"#8d8d8d","on-primary-fixed-variant":"#0043ce","inverse-on-surface":"#f4f4f4","tertiary":"#198038","on-primary-fixed":"#001d6c","on-surface-variant":"#525252","surface-container-highest":"#c6c6c6","on-tertiary":"#ffffff","on-tertiary-fixed-variant":"#044317","surface-tint":"#0f62fe","inverse-surface":"#393939","on-secondary-fixed-variant":"#525252","primary-fixed":"#d0e2ff","on-background":"#161616","on-tertiary-container":"#044317","inverse-primary":"#78a9ff","tertiary-container":"#a7f0ba","primary-container":"#d0e2ff","surface-dim":"#e0e0e0","secondary":"#6f6f6f","surface-container-lowest":"#ffffff","error-container":"#fff1f1"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{},fontFamily:{headline:["IBM Plex Sans"],display:["IBM Plex Sans"],body:["IBM Plex Sans"],label:["IBM Plex Sans"]},fontSize:{}}}}</script></head><body class="bg-surface font-body text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 h-16 bg-surface z-50 flex items-center justify-between px-4 lg:px-6 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-4"><div class="flex items-center gap-3 pr-4"><img alt="ObraSync Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1V1rtPWhd7WNs8YkyzCaeFp-ulWzm0w3nQAZyFqauCXz5iL7vz-ghXMPYhHV0_qbo8cnuOHtbeQ4VmEHA9VQ7hCerNjMg9OVF5XOw-fWnZ9IDHsUni9EWpd8cUWF1VyUu7O4McUolzAuqUpBfyl4CPD6i_WEXLSvNYZmqa9fbgBMZqsRoHnOiH2kLwqmJ4NcOfwXzg5u7KUPj-WzctEO68g-WdJO4zTNGrIm3ZwZxuPoPoZX-Qi4EGSsI0"/><span class="font-headline font-semibold text-lg text-on-surface tracking-tight hidden sm:inline">ObraSync</span></div><div class="hidden md:flex items-center gap-2 bg-surface-container px-3 py-1.5"><span class="material-symbols-outlined text-primary text-xl">apartment</span><div class="flex flex-col"><span class="text-[11px] text-on-surface-variant leading-none uppercase font-semibold">Obra Ativa</span><span class="text-xs font-medium text-on-surface leading-tight">Residencial Horizonte - Torre A &amp; B</span></div><span class="material-symbols-outlined text-on-surface-variant text-base cursor-pointer ml-1">expand_more</span></div></div><div class="flex items-center gap-3 lg:gap-5"><div class="hidden xl:flex items-center gap-2 px-2.5 py-1 bg-surface-container"><span class="w-2 h-2 rounded-full bg-tertiary"></span><span class="text-xs font-medium text-on-surface">Online</span><span class="text-xs text-on-surface-variant font-light">• 14 itens sincronizados</span></div><div class="hidden sm:flex items-center gap-2"><a class="inline-flex items-center gap-1.5 px-3 py-2 bg-primary text-on-primary text-xs font-medium hover:bg-primary/90 transition-colors" data-path="diario-de-obra-rdo" href="#"><span class="material-symbols-outlined text-sm">post_add</span><span>+ Novo RDO</span></a><a class="inline-flex items-center gap-1.5 px-3 py-2 bg-surface-container text-on-surface text-xs font-medium hover:bg-surface-container-high transition-colors" data-path="relatorio-fotografico" href="#"><span class="material-symbols-outlined text-sm">add_a_photo</span><span>+ Subir Fotos</span></a></div><div class="flex items-center gap-1 text-on-surface-variant"><button aria-label="Notificações de Canteiro" class="p-2 hover:bg-surface-container transition-colors relative" type="button"><span class="material-symbols-outlined text-xl text-on-surface">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full"></span></button><button aria-label="Ajuda e Suporte" class="p-2 hover:bg-surface-container transition-colors hidden sm:block" type="button"><span class="material-symbols-outlined text-xl text-on-surface">help_outline</span></button></div><div class="flex items-center gap-3 pl-2 sm:pl-4 bg-surface"><div class="hidden lg:flex flex-col text-right"><span class="text-xs font-semibold text-on-surface leading-tight">Eng. Ricardo Souza</span><span class="text-[11px] text-on-surface-variant leading-none">Engenheiro Residente</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOGd0SEmkgPx7MrGzaf5IoWSQzu7CbKZzyJi_HPjeJTNnyNI8CqfbmreMfLvcwCjmOLuwbov9uUSRl-8IU2UA0EG7CYz0Wa_6Io7wxVujYfLueor9-aLfs-tBbiyMGayOM0fOrb03ckgrpJfUfFRm224tdxYKkgpbssppZxxXaxBCC9eWFXv0sKonkHFh7kdNQIATYzFSimPFV1FCIlsuEEnaeSAqqp_eFiJbBKu3OC6YWvKsBouE3"/></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-64 bg-surface-container-low z-40 flex flex-col justify-between overflow-y-auto"><div class="py-4"><div class="px-4 pb-3 mb-2"><span class="text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider">Navegação de Campo</span></div><nav class="space-y-0.5 px-2" data-active-classes="bg-primary-container text-on-primary-container font-semibold"><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="dashboard-gerencial" href="#"><span class="material-symbols-outlined text-lg">dashboard</span><span>Dashboard Gerencial</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="diario-de-obra-rdo" href="#"><span class="material-symbols-outlined text-lg">menu_book</span><span>Diário de Obra (RDO)</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="relatorio-fotografico" href="#"><span class="material-symbols-outlined text-lg">photo_camera</span><span>Relatório Fotográfico</span></a><a class="flex items-center justify-between px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="comunicacao-de-campo" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-lg">forum</span><span>Comunicação de Campo</span></div><span class="px-1.5 py-0.5 text-[10px] font-semibold bg-primary text-on-primary rounded-full leading-none">3</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="efetivo-e-equipamentos" href="#"><span class="material-symbols-outlined text-lg">engineering</span><span>Efetivo &amp; Equipamentos</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="clima-e-chuvas" href="#"><span class="material-symbols-outlined text-lg">rainy</span><span>Clima &amp; Chuvas</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="relatorios-executivos" href="#"><span class="material-symbols-outlined text-lg">assessment</span><span>Relatórios Executivos</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="configuracoes" href="#"><span class="material-symbols-outlined text-lg">settings</span><span>Configurações</span></a></nav></div><div class="p-4 bg-surface-container m-3"><div class="flex items-center justify-between text-xs text-on-surface-variant mb-1.5"><span class="font-medium">Conexão Canteiro</span><span class="text-[11px] font-semibold text-tertiary">Ativa</span></div><div class="w-full bg-surface-container-highest h-1"><div class="bg-tertiary h-1 w-full"></div></div><p class="text-[11px] text-on-surface-variant mt-2 leading-relaxed">Sincronismo automático a cada 5 min. Modo offline operacional.</p></div></aside><div class="pl-64"><main class="relative pt-16 min-h-[calc(100vh-3rem)] w-full px-6 lg:px-8 py-6 bg-surface"><div class="flex flex-col w-full font-body text-on-surface antialiased">
+<!-- Top Utility Bar / Sub-header for Communication Context -->
+<div class="flex flex-wrap items-center justify-between pb-4 mb-2 gap-4">
+<div class="flex items-center gap-3">
+<div class="w-2.5 h-7 bg-primary"></div>
+<div>
+<div class="flex items-center gap-2">
+<span class="text-xs uppercase font-semibold text-primary tracking-wider">Canteiro Conectado</span>
+<span class="text-xs text-on-surface-variant">•</span>
+<span class="text-xs text-tertiary font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+            Sincronização P2P Ativa
+          </span>
+</div>
+<h1 class="text-xl font-semibold tracking-tight text-on-surface">Comunicação e Mensagens de Campo</h1>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-surface-container text-xs text-on-surface-variant font-medium">
+<span class="material-symbols-outlined text-base text-primary">security</span>
+<span>Canal Auditado pelo RDO #184</span>
+</div>
+<button class="flex items-center gap-1.5 px-3 py-2 bg-surface-container-high hover:bg-surface-container-highest text-xs font-semibold text-on-surface transition-colors">
+<span class="material-symbols-outlined text-base">history</span>
+<span>Logs de Transmissão</span>
+</button>
+</div>
+</div>
+<!-- Main 3-Column Workspace Grid -->
+<div class="grid grid-cols-12 gap-4 items-start w-full min-h-[calc(100vh-12rem)]">
+<!-- ========================================== -->
+<!-- COLUMN 1: Canais & Conversas (320px-360px) -->
+<!-- ========================================== -->
+<aside class="col-span-12 lg:col-span-4 xl:col-span-3 flex flex-col bg-surface-container-low shadow-sm">
+<!-- Search & Filters -->
+<div class="p-3 bg-surface-container space-y-2.5">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-2.5 text-secondary text-lg pointer-events-none">search</span>
+<input class="w-full pl-9 pr-8 py-2 bg-surface text-xs text-on-surface placeholder:text-secondary focus:outline-none focus:bg-surface-bright shadow-sm" placeholder="Buscar mensagens, frentes, colaboradores... /" type="text"/>
+<kbd class="absolute right-2 px-1.5 py-0.5 text-[10px] font-mono bg-surface-container-high text-on-surface-variant">⌘K</kbd>
+</div>
+<!-- Filter Pills -->
+<div class="flex items-center gap-1 overflow-x-auto pb-1 text-xs no-scrollbar">
+<button class="px-2.5 py-1 text-[11px] font-semibold bg-primary text-on-primary">Todas</button>
+<button class="px-2.5 py-1 text-[11px] font-medium bg-surface text-on-surface-variant hover:text-on-surface">Frentes Ativas</button>
+<button class="px-2.5 py-1 text-[11px] font-medium bg-surface text-on-surface-variant hover:text-on-surface flex items-center gap-1">
+<span>RNC</span>
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+</button>
+<button class="px-2.5 py-1 text-[11px] font-medium bg-surface text-on-surface-variant hover:text-on-surface">Diretas</button>
+</div>
+<!-- Action Button -->
+<button class="w-full flex items-center justify-center gap-2 py-2 bg-surface text-xs font-semibold text-primary hover:bg-surface-bright transition-colors shadow-sm">
+<span class="material-symbols-outlined text-sm font-bold">add</span>
+<span>Novo Canal / Conversa</span>
+</button>
+</div>
+<!-- Channels Accordion / Tree List -->
+<div class="flex-1 overflow-y-auto max-h-[calc(100vh-18rem)] py-2 space-y-4 px-2">
+<!-- Section 1: FRENTE 01 -->
+<div>
+<div class="flex items-center justify-between px-2 py-1 text-on-surface-variant text-[11px] font-semibold tracking-wider uppercase cursor-pointer hover:text-on-surface">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">keyboard_arrow_down</span>
+<span>Frente 01 — Estrutura &amp; Concretagem</span>
+</span>
+<span class="text-[10px] bg-surface-container-high px-1.5 py-0.2">3</span>
+</div>
+<div class="mt-1 space-y-1">
+<!-- Active Selected Channel -->
+<div class="group relative flex flex-col p-2.5 bg-surface text-on-surface shadow-sm cursor-pointer border-l-4 border-primary">
+<div class="flex items-start justify-between gap-1 mb-1">
+<div class="flex items-center gap-1.5 min-w-0">
+<span class="font-mono text-primary font-bold text-xs">#</span>
+<span class="text-xs font-semibold truncate text-on-surface">laje-14-armacao-concreto</span>
+</div>
+<span class="text-[10px] font-mono text-on-surface-variant">14:38</span>
+</div>
+<div class="flex items-center gap-1 mb-1.5">
+<span class="text-[10px] font-medium bg-primary-container text-on-primary-fixed px-1.5 py-0.5 leading-tight flex items-center gap-1">
+<span class="w-1 h-1 rounded-full bg-primary"></span>
+                  Concretagem amanhã 07h
+                </span>
+</div>
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant">
+<p class="truncate text-on-surface-variant pr-2">
+<span class="font-medium text-on-surface">Tec. Marcos:</span> Slump test aprovado no caminhão 02 (13±2cm)
+                </p>
+<span class="min-w-4 h-4 px-1 flex items-center justify-center bg-primary text-on-primary text-[10px] font-bold">2</span>
+</div>
+</div>
+<!-- Inactive Channel 1 -->
+<div class="flex flex-col p-2.5 hover:bg-surface-container transition-colors cursor-pointer">
+<div class="flex items-center justify-between gap-1 mb-0.5">
+<div class="flex items-center gap-1.5 min-w-0">
+<span class="font-mono text-secondary font-bold text-xs">#</span>
+<span class="text-xs font-medium truncate text-on-surface">fiscalizacao-escoramento-pilar</span>
+</div>
+<span class="text-[10px] font-mono text-secondary">Ontem</span>
+</div>
+<p class="text-[11px] text-secondary truncate">
+                Verificação de punção concluída sem desvios.
+              </p>
+</div>
+<!-- Inactive Channel 2 (RNC with pulse) -->
+<div class="flex flex-col p-2.5 bg-error-container/30 hover:bg-error-container/50 transition-colors cursor-pointer">
+<div class="flex items-center justify-between gap-1 mb-1">
+<div class="flex items-center gap-1.5 min-w-0">
+<span class="font-mono text-error font-bold text-xs">#</span>
+<span class="text-xs font-semibold truncate text-on-surface">rnc-042-shaft-hidraulico</span>
+</div>
+<span class="flex h-2 w-2 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-error opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-error"></span>
+</span>
+</div>
+<div class="flex items-center gap-1 text-[11px] text-error font-medium truncate">
+<span class="material-symbols-outlined text-xs">warning</span>
+<span>Interferência com eletrocalha viga V-20</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 2: FRENTE 02 -->
+<div>
+<div class="flex items-center justify-between px-2 py-1 text-on-surface-variant text-[11px] font-semibold tracking-wider uppercase cursor-pointer hover:text-on-surface">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">keyboard_arrow_down</span>
+<span>Frente 02 — Alvenaria &amp; Vedação</span>
+</span>
+<span class="text-[10px] bg-surface-container-high px-1.5 py-0.2">2</span>
+</div>
+<div class="mt-1 space-y-1">
+<div class="flex flex-col p-2.5 hover:bg-surface-container transition-colors cursor-pointer">
+<div class="flex items-center justify-between gap-1 mb-0.5">
+<div class="flex items-center gap-1.5 min-w-0">
+<span class="font-mono text-secondary font-bold text-xs">#</span>
+<span class="text-xs font-medium truncate text-on-surface">8-pav-blocos-estruturais</span>
+</div>
+<span class="text-[10px] font-mono text-secondary">11:15</span>
+</div>
+<p class="text-[11px] text-secondary truncate">
+                Argamassa AC-III entregue no pátio 02.
+              </p>
+</div>
+<div class="flex flex-col p-2.5 hover:bg-surface-container transition-colors cursor-pointer">
+<div class="flex items-center justify-between gap-1 mb-0.5">
+<div class="flex items-center gap-1.5 min-w-0">
+<span class="font-mono text-secondary font-bold text-xs">#</span>
+<span class="text-xs font-medium truncate text-on-surface">esquadrias-e-prumo</span>
+</div>
+<span class="text-[10px] font-mono text-secondary">09:40</span>
+</div>
+<p class="text-[11px] text-secondary truncate">
+                Conferência laser apto 804 finalizada.
+              </p>
+</div>
+</div>
+</div>
+<!-- Section 3: FRENTE 03 -->
+<div>
+<div class="flex items-center justify-between px-2 py-1 text-on-surface-variant text-[11px] font-semibold tracking-wider uppercase cursor-pointer hover:text-on-surface">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">keyboard_arrow_down</span>
+<span>Frente 03 — Instalações MEP</span>
+</span>
+<span class="text-[10px] bg-surface-container-high px-1.5 py-0.2">1</span>
+</div>
+<div class="mt-1">
+<div class="flex flex-col p-2.5 hover:bg-surface-container transition-colors cursor-pointer">
+<div class="flex items-center justify-between gap-1 mb-0.5">
+<div class="flex items-center gap-1.5 min-w-0">
+<span class="font-mono text-secondary font-bold text-xs">#</span>
+<span class="text-xs font-medium truncate text-on-surface">teste-estanqueidade-barrilete</span>
+</div>
+<span class="text-[10px] font-mono text-secondary">08:02</span>
+</div>
+<div class="flex items-center gap-1.5 text-[11px] text-secondary truncate">
+<span class="material-symbols-outlined text-xs text-primary">mic</span>
+<span>Áudio recebido (0:42) • Teste 72h em curso</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 4: DIRETAS & MESTRES -->
+<div>
+<div class="flex items-center justify-between px-2 py-1 text-on-surface-variant text-[11px] font-semibold tracking-wider uppercase cursor-pointer hover:text-on-surface">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">keyboard_arrow_down</span>
+<span>Diretas &amp; Mestres de Obra</span>
+</span>
+<span class="text-[10px] bg-surface-container-high px-1.5 py-0.2">2</span>
+</div>
+<div class="mt-1 space-y-1">
+<div class="flex items-center gap-2.5 p-2 hover:bg-surface-container transition-colors cursor-pointer">
+<div class="relative">
+<div class="w-7 h-7 bg-surface-container-high flex items-center justify-center font-bold text-xs text-on-surface">
+                  MV
+                </div>
+<span class="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-tertiary"></span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="text-xs font-medium text-on-surface truncate">Mestre Valdir</span>
+<span class="text-[10px] font-mono text-secondary">14:10</span>
+</div>
+<p class="text-[11px] text-secondary truncate">Preciso de 4 vibradores de concreto extras...</p>
+</div>
+</div>
+<div class="flex items-center gap-2.5 p-2 hover:bg-surface-container transition-colors cursor-pointer">
+<div class="relative">
+<div class="w-7 h-7 bg-surface-container-high flex items-center justify-center font-bold text-xs text-on-surface">
+                  MC
+                </div>
+<span class="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-secondary"></span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="text-xs font-medium text-on-surface truncate">Arqª. Mariana Castanho</span>
+<span class="text-[10px] font-mono text-secondary">15m</span>
+</div>
+<p class="text-[11px] text-secondary truncate">Projeto revisado enviado para o drive.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- ========================================== -->
+<!-- COLUMN 2: Janela Principal de Chat (Center) -->
+<!-- ========================================== -->
+<section class="col-span-12 lg:col-span-8 xl:col-span-6 flex flex-col bg-surface shadow-sm min-h-[calc(100vh-12rem)]">
+<!-- Chat Header -->
+<header class="p-3 bg-surface-container-low flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-sm">
+<div class="flex items-start gap-3">
+<div class="w-9 h-9 bg-primary text-on-primary flex items-center justify-center text-base font-bold shadow-sm">
+            #
+          </div>
+<div>
+<div class="flex flex-wrap items-center gap-2">
+<h2 class="text-sm font-semibold tracking-tight text-on-surface">laje-14-armacao-concreto</h2>
+<span class="text-[10px] font-semibold bg-tertiary-container text-on-tertiary-container px-2 py-0.5 tracking-wide uppercase">
+                FRENTE ATIVA • PAV. 14 (TORRE A)
+              </span>
+</div>
+<div class="flex flex-wrap items-center gap-3 text-[11px] text-on-surface-variant mt-0.5">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-secondary">group</span>
+<span>8 membros alocados</span>
+</span>
+<span>•</span>
+<span class="flex items-center gap-1 text-tertiary font-medium">
+<span class="material-symbols-outlined text-xs">lock</span>
+<span>Auditado &amp; Vinculado ao RDO #184</span>
+</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1 self-end sm:self-center">
+<button class="p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Buscar no Canal">
+<span class="material-symbols-outlined text-lg">search</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors relative" title="Mensagens Fixadas">
+<span class="material-symbols-outlined text-lg">push_pin</span>
+<span class="absolute top-1 right-1 w-1.5 h-1.5 bg-primary rounded-full"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Mídias e Documentos (14)">
+<span class="material-symbols-outlined text-lg">folder_open</span>
+</button>
+<button class="hidden sm:flex items-center gap-1 px-2.5 py-1.5 bg-surface text-xs font-semibold text-on-surface hover:bg-surface-container transition-colors shadow-sm ml-1">
+<span class="material-symbols-outlined text-sm text-primary">person_add</span>
+<span>Convidar</span>
+</button>
+</div>
+</header>
+<!-- Message Feed / Timeline -->
+<div class="flex-1 overflow-y-auto p-4 space-y-4 max-h-[calc(100vh-21rem)] bg-surface">
+<!-- Date Divider -->
+<div class="relative flex items-center justify-center my-2">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full h-px bg-surface-container-high"></div>
+</div>
+<span class="relative px-3 py-0.5 bg-surface-container text-[11px] font-mono font-medium text-on-surface-variant uppercase tracking-wider">
+            Hoje, 24 de Outubro
+          </span>
+</div>
+<!-- Msg 1: Mestre Valdir -->
+<div class="flex items-start gap-3 group">
+<div class="w-8 h-8 bg-surface-container-high flex-shrink-0 flex items-center justify-center text-xs font-bold text-on-surface">
+            MV
+          </div>
+<div class="flex-1 max-w-xl">
+<div class="flex items-baseline gap-2 mb-1">
+<span class="text-xs font-semibold text-on-surface">Mestre Valdir</span>
+<span class="text-[10px] text-secondary font-mono">13:45</span>
+<span class="text-[10px] px-1 bg-surface-container text-on-surface-variant">Mestre Geral</span>
+</div>
+<div class="p-3 bg-surface-container-low text-xs leading-relaxed text-on-surface shadow-sm">
+              Eng. Ricardo, conferimos o espaçamento das pastilhas plásticas nos pilares P-12 e P-14. Tudo em conformidade com o projeto estrutural rev. 04.
+            </div>
+</div>
+</div>
+<!-- Msg 2: System Bot Card -->
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 bg-primary-container flex-shrink-0 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-base">smart_toy</span>
+</div>
+<div class="flex-1 max-w-xl">
+<div class="flex items-baseline gap-2 mb-1">
+<span class="text-xs font-semibold text-primary">ObraSync RDO Bot</span>
+<span class="text-[10px] text-secondary font-mono">14:02</span>
+<span class="text-[10px] px-1 bg-primary text-on-primary font-semibold">AUTOMÁTICO</span>
+</div>
+<div class="p-3 bg-surface-container-low shadow-sm space-y-2">
+<div class="flex items-center justify-between text-xs font-semibold text-on-surface">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-tertiary text-sm">photo_camera</span>
+<span>Evidência Fotográfica Vinculada #FOTO-8831</span>
+</span>
+<span class="text-[10px] font-mono bg-surface-container-high px-1.5 py-0.5">Fase: Armação</span>
+</div>
+<div class="relative w-full h-36 bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Realistic construction site photography showing concrete reinforcement steel bars (rebar) tied and spaced with plastic spacers on a building slab deck, sunlight casting sharp shadows, high visual engineering detail, safety nets in background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuOEi1HJ2ZIR5GqQ1YQ3fjnxA0assRAeyFcf1YxQko7yR--JHknOOwIrc0PzfJGjHMmmxlTVXRPEqJgacEZuBNWC837OIgyu7KDpRWsE51JdxypabaYf8HNCaKj8woSkA-_tcXF__XFK6ZNpoWKfuI1H9y_mzT972U5i_aK6lGLGwMw2cE2uXDf0RxBwQ8naCCzeHLp_VmAe1XMup8qnZrL7WOeX8o8-csqs6VI9Pvo7mxFcis2n7r"/>
+<div class="absolute bottom-0 inset-x-0 p-2 bg-inverse-surface/85 text-inverse-on-surface text-[10px] font-mono flex items-center justify-between">
+<span>GPS: -23.58741° S, -46.68239° W</span>
+<span>Cota: 782.40m</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<p class="text-[11px] text-on-surface-variant">Armadura Negativa Laje L-14 conferida e auditada.</p>
+<a class="text-xs font-semibold text-primary hover:underline flex items-center gap-0.5" href="#">
+<span>Mural Fotográfico</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Msg 3: You (Eng. Ricardo Souza) -->
+<div class="flex items-start gap-3 justify-end">
+<div class="flex-1 max-w-xl flex flex-col items-end">
+<div class="flex items-baseline gap-2 mb-1">
+<span class="text-[10px] text-secondary font-mono">14:15</span>
+<span class="text-xs font-semibold text-primary">Você (Eng. Ricardo Souza)</span>
+</div>
+<div class="p-3 bg-primary text-on-primary text-xs leading-relaxed shadow-sm">
+              Excelente Valdir. A usina de concreto confirmou as 2 primeiras betoneiras para as 07:00 da manhã. Por favor, garantir o teste de abatimento de tronco (Slump) logo na entrada do portão 2.
+            </div>
+<div class="flex items-center gap-1 mt-1 text-[10px] text-secondary">
+<span class="material-symbols-outlined text-xs text-tertiary">done_all</span>
+<span>Entregue a 8 membros</span>
+</div>
+</div>
+<div class="w-8 h-8 bg-on-primary-container text-on-primary flex-shrink-0 flex items-center justify-center text-xs font-bold">
+            RS
+          </div>
+</div>
+<!-- Msg 4: Mestre Valdir (High-Fidelity Audio Player) -->
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 bg-surface-container-high flex-shrink-0 flex items-center justify-center text-xs font-bold text-on-surface">
+            MV
+          </div>
+<div class="flex-1 max-w-xl">
+<div class="flex items-baseline gap-2 mb-1">
+<span class="text-xs font-semibold text-on-surface">Mestre Valdir</span>
+<span class="text-[10px] text-secondary font-mono">14:22</span>
+</div>
+<!-- Professional Field Audio Component -->
+<div class="p-3 bg-surface-container-low shadow-sm space-y-2.5">
+<div class="flex items-center justify-between">
+<span class="text-[10px] font-semibold uppercase tracking-wider text-primary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">mic</span>
+<span>Nota de Voz de Campo • Cancelamento de Ruído</span>
+</span>
+<span class="text-[10px] font-mono text-on-surface-variant">0:38</span>
+</div>
+<!-- Audio Player Controls & Waveform -->
+<div class="flex items-center gap-3 bg-surface p-2.5 shadow-sm">
+<button class="w-9 h-9 bg-primary hover:bg-primary/90 text-on-primary flex items-center justify-center flex-shrink-0 transition-transform active:scale-95 shadow-sm" title="Reproduzir áudio">
+<span class="material-symbols-outlined text-lg">play_arrow</span>
+</button>
+<!-- SVG Audio Waveform -->
+<div class="flex-1 flex items-center gap-0.5 h-8">
+<svg class="w-full h-7 text-primary" preserveaspectratio="none" viewbox="0 0 200 30">
+<rect fill="currentColor" height="14" width="3" x="0" y="8"></rect>
+<rect fill="currentColor" height="22" width="3" x="5" y="4"></rect>
+<rect fill="currentColor" height="10" width="3" x="10" y="10"></rect>
+<rect fill="currentColor" height="26" width="3" x="15" y="2"></rect>
+<rect fill="currentColor" height="18" width="3" x="20" y="6"></rect>
+<rect fill="currentColor" height="6" width="3" x="25" y="12"></rect>
+<rect fill="currentColor" height="20" width="3" x="30" y="5"></rect>
+<rect fill="currentColor" height="28" width="3" x="35" y="1"></rect>
+<rect fill="currentColor" height="16" width="3" x="40" y="7"></rect>
+<rect fill="currentColor" height="8" width="3" x="45" y="11"></rect>
+<rect fill="currentColor" height="22" width="3" x="50" y="4"></rect>
+<rect fill="currentColor" height="12" width="3" x="55" y="9"></rect>
+<rect fill="currentColor" height="26" width="3" x="60" y="2"></rect>
+<rect fill="currentColor" height="18" width="3" x="65" y="6"></rect>
+<rect fill="currentColor" height="4" width="3" x="70" y="13"></rect>
+<!-- Unplayed part styled with secondary-fixed-dim -->
+<rect fill="#c6c6c6" height="20" width="3" x="75" y="5"></rect>
+<rect fill="#c6c6c6" height="24" width="3" x="80" y="3"></rect>
+<rect fill="#c6c6c6" height="14" width="3" x="85" y="8"></rect>
+<rect fill="#c6c6c6" height="6" width="3" x="90" y="12"></rect>
+<rect fill="#c6c6c6" height="18" width="3" x="95" y="6"></rect>
+<rect fill="#c6c6c6" height="10" width="3" x="100" y="10"></rect>
+<rect fill="#c6c6c6" height="26" width="3" x="105" y="2"></rect>
+<rect fill="#c6c6c6" height="16" width="3" x="110" y="7"></rect>
+<rect fill="#c6c6c6" height="8" width="3" x="115" y="11"></rect>
+<rect fill="#c6c6c6" height="22" width="3" x="120" y="4"></rect>
+<rect fill="#c6c6c6" height="14" width="3" x="125" y="8"></rect>
+<rect fill="#c6c6c6" height="28" width="3" x="130" y="1"></rect>
+<rect fill="#c6c6c6" height="12" width="3" x="135" y="9"></rect>
+<rect fill="#c6c6c6" height="6" width="3" x="140" y="12"></rect>
+<rect fill="#c6c6c6" height="20" width="3" x="145" y="5"></rect>
+<rect fill="#c6c6c6" height="24" width="3" x="150" y="3"></rect>
+<rect fill="#c6c6c6" height="16" width="3" x="155" y="7"></rect>
+<rect fill="#c6c6c6" height="10" width="3" x="160" y="10"></rect>
+<rect fill="#c6c6c6" height="22" width="3" x="165" y="4"></rect>
+<rect fill="#c6c6c6" height="14" width="3" x="170" y="8"></rect>
+<rect fill="#c6c6c6" height="26" width="3" x="175" y="2"></rect>
+<rect fill="#c6c6c6" height="8" width="3" x="180" y="11"></rect>
+<rect fill="#c6c6c6" height="18" width="3" x="185" y="6"></rect>
+<rect fill="#c6c6c6" height="12" width="3" x="190" y="9"></rect>
+<rect fill="#c6c6c6" height="4" width="3" x="195" y="13"></rect>
+</svg>
+</div>
+<span class="text-xs font-mono font-medium text-on-surface">1.2x</span>
+</div>
+<!-- Automated Transcript Box -->
+<div class="bg-surface p-2 text-xs text-on-surface-variant leading-relaxed">
+<span class="font-semibold text-on-surface">Transcrição Automática:</span>
+<span class="italic">"Ricardo, recebi o caminhão de armadura CA-50 da Gerdau agora há pouco, já descarregamos na grua. Liberei a equipe do turno da noite para a limpeza da forma."</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Msg 5: Tec. Marcos Silva (Technical PDF Attachment) -->
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 bg-surface-container-high flex-shrink-0 flex items-center justify-center text-xs font-bold text-on-surface">
+            MS
+          </div>
+<div class="flex-1 max-w-xl">
+<div class="flex items-baseline gap-2 mb-1">
+<span class="text-xs font-semibold text-on-surface">Tec. Marcos Silva</span>
+<span class="text-[10px] text-secondary font-mono">14:35</span>
+<span class="text-[10px] px-1 bg-surface-container text-on-surface-variant">Laboratório / CQ</span>
+</div>
+<!-- PDF Attachment Card -->
+<div class="p-3 bg-surface-container-low shadow-sm space-y-2">
+<p class="text-xs text-on-surface">Envio o laudo prévio da usina e o traço especificado para a concretagem de amanhã cedo:</p>
+<div class="flex items-center justify-between p-2.5 bg-surface shadow-sm">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 bg-error-container text-error flex items-center justify-center flex-shrink-0 font-bold text-xs">
+                    PDF
+                  </div>
+<div class="min-w-0">
+<p class="text-xs font-semibold text-on-surface truncate">Laudo_Tecnologico_Concreto_Fck35_Usina_NF89234.pdf</p>
+<div class="flex items-center gap-2 text-[10px] text-secondary">
+<span>2.4 MB</span>
+<span>•</span>
+<span class="text-tertiary flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]">verified</span>
+                        Assinado ICP-Brasil
+                      </span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1 ml-2">
+<button class="px-2 py-1 text-xs font-semibold bg-surface-container-high hover:bg-surface-container-highest text-on-surface transition-colors" title="Visualizar documento">
+                    Visualizar
+                  </button>
+<button class="p-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Download">
+<span class="material-symbols-outlined text-base">download</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Msg 6: You (Confirmation) -->
+<div class="flex items-start gap-3 justify-end">
+<div class="flex-1 max-w-xl flex flex-col items-end">
+<div class="flex items-baseline gap-2 mb-1">
+<span class="text-[10px] text-secondary font-mono">14:38</span>
+<span class="text-xs font-semibold text-primary">Você (Eng. Ricardo Souza)</span>
+</div>
+<div class="p-3 bg-primary text-on-primary text-xs leading-relaxed shadow-sm">
+              Perfeito. Registrado no Diário de Obra de hoje.
+            </div>
+<div class="flex items-center gap-1 mt-1 text-[10px] text-secondary">
+<span class="material-symbols-outlined text-xs text-tertiary">done_all</span>
+<span>Sincronizado na Nuvem</span>
+</div>
+</div>
+<div class="w-8 h-8 bg-on-primary-container text-on-primary flex-shrink-0 flex items-center justify-center text-xs font-bold">
+            RS
+          </div>
+</div>
+</div>
+<!-- Chat Footer / Input & Tools Bar -->
+<footer class="p-3 bg-surface-container space-y-2 shadow-sm">
+<!-- Quick Action Shortcut Pills -->
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center gap-2">
+<button class="flex items-center gap-1 px-2 py-1 bg-surface hover:bg-surface-bright text-on-surface text-[11px] font-medium shadow-sm">
+<span class="text-primary font-bold">@</span>
+<span>Mencionar</span>
+</button>
+<button class="flex items-center gap-1 px-2 py-1 bg-surface hover:bg-surface-bright text-on-surface text-[11px] font-medium shadow-sm">
+<span class="text-tertiary font-bold">#</span>
+<span>Vincular RDO</span>
+</button>
+<button class="flex items-center gap-1 px-2 py-1 bg-surface hover:bg-surface-bright text-on-surface text-[11px] font-medium shadow-sm">
+<span class="text-error font-bold">!</span>
+<span>Disparar Alerta RNC</span>
+</button>
+</div>
+<span class="text-[10px] text-on-surface-variant font-mono hidden sm:inline">Ctrl + Enter para pular linha</span>
+</div>
+<!-- Main Input Form Row -->
+<div class="flex items-end gap-2 bg-surface p-2 shadow-sm">
+<!-- Attachment Dropdown Trigger -->
+<div class="relative group">
+<button class="p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" title="Anexar arquivo ou RDO">
+<span class="material-symbols-outlined text-xl">attach_file</span>
+</button>
+</div>
+<!-- Voice Note Button (Prominent) -->
+<button class="p-2 bg-primary/10 hover:bg-primary/20 text-primary transition-colors flex items-center justify-center" title="Segure para gravar nota de voz com cancelamento de ruído de obra">
+<span class="material-symbols-outlined text-xl">mic</span>
+</button>
+<!-- Textarea -->
+<textarea class="flex-1 bg-transparent text-xs text-on-surface placeholder:text-secondary focus:outline-none resize-none leading-relaxed py-1" placeholder="Escreva uma mensagem para #laje-14-armacao-concreto ou pressione @ para mencionar..." rows="2"></textarea>
+<!-- Send Action Button -->
+<button class="px-4 py-2 bg-primary hover:bg-primary/90 text-on-primary text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-sm self-center">
+<span>Enviar</span>
+<span class="material-symbols-outlined text-sm">send</span>
+</button>
+</div>
+<!-- Offline/Field Sync Micro-Indicator -->
+<div class="flex items-center justify-between text-[10px] text-on-surface-variant px-1 pt-0.5">
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span>Modo Canteiro: Mensagens gravadas e digitadas são enviadas instantaneamente e salvas em cache se perder conexão 4G.</span>
+</div>
+<span class="font-mono text-secondary">Buffer Local: 0 pendentes</span>
+</div>
+</footer>
+</section>
+<!-- ========================================== -->
+<!-- COLUMN 3: Detalhes da Frente & Arquivos   -->
+<!-- ========================================== -->
+<aside class="col-span-12 xl:col-span-3 flex flex-col bg-surface-container-low shadow-sm">
+<!-- Panel Header -->
+<div class="p-3 bg-surface-container flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base">info</span>
+<span class="text-xs font-semibold text-on-surface uppercase tracking-wider">Informações da Frente</span>
+</div>
+<button class="p-1 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" title="Recolher painel">
+<span class="material-symbols-outlined text-base">vertical_split</span>
+</button>
+</div>
+<div class="p-4 space-y-5 flex-1 overflow-y-auto max-h-[calc(100vh-16rem)]">
+<!-- Operational Progress Card -->
+<div class="p-3 bg-surface shadow-sm space-y-3">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-semibold uppercase text-secondary">Progresso Estrutural</span>
+<span class="text-xs font-bold text-primary">75% Concluído</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full bg-surface-container-high h-2 overflow-hidden">
+<div class="bg-primary h-2 w-3/4 transition-all duration-500"></div>
+</div>
+<!-- Critical Next Milestone Banner -->
+<div class="p-2.5 bg-primary-container/40 space-y-1">
+<span class="text-[10px] font-semibold uppercase text-on-primary-fixed-variant tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">event_upcoming</span>
+<span>Próximo Marco Crítico</span>
+</span>
+<p class="text-xs font-bold text-on-primary-fixed">Concretagem amanhã às 07:00</p>
+<p class="text-[11px] text-on-surface-variant">Volume total previsto: <strong class="text-on-surface">90 m³ (Fck 35 MPa)</strong></p>
+</div>
+<!-- Technical Metadata list -->
+<div class="pt-1 space-y-2 text-xs">
+<div class="flex items-start justify-between">
+<span class="text-on-surface-variant">Resp. Técnico:</span>
+<span class="font-medium text-on-surface text-right">Eng. Ricardo Souza<br/><span class="text-[10px] text-secondary">CREA 506.924.810-D</span></span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant">Efetivo de Campo:</span>
+<span class="font-medium text-on-surface">14 Armadores • 6 Carp.</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant">Liberação de Forma:</span>
+<span class="text-tertiary font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-xs">check_circle</span>
+                Aprovada 100%
+              </span>
+</div>
+</div>
+</div>
+<!-- Shared Files & Documents Section -->
+<div class="space-y-2.5">
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold uppercase tracking-wider text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-secondary">folder_shared</span>
+<span>Arquivos do Canal</span>
+</span>
+<span class="text-[11px] font-mono text-secondary">28 mídias</span>
+</div>
+<!-- File Items Stack -->
+<div class="space-y-1.5">
+<!-- File 1: DWG PDF -->
+<a class="flex items-center gap-2.5 p-2 bg-surface hover:bg-surface-bright transition-colors shadow-sm group" href="#">
+<div class="w-8 h-8 bg-surface-container-high flex items-center justify-center text-primary font-bold text-xs flex-shrink-0">
+                DWG
+              </div>
+<div class="flex-1 min-w-0">
+<p class="text-xs font-medium text-on-surface truncate group-hover:text-primary transition-colors">Projeto_Estrutural_Rev04_Laje14.dwg.pdf</p>
+<span class="text-[10px] text-secondary font-mono">12.8 MB • Ontem</span>
+</div>
+<span class="material-symbols-outlined text-sm text-secondary group-hover:text-primary">download</span>
+</a>
+<!-- File 2: Tech Lab PDF -->
+<a class="flex items-center gap-2.5 p-2 bg-surface hover:bg-surface-bright transition-colors shadow-sm group" href="#">
+<div class="w-8 h-8 bg-error-container flex items-center justify-center text-error font-bold text-xs flex-shrink-0">
+                PDF
+              </div>
+<div class="flex-1 min-w-0">
+<p class="text-xs font-medium text-on-surface truncate group-hover:text-primary transition-colors">Laudo_Tecnologico_Concreto_Fck35.pdf</p>
+<span class="text-[10px] text-secondary font-mono">2.4 MB • 14:35</span>
+</div>
+<span class="material-symbols-outlined text-sm text-secondary group-hover:text-primary">download</span>
+</a>
+<!-- File 3: GPS Photo Thumbnail -->
+<a class="flex items-center gap-2.5 p-2 bg-surface hover:bg-surface-bright transition-colors shadow-sm group" href="#">
+<div class="w-8 h-8 bg-surface-container-high flex items-center justify-center text-tertiary flex-shrink-0">
+<span class="material-symbols-outlined text-base">image</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-xs font-medium text-on-surface truncate group-hover:text-primary transition-colors">Evidencia_Armacao_Laje14_GPS.jpg</p>
+<span class="text-[10px] text-secondary font-mono">3.8 MB • 14:02</span>
+</div>
+<span class="material-symbols-outlined text-sm text-secondary group-hover:text-primary">visibility</span>
+</a>
+</div>
+<a class="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline pt-1" href="#">
+<span>Ver todos os 28 arquivos e fotos do canal</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<!-- Active Members List -->
+<div class="space-y-2.5 pt-2">
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold uppercase tracking-wider text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-secondary">groups</span>
+<span>Integrantes Ativos (8)</span>
+</span>
+</div>
+<div class="space-y-2">
+<!-- Member 1 -->
+<div class="flex items-center justify-between p-1.5 bg-surface shadow-sm">
+<div class="flex items-center gap-2 min-w-0">
+<div class="relative">
+<div class="w-6 h-6 bg-on-primary-container text-on-primary flex items-center justify-center text-[10px] font-bold">
+                    RS
+                  </div>
+<span class="absolute -bottom-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+</div>
+<div class="min-w-0">
+<p class="text-xs font-semibold text-on-surface truncate leading-tight">Eng. Ricardo Souza</p>
+<p class="text-[10px] text-secondary truncate">Engenheiro Residente (Você)</p>
+</div>
+</div>
+<span class="text-[10px] text-tertiary font-medium">Online</span>
+</div>
+<!-- Member 2 -->
+<div class="flex items-center justify-between p-1.5 bg-surface shadow-sm">
+<div class="flex items-center gap-2 min-w-0">
+<div class="relative">
+<div class="w-6 h-6 bg-surface-container-high text-on-surface flex items-center justify-center text-[10px] font-bold">
+                    MV
+                  </div>
+<span class="absolute -bottom-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+</div>
+<div class="min-w-0">
+<p class="text-xs font-medium text-on-surface truncate leading-tight">Valdir Santana</p>
+<p class="text-[10px] text-secondary truncate">Mestre Geral de Obras</p>
+</div>
+</div>
+<span class="text-[10px] text-tertiary font-medium">Online</span>
+</div>
+<!-- Member 3 -->
+<div class="flex items-center justify-between p-1.5 bg-surface shadow-sm">
+<div class="flex items-center gap-2 min-w-0">
+<div class="relative">
+<div class="w-6 h-6 bg-surface-container-high text-on-surface flex items-center justify-center text-[10px] font-bold">
+                    MS
+                  </div>
+<span class="absolute -bottom-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+</div>
+<div class="min-w-0">
+<p class="text-xs font-medium text-on-surface truncate leading-tight">Marcos Silva</p>
+<p class="text-[10px] text-secondary truncate">Técnico em Edificações / CQ</p>
+</div>
+</div>
+<span class="text-[10px] text-tertiary font-medium">Online</span>
+</div>
+<!-- Member 4 -->
+<div class="flex items-center justify-between p-1.5 bg-surface shadow-sm">
+<div class="flex items-center gap-2 min-w-0">
+<div class="relative">
+<div class="w-6 h-6 bg-surface-container-high text-on-surface flex items-center justify-center text-[10px] font-bold">
+                    FA
+                  </div>
+<span class="absolute -bottom-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-secondary"></span>
+</div>
+<div class="min-w-0">
+<p class="text-xs font-medium text-on-surface truncate leading-tight">Fernando Alves</p>
+<p class="text-[10px] text-secondary truncate">Encarregado de Armação</p>
+</div>
+</div>
+<span class="text-[10px] text-secondary font-mono">15m atrás</span>
+</div>
+</div>
+</div>
+<!-- Regulatory Notice Block -->
+<div class="p-2.5 bg-surface-container text-[11px] text-on-surface-variant leading-relaxed">
+<div class="flex items-center gap-1 text-on-surface font-semibold mb-1">
+<span class="material-symbols-outlined text-xs text-primary">policy</span>
+<span>Conformidade Corporativa</span>
+</div>
+          Todas as orientações técnicas neste canal são espelhadas nos registros do diário oficial da obra segundo a norma ABNT NBR 14931.
+        </div>
+</div>
+</aside>
+</div>
+</div></main><footer class="h-12 w-full bg-surface-container-low px-6 lg:px-8 flex items-center justify-between text-xs text-on-surface-variant"><div class="flex items-center gap-4"><span>ObraSync Enterprise v2.4.0</span><span class="hidden sm:inline">•</span><span class="hidden sm:inline flex items-center gap-1"><span class="material-symbols-outlined text-sm text-tertiary">verified</span>Integridade de Dados Auditada</span></div><div class="flex items-center gap-4"><span class="hidden md:inline">Ambiente Corporativo Seguro</span><span>Residencial Horizonte - Torre A &amp; B</span></div></footer></div></body></html>

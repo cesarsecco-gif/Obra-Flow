@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-bright":"#ffffff","surface-container-low":"#f4f4f4","tertiary-fixed-dim":"#42be65","surface":"#ffffff","tertiary-fixed":"#a7f0ba","surface-variant":"#f4f4f4","on-primary":"#ffffff","on-error-container":"#750e13","on-secondary-container":"#525252","primary-fixed-dim":"#78a9ff","error":"#da1e28","on-surface":"#161616","background":"#ffffff","secondary-fixed-dim":"#c6c6c6","primary":"#0f62fe","secondary-container":"#e0e0e0","surface-container-high":"#e0e0e0","on-secondary":"#ffffff","on-error":"#ffffff","on-tertiary-fixed":"#022d0d","on-primary-container":"#161616","on-secondary-fixed":"#161616","surface-container":"#f4f4f4","secondary-fixed":"#e0e0e0","outline-variant":"#e0e0e0","outline":"#8d8d8d","on-primary-fixed-variant":"#0043ce","inverse-on-surface":"#f4f4f4","tertiary":"#198038","on-primary-fixed":"#001d6c","on-surface-variant":"#525252","surface-container-highest":"#c6c6c6","on-tertiary":"#ffffff","on-tertiary-fixed-variant":"#044317","surface-tint":"#0f62fe","inverse-surface":"#393939","on-secondary-fixed-variant":"#525252","primary-fixed":"#d0e2ff","on-background":"#161616","on-tertiary-container":"#044317","inverse-primary":"#78a9ff","tertiary-container":"#a7f0ba","primary-container":"#d0e2ff","surface-dim":"#e0e0e0","secondary":"#6f6f6f","surface-container-lowest":"#ffffff","error-container":"#fff1f1"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{},fontFamily:{headline:["IBM Plex Sans"],display:["IBM Plex Sans"],body:["IBM Plex Sans"],label:["IBM Plex Sans"]},fontSize:{}}}}</script></head><body class="bg-surface font-body text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 h-16 bg-surface z-50 flex items-center justify-between px-4 lg:px-6 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-4"><div class="flex items-center gap-3 pr-4"><img alt="ObraSync Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1V1rtPWhd7WNs8YkyzCaeFp-ulWzm0w3nQAZyFqauCXz5iL7vz-ghXMPYhHV0_qbo8cnuOHtbeQ4VmEHA9VQ7hCerNjMg9OVF5XOw-fWnZ9IDHsUni9EWpd8cUWF1VyUu7O4McUolzAuqUpBfyl4CPD6i_WEXLSvNYZmqa9fbgBMZqsRoHnOiH2kLwqmJ4NcOfwXzg5u7KUPj-WzctEO68g-WdJO4zTNGrIm3ZwZxuPoPoZX-Qi4EGSsI0"/><span class="font-headline font-semibold text-lg text-on-surface tracking-tight hidden sm:inline">ObraSync</span></div><div class="hidden md:flex items-center gap-2 bg-surface-container px-3 py-1.5"><span class="material-symbols-outlined text-primary text-xl">apartment</span><div class="flex flex-col"><span class="text-[11px] text-on-surface-variant leading-none uppercase font-semibold">Obra Ativa</span><span class="text-xs font-medium text-on-surface leading-tight">Residencial Horizonte - Torre A &amp; B</span></div><span class="material-symbols-outlined text-on-surface-variant text-base cursor-pointer ml-1">expand_more</span></div></div><div class="flex items-center gap-3 lg:gap-5"><div class="hidden xl:flex items-center gap-2 px-2.5 py-1 bg-surface-container"><span class="w-2 h-2 rounded-full bg-tertiary"></span><span class="text-xs font-medium text-on-surface">Online</span><span class="text-xs text-on-surface-variant font-light">• 14 itens sincronizados</span></div><div class="hidden sm:flex items-center gap-2"><a class="inline-flex items-center gap-1.5 px-3 py-2 bg-primary text-on-primary text-xs font-medium hover:bg-primary/90 transition-colors" data-path="diario-de-obra-rdo" href="#"><span class="material-symbols-outlined text-sm">post_add</span><span>+ Novo RDO</span></a><a class="inline-flex items-center gap-1.5 px-3 py-2 bg-surface-container text-on-surface text-xs font-medium hover:bg-surface-container-high transition-colors" data-path="relatorio-fotografico" href="#"><span class="material-symbols-outlined text-sm">add_a_photo</span><span>+ Subir Fotos</span></a></div><div class="flex items-center gap-1 text-on-surface-variant"><button aria-label="Notificações de Canteiro" class="p-2 hover:bg-surface-container transition-colors relative" type="button"><span class="material-symbols-outlined text-xl text-on-surface">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full"></span></button><button aria-label="Ajuda e Suporte" class="p-2 hover:bg-surface-container transition-colors hidden sm:block" type="button"><span class="material-symbols-outlined text-xl text-on-surface">help_outline</span></button></div><div class="flex items-center gap-3 pl-2 sm:pl-4 bg-surface"><div class="hidden lg:flex flex-col text-right"><span class="text-xs font-semibold text-on-surface leading-tight">Eng. Ricardo Souza</span><span class="text-[11px] text-on-surface-variant leading-none">Engenheiro Residente</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOGd0SEmkgPx7MrGzaf5IoWSQzu7CbKZzyJi_HPjeJTNnyNI8CqfbmreMfLvcwCjmOLuwbov9uUSRl-8IU2UA0EG7CYz0Wa_6Io7wxVujYfLueor9-aLfs-tBbiyMGayOM0fOrb03ckgrpJfUfFRm224tdxYKkgpbssppZxxXaxBCC9eWFXv0sKonkHFh7kdNQIATYzFSimPFV1FCIlsuEEnaeSAqqp_eFiJbBKu3OC6YWvKsBouE3"/></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-64 bg-surface-container-low z-40 flex flex-col justify-between overflow-y-auto"><div class="py-4"><div class="px-4 pb-3 mb-2"><span class="text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider">Navegação de Campo</span></div><nav class="space-y-0.5 px-2" data-active-classes="bg-primary-container text-on-primary-container font-semibold"><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="dashboard-gerencial" href="#"><span class="material-symbols-outlined text-lg">dashboard</span><span>Dashboard Gerencial</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="diario-de-obra-rdo" href="#"><span class="material-symbols-outlined text-lg">menu_book</span><span>Diário de Obra (RDO)</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="relatorio-fotografico" href="#"><span class="material-symbols-outlined text-lg">photo_camera</span><span>Relatório Fotográfico</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="efetivo-e-equipamentos" href="#"><span class="material-symbols-outlined text-lg">engineering</span><span>Efetivo &amp; Equipamentos</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="clima-e-chuvas" href="#"><span class="material-symbols-outlined text-lg">rainy</span><span>Clima &amp; Chuvas</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="relatorios-executivos" href="#"><span class="material-symbols-outlined text-lg">assessment</span><span>Relatórios Executivos</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="configuracoes" href="#"><span class="material-symbols-outlined text-lg">settings</span><span>Configurações</span></a></nav></div><div class="p-4 bg-surface-container m-3"><div class="flex items-center justify-between text-xs text-on-surface-variant mb-1.5"><span class="font-medium">Conexão Canteiro</span><span class="text-[11px] font-semibold text-tertiary">Ativa</span></div><div class="w-full bg-surface-container-highest h-1"><div class="bg-tertiary h-1 w-full"></div></div><p class="text-[11px] text-on-surface-variant mt-2 leading-relaxed">Sincronismo automático a cada 5 min. Modo offline operacional.</p></div></aside><div class="pl-64"><main class="relative pt-16 min-h-[calc(100vh-3rem)] w-full px-6 lg:px-8 py-6 bg-surface"><div class="flex flex-col w-full">
+<!-- Top Headline / Breadcrumb / Quick Stats Ribbon -->
+<div class="flex flex-col xl:flex-row xl:items-end justify-between gap-6 pb-6 border-b border-surface-container-high">
+<div class="flex flex-col">
+<div class="flex items-center gap-2 text-xs text-on-surface-variant uppercase tracking-wider mb-1 font-semibold">
+<span>Auditoria &amp; Qualidade</span>
+<span>/</span>
+<span class="text-primary font-bold">Mural Fotográfico Pericial</span>
+</div>
+<div class="flex items-baseline gap-4 flex-wrap">
+<h1 class="text-2xl sm:text-3xl font-semibold text-on-surface tracking-tight font-headline">Evidências Visuais de Campo</h1>
+<span class="inline-flex items-center px-2 py-0.5 text-xs font-semibold bg-tertiary-container text-on-tertiary-container">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary mr-1.5"></span>
+          Georreferenciamento 100% Auditado
+        </span>
+</div>
+<p class="text-xs text-on-surface-variant mt-1.5 max-w-2xl">
+        Registros de conformidade, inspeções preventivas e rastreabilidade visual vinculada ao Diário de Obra (RDO) e laudos de fiscalização contratual.
+      </p>
+</div>
+<!-- Quick Stats Ribbon (Carbon Style) -->
+<div class="grid grid-cols-3 gap-1 bg-surface-container-high p-1">
+<div class="bg-surface p-3 min-w-[120px] sm:min-w-[140px]">
+<div class="flex items-center justify-between text-on-surface-variant text-[11px] font-medium">
+<span>Hoje</span>
+<span class="material-symbols-outlined text-sm text-primary">photo_camera</span>
+</div>
+<div class="text-xl font-bold text-on-surface mt-1 tracking-tight">48</div>
+<div class="text-[10px] text-tertiary font-semibold flex items-center gap-0.5 mt-0.5">
+<span class="material-symbols-outlined text-xs">arrow_upward</span> +14 vs ontem
+        </div>
+</div>
+<div class="bg-surface p-3 min-w-[120px] sm:min-w-[140px]">
+<div class="flex items-center justify-between text-on-surface-variant text-[11px] font-medium">
+<span>RNC / Alertas</span>
+<span class="material-symbols-outlined text-sm text-error">warning</span>
+</div>
+<div class="text-xl font-bold text-error mt-1 tracking-tight">03</div>
+<div class="text-[10px] text-error font-semibold mt-0.5">Pendentes de ação</div>
+</div>
+<div class="bg-surface p-3 min-w-[120px] sm:min-w-[140px]">
+<div class="flex items-center justify-between text-on-surface-variant text-[11px] font-medium">
+<span>Vínculo RDO</span>
+<span class="material-symbols-outlined text-sm text-tertiary">link</span>
+</div>
+<div class="text-xl font-bold text-on-surface mt-1 tracking-tight">100%</div>
+<div class="text-[10px] text-on-surface-variant font-medium mt-0.5">GPS / Metadados ok</div>
+</div>
+</div>
+</div>
+<!-- Action Toolbar & Advanced Filter Hub -->
+<div class="flex flex-col gap-4 py-5 bg-surface-container-low px-4 sm:px-6 my-4">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+<div class="flex flex-wrap items-center gap-2">
+<span class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mr-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">filter_alt</span> Filtros Ativos
+        </span>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-surface text-xs font-semibold text-on-surface shadow-sm" type="button">
+<span>Torre A - 12º Pavimento</span>
+<span class="material-symbols-outlined text-xs text-on-surface-variant hover:text-error">close</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-surface text-xs font-semibold text-on-surface shadow-sm" type="button">
+<span>Etapa: Armação &amp; Estrutura</span>
+<span class="material-symbols-outlined text-xs text-on-surface-variant hover:text-error">close</span>
+</button>
+<button class="text-xs text-primary font-semibold hover:underline ml-2" type="button">
+          Limpar todos
+        </button>
+</div>
+<!-- Main Action Buttons -->
+<div class="flex items-center gap-2 sm:gap-3 flex-wrap">
+<button class="inline-flex items-center gap-2 px-4 py-2.5 bg-surface hover:bg-surface-container text-on-surface text-xs font-semibold shadow-sm transition-colors" onclick="document.getElementById('compareDrawer').classList.remove('translate-x-full')" type="button">
+<span class="material-symbols-outlined text-base text-primary">compare</span>
+<span>Comparador Antes x Depois</span>
+</button>
+<button class="inline-flex items-center gap-2 px-4 py-2.5 bg-secondary-container hover:bg-surface-container-highest text-on-secondary-container text-xs font-semibold transition-colors" type="button">
+<span class="material-symbols-outlined text-base">picture_as_pdf</span>
+<span>Caderno de Fotos (PDF)</span>
+</button>
+<button class="inline-flex items-center gap-2 px-4 py-2.5 bg-primary hover:bg-on-primary-fixed-variant text-on-primary text-xs font-semibold shadow-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-base">cloud_upload</span>
+<span>+ Upload de Evidências</span>
+</button>
+</div>
+</div>
+<!-- Filter Selectors Matrix -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-2">
+<!-- Pavimento / Local -->
+<div class="flex flex-col bg-surface p-2.5">
+<label class="text-[11px] font-semibold uppercase tracking-wider text-on-surface-variant mb-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary">location_on</span> Local / Frente de Obra
+        </label>
+<select class="bg-surface-container-low text-xs font-medium text-on-surface py-2 px-2.5 outline-none focus:bg-surface border-b-2 border-primary">
+<option>Torre A - 12º Pavimento (Laje Atual)</option>
+<option>Torre A - 11º Pavimento</option>
+<option>Torre B - Subsolo 2 (Garagens)</option>
+<option>Área Externa &amp; Fachada Leste</option>
+<option>Bloco de Serviços / Guarita</option>
+<option>Canteiro Geral &amp; Grua Principal</option>
+</select>
+</div>
+<!-- Etapa Construtiva -->
+<div class="flex flex-col bg-surface p-2.5">
+<label class="text-[11px] font-semibold uppercase tracking-wider text-on-surface-variant mb-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary">domain</span> Disciplina / Etapa
+        </label>
+<select class="bg-surface-container-low text-xs font-medium text-on-surface py-2 px-2.5 outline-none focus:bg-surface border-b-2 border-primary">
+<option>Todas as Disciplinas</option>
+<option selected="">Estrutura (Formas / Armações / Concreto)</option>
+<option>Alvenaria de Vedação &amp; Vergas</option>
+<option>Impermeabilização e Teste de Estanqueidade</option>
+<option>Instalações Hidráulicas &amp; Prumadas</option>
+<option>Instalações Elétricas &amp; SPDA</option>
+<option>Acabamento &amp; Revestimentos</option>
+</select>
+</div>
+<!-- Tag / Conformidade -->
+<div class="flex flex-col bg-surface p-2.5">
+<label class="text-[11px] font-semibold uppercase tracking-wider text-on-surface-variant mb-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary">verified</span> Auditoria &amp; Conformidade
+        </label>
+<select class="bg-surface-container-low text-xs font-medium text-on-surface py-2 px-2.5 outline-none focus:bg-surface border-b-2 border-primary">
+<option>Todos os Status</option>
+<option>Conforme (Liberado p/ Etapa Segue)</option>
+<option>Não Conformidade (RNC Aberta)</option>
+<option>Segurança do Trabalho (DDS &amp; EPI)</option>
+<option>Antes x Depois Registrado</option>
+<option>Aguardando Parecer Fiscal</option>
+</select>
+</div>
+<!-- Período / Data -->
+<div class="flex flex-col bg-surface p-2.5">
+<label class="text-[11px] font-semibold uppercase tracking-wider text-on-surface-variant mb-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary">calendar_today</span> Janela Temporal
+        </label>
+<div class="flex items-center gap-2">
+<input class="w-full bg-surface-container-low text-xs font-medium text-on-surface py-1.5 px-2 outline-none focus:bg-surface border-b-2 border-primary" type="date" value="2024-03-28"/>
+<span class="text-xs text-on-surface-variant font-bold">a</span>
+<input class="w-full bg-surface-container-low text-xs font-medium text-on-surface py-1.5 px-2 outline-none focus:bg-surface border-b-2 border-primary" type="date" value="2024-03-29"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Gallery Header Viewport Mode -->
+<div class="flex items-center justify-between pb-3 text-xs text-on-surface-variant">
+<div class="flex items-center gap-3">
+<span class="font-semibold text-on-surface">Exibindo 6 de 48 registros</span>
+<span>•</span>
+<span class="hidden sm:inline">Ordem cronológica inversa (Mais recentes primeiro)</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-1.5 bg-primary text-on-primary" title="Grade de Evidências" type="button">
+<span class="material-symbols-outlined text-sm">grid_view</span>
+</button>
+<button class="p-1.5 bg-surface-container-high hover:bg-secondary-container text-on-surface" title="Visualização em Lista Técnica" type="button">
+<span class="material-symbols-outlined text-sm">view_agenda</span>
+</button>
+<button class="p-1.5 bg-surface-container-high hover:bg-secondary-container text-on-surface" title="Mapa de Calor de Fotos" type="button">
+<span class="material-symbols-outlined text-sm">map</span>
+</button>
+</div>
+</div>
+<!-- EVIDENCE GALLERY GRID -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-12">
+<!-- Card 1: Armação Negativa Laje L-14 (Conforme) -->
+<div class="bg-surface-container-low flex flex-col group shadow-sm hover:shadow-md transition-shadow">
+<!-- Photo Container with Timestamp Stamp -->
+<div class="relative w-full h-64 overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="High quality construction site photo capturing dense structural steel rebar placement on an elevated concrete slab floor, Torre A level 12, dramatic direct afternoon sunlight, sharp engineering focus, clean rebars with plastic spacers and wooden formwork ready for concrete pouring, professional technical construction photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuADc1zr9PiBaagBKt80tkeEgr80fE2nkyrfOWn3NiiA2m_MWnvbVAHaIisgkpUywSFaiuxPwIsENbssjk_Y8zxbccx4iqx5fN_qdZlypy8yM_9m-9Ig0n0pGbEYmXQo8jNlTwbxcqY55oE4t77E4VVQw7Z2ksSnsNHgNX1ysj2Z01UmtyeZulU7NUes264JJpoM-QuM1t17Zd2bvr7VE4-4jd2Bg5HJvRLwzpdprnD8LE83YRly3zH4"/>
+<!-- Status Badge -->
+<div class="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 bg-tertiary text-on-tertiary text-[11px] font-semibold tracking-wide uppercase shadow">
+<span class="material-symbols-outlined text-xs">check_circle</span>
+<span>Conforme</span>
+</div>
+<!-- RDO Badge Tag -->
+<div class="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 bg-surface/90 backdrop-blur-sm text-[11px] font-mono font-bold text-on-surface shadow">
+<span class="material-symbols-outlined text-xs text-primary">bookmark</span>
+<span>RDO #184</span>
+</div>
+<!-- Georeference Technical Stamp (Bottom overlay) -->
+<div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-on-surface/95 via-on-surface/75 to-transparent p-3 text-white font-mono text-[10px] leading-tight">
+<div class="flex items-center justify-between font-semibold">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs text-tertiary-fixed">satellite_alt</span> -23.58741° S, -46.68239° W</span>
+<span class="text-tertiary-fixed">29/03/2024 • 14:32:08</span>
+</div>
+<div class="flex items-center justify-between text-surface-container-high mt-0.5">
+<span>Torre A • Laje Pav. 12 (Setor Sul)</span>
+<span>Alt: 782.4m</span>
+</div>
+</div>
+</div>
+<!-- Card Metadata & Technical Review -->
+<div class="p-4 flex flex-col flex-1 justify-between">
+<div>
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant mb-2">
+<span class="font-semibold text-primary uppercase">Estrutura de Concreto</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">account_circle</span> Eng. Ricardo Souza
+            </span>
+</div>
+<h3 class="text-sm font-bold text-on-surface tracking-tight mb-2">
+            Inspeção de Armação Negativa Laje L-14
+          </h3>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+            Conferência dos espaçadores pastilha plástica (cobridor de 3,0 cm garantido) e reforços de punção nas cabeças dos pilares P-12 e P-14. Liberado para bombeamento de concreto fck 35 MPa.
+          </p>
+</div>
+<!-- Action Ribbon -->
+<div class="mt-4 pt-3 border-t border-surface-container-high flex items-center justify-between">
+<div class="flex items-center gap-2">
+<button class="text-xs font-semibold text-primary hover:underline flex items-center gap-0.5" type="button">
+<span class="material-symbols-outlined text-xs">visibility</span> Detalhes
+            </button>
+<span class="text-surface-container-highest">•</span>
+<button class="text-xs font-semibold text-on-surface hover:text-primary flex items-center gap-0.5" onclick="document.getElementById('compareDrawer').classList.remove('translate-x-full')" type="button">
+<span class="material-symbols-outlined text-xs">history</span> Comparar
+            </button>
+</div>
+<button class="p-1 hover:bg-surface-container text-on-surface-variant hover:text-on-surface" title="Adicionar Nota Técnica" type="button">
+<span class="material-symbols-outlined text-sm">edit_note</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 2: Não Conformidade (RNC Aberta) Tubulação e Armação -->
+<div class="bg-surface-container-low flex flex-col group shadow-sm hover:shadow-md transition-shadow">
+<!-- Photo Container with Timestamp Stamp -->
+<div class="relative w-full h-64 overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="High quality detailed construction photo of an active mechanical and electrical plumbing installation clash in residential concrete structure, PVC drainage pipe improperly intersecting steel rebar cage without proper structural sleeves, clear red spray paint markings on construction floor, indoor concrete deck daylight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZ9yybbrk3yNwvdxMqIXWoUhTgSQCYkeUcVwte4G4SHjksBnttcCqu8dAxtf-ws8FePHqzZ5rGdDeQZn5JTOI6YlW0H94sCvXU1Lf-gJmmSD4lK9nsVKMHhEIW6W6oR4S5vOLn2OceP3QzCVli4ztjliWPOCW6tKMr-9mBFqBs0EJwqIzs570rsPUEJ6OzsrB0UGBVzRiMhECTDTgxMhpMyPp72ytiBuIA57tT6j9A6WOXtjcYGqS3"/>
+<!-- Status Badge -->
+<div class="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 bg-error text-on-error text-[11px] font-semibold tracking-wide uppercase shadow">
+<span class="material-symbols-outlined text-xs">error</span>
+<span>RNC #042 Aberta</span>
+</div>
+<!-- RDO Badge Tag -->
+<div class="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 bg-surface/90 backdrop-blur-sm text-[11px] font-mono font-bold text-on-surface shadow">
+<span class="material-symbols-outlined text-xs text-primary">bookmark</span>
+<span>RDO #184</span>
+</div>
+<!-- Georeference Technical Stamp -->
+<div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-on-surface/95 via-on-surface/75 to-transparent p-3 text-white font-mono text-[10px] leading-tight">
+<div class="flex items-center justify-between font-semibold">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs text-error">satellite_alt</span> -23.58739° S, -46.68241° W</span>
+<span class="text-white">29/03/2024 • 11:15:42</span>
+</div>
+<div class="flex items-center justify-between text-surface-container-high mt-0.5">
+<span>Torre A • Shaft Prumada Hidráulica Apt 122</span>
+<span>Alt: 782.1m</span>
+</div>
+</div>
+</div>
+<!-- Card Metadata & Technical Review -->
+<div class="p-4 flex flex-col flex-1 justify-between">
+<div>
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant mb-2">
+<span class="font-semibold text-error uppercase">Hidráulica x Estrutural</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">account_circle</span> Tec. Marcos Silva
+            </span>
+</div>
+<h3 class="text-sm font-bold text-on-surface tracking-tight mb-2">
+            Passagem de Tubulação Cortando Armadura Principal
+          </h3>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+            Identificado corte indevido de barra de aço Ø16mm para passagem de tubulação esgoto 100mm. Paralisação imediata do trecho até revisão de cálculo pelo calculista estrutural.
+          </p>
+</div>
+<!-- Action Ribbon -->
+<div class="mt-4 pt-3 border-t border-surface-container-high flex items-center justify-between">
+<div class="flex items-center gap-2">
+<button class="text-xs font-semibold text-error hover:underline flex items-center gap-0.5" type="button">
+<span class="material-symbols-outlined text-xs">open_in_new</span> Tratar RNC
+            </button>
+<span class="text-surface-container-highest">•</span>
+<button class="text-xs font-semibold text-on-surface hover:text-primary flex items-center gap-0.5" type="button">
+<span class="material-symbols-outlined text-xs">schedule</span> Prazo: 24h
+            </button>
+</div>
+<button class="p-1 hover:bg-surface-container text-on-surface-variant hover:text-on-surface" title="Adicionar Anexo Pericial" type="button">
+<span class="material-symbols-outlined text-sm">attach_file</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 3: Impermeabilização e Teste de Estanqueidade (Em Andamento) -->
+<div class="bg-surface-container-low flex flex-col group shadow-sm hover:shadow-md transition-shadow">
+<!-- Photo Container with Timestamp Stamp -->
+<div class="relative w-full h-64 overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="High fidelity construction photography showing waterproofing asphalt membrane being applied on a large commercial terrace slab, workers with torch heaters carefully detailing corner fillets, clean black bituminous layer contrast with raw gray concrete, safety lines visible, sunny daylight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDduelABmrOhMBM6lHww-mGdu2gBWcYdGM6627Y9VLTeZ90SHAmdrA2BlLSLttjQTO1gKgpYOKMSv_-BA7OCpu-FppDo4DsErKKGf-960ZDeOZwroYQQ5BFuL81yEPpw9CzJsiZUkj0NtrmZ3ERrxuSOdQPYfzh96KusLyCB-rcVhfnXkRXfOpxsR0ecKMKjH_GlYuyrkag02W2uZQLLPDMDrver5p-m5YiNFW5D0lSFtHKpUrbEZhS"/>
+<!-- Status Badge -->
+<div class="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 bg-primary text-on-primary text-[11px] font-semibold tracking-wide uppercase shadow">
+<span class="material-symbols-outlined text-xs">sync</span>
+<span>Em Andamento (72h)</span>
+</div>
+<!-- RDO Badge Tag -->
+<div class="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 bg-surface/90 backdrop-blur-sm text-[11px] font-mono font-bold text-on-surface shadow">
+<span class="material-symbols-outlined text-xs text-primary">bookmark</span>
+<span>RDO #183</span>
+</div>
+<!-- Georeference Technical Stamp -->
+<div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-on-surface/95 via-on-surface/75 to-transparent p-3 text-white font-mono text-[10px] leading-tight">
+<div class="flex items-center justify-between font-semibold">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs text-primary-fixed">satellite_alt</span> -23.58712° S, -46.68285° W</span>
+<span class="text-white">28/03/2024 • 16:48:10</span>
+</div>
+<div class="flex items-center justify-between text-surface-container-high mt-0.5">
+<span>Torre B • Terraço Técnico Cobertura</span>
+<span>Alt: 814.0m</span>
+</div>
+</div>
+</div>
+<!-- Card Metadata & Technical Review -->
+<div class="p-4 flex flex-col flex-1 justify-between">
+<div>
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant mb-2">
+<span class="font-semibold text-primary uppercase">Impermeabilização</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">account_circle</span> Eng. Ricardo Souza
+            </span>
+</div>
+<h3 class="text-sm font-bold text-on-surface tracking-tight mb-2">
+            Teste de Estanqueidade da Laje do Barrilete
+          </h3>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+            Início do teste hidrostático de lâmina d'água com carga de 72 horas. Aplicação de manta asfáltica 4mm poliéster com arremates de meia-cana totalmente concluídos e secos.
+          </p>
+</div>
+<!-- Action Ribbon -->
+<div class="mt-4 pt-3 border-t border-surface-container-high flex items-center justify-between">
+<div class="flex items-center gap-2">
+<button class="text-xs font-semibold text-primary hover:underline flex items-center gap-0.5" type="button">
+<span class="material-symbols-outlined text-xs">visibility</span> Ver Laudo
+            </button>
+<span class="text-surface-container-highest">•</span>
+<button class="text-xs font-semibold text-on-surface hover:text-primary flex items-center gap-0.5" onclick="document.getElementById('compareDrawer').classList.remove('translate-x-full')" type="button">
+<span class="material-symbols-outlined text-xs">history</span> Comparar
+            </button>
+</div>
+<button class="p-1 hover:bg-surface-container text-on-surface-variant hover:text-on-surface" title="Adicionar Nota Técnica" type="button">
+<span class="material-symbols-outlined text-sm">edit_note</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 4: Segurança do Trabalho (Guarda-Corpo de Borda) -->
+<div class="bg-surface-container-low flex flex-col group shadow-sm hover:shadow-md transition-shadow">
+<div class="relative w-full h-64 overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Technical jobsite safety photography showing sturdy industrial steel perimeter safety railings and safety mesh guardrails installed at the building facade slab edge, workers wearing certified white hardhats, high visibility vests and safety harness clipped to lifeline cable, high rise cityscape background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbKZaPnQl9sXUpno84jr8TSTZ6pf4mX2nRLeXmBh5-fWBDj1yuogwOcbhu8SfS-VaKDVZIQJrRTiP4Vqmec-XfSjnBIgRZdJlKES9MfW_x_VFJOI1s_NxN5gCYo1tp_xLhRO5H07wU3QG6BvptIsV2MExI1e9h8Au5gZdQVUGvFOZ6yR_zWoJR5o5csTq3eKIeJHTq3I3Yh_NPimBOc26KAIIXxLdJKS01OG0-6S3HZgcfsTjFUXQq"/>
+<div class="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 bg-tertiary text-on-tertiary text-[11px] font-semibold tracking-wide uppercase shadow">
+<span class="material-symbols-outlined text-xs">security</span>
+<span>NR-18 / Conforme</span>
+</div>
+<div class="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 bg-surface/90 backdrop-blur-sm text-[11px] font-mono font-bold text-on-surface shadow">
+<span class="material-symbols-outlined text-xs text-primary">bookmark</span>
+<span>RDO #184</span>
+</div>
+<div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-on-surface/95 via-on-surface/75 to-transparent p-3 text-white font-mono text-[10px] leading-tight">
+<div class="flex items-center justify-between font-semibold">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs text-tertiary-fixed">satellite_alt</span> -23.58742° S, -46.68235° W</span>
+<span class="text-tertiary-fixed">29/03/2024 • 09:20:14</span>
+</div>
+<div class="flex items-center justify-between text-surface-container-high mt-0.5">
+<span>Perímetro Fachada Sul • Pav. 12</span>
+<span>Alt: 782.5m</span>
+</div>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-1 justify-between">
+<div>
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant mb-2">
+<span class="font-semibold text-tertiary uppercase">Segurança Ocupacional</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">account_circle</span> Tec. Segurança Ana Paula
+            </span>
+</div>
+<h3 class="text-sm font-bold text-on-surface tracking-tight mb-2">
+            Instalação de Proteção Coletiva de Periferia
+          </h3>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+            Fixação com parabolt dos montantes metálicos de 1,20m com rodapé de 20cm e tela de polietileno conforme NR-18. Linha de vida instalada e liberada para circulação dos operários.
+          </p>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-container-high flex items-center justify-between">
+<div class="flex items-center gap-2">
+<button class="text-xs font-semibold text-primary hover:underline flex items-center gap-0.5" type="button">
+<span class="material-symbols-outlined text-xs">visibility</span> Ver Laudo SST
+            </button>
+<span class="text-surface-container-highest">•</span>
+<button class="text-xs font-semibold text-on-surface hover:text-primary flex items-center gap-0.5" type="button">
+<span class="material-symbols-outlined text-xs">verified_user</span> Aprovado
+            </button>
+</div>
+<button class="p-1 hover:bg-surface-container text-on-surface-variant hover:text-on-surface" title="Adicionar Nota Técnica" type="button">
+<span class="material-symbols-outlined text-sm">edit_note</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 5: Fachada Externa e Pastilhamento (Antes x Depois Catalogado) -->
+<div class="bg-surface-container-low flex flex-col group shadow-sm hover:shadow-md transition-shadow">
+<div class="relative w-full h-64 overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Construction site photograph showcasing exterior facade finishing works with swing stages scaffolding, workers applying ceramic tiles and exterior plaster mortar, plumb line strings visible against clean facade surface, architectural perspective." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD72_tD_DRNQOhmBg2oDJrhWFxR7bx6KPLPA4qJH-rOXCLA-Km2DbcXIBUB_jBNfSzAPJTiy32xTSzIKRFm1h_xcYl1ORNCg6PVCO1UER1xQ0YKbpYN_ja3W21Axsov6HsfF27aG1Xrs3hISd4g7bGcijGxXW1vPDwjwknk_rjK1VWFUxqZTI3RDfvRK3S0xUedN5jaNAdJc77ahTVlPy6QMXyyZxiw5fM9kmrKgNo5oTBx0e9zhC13"/>
+<div class="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 bg-surface-variant text-on-surface text-[11px] font-semibold tracking-wide uppercase shadow">
+<span class="material-symbols-outlined text-xs text-primary">auto_stories</span>
+<span>Antes x Depois</span>
+</div>
+<div class="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 bg-surface/90 backdrop-blur-sm text-[11px] font-mono font-bold text-on-surface shadow">
+<span class="material-symbols-outlined text-xs text-primary">bookmark</span>
+<span>RDO #182</span>
+</div>
+<div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-on-surface/95 via-on-surface/75 to-transparent p-3 text-white font-mono text-[10px] leading-tight">
+<div class="flex items-center justify-between font-semibold">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs text-primary-fixed">satellite_alt</span> -23.58750° S, -46.68260° W</span>
+<span class="text-white">27/03/2024 • 15:10:00</span>
+</div>
+<div class="flex items-center justify-between text-surface-container-high mt-0.5">
+<span>Fachada Leste • Eixo 03 ao 07</span>
+<span>Alt: 770.2m</span>
+</div>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-1 justify-between">
+<div>
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant mb-2">
+<span class="font-semibold text-primary uppercase">Acabamento de Fachada</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">account_circle</span> Eng. Ricardo Souza
+            </span>
+</div>
+<h3 class="text-sm font-bold text-on-surface tracking-tight mb-2">
+            Aplicação de Emboço Técnico e Revestimento
+          </h3>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+            Progresso semanal da fachada externa. Aplicação de argamassa AC-III com dupla colagem para cerâmica 10x10cm. Registrado comparativo com o estado de alvenaria bruta de 45 dias atrás.
+          </p>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-container-high flex items-center justify-between">
+<div class="flex items-center gap-2">
+<button class="text-xs font-semibold text-primary hover:underline flex items-center gap-0.5" onclick="document.getElementById('compareDrawer').classList.remove('translate-x-full')" type="button">
+<span class="material-symbols-outlined text-xs">compare</span> Ver Par Temporal
+            </button>
+<span class="text-surface-container-highest">•</span>
+<span class="text-xs text-on-surface-variant">2 fotos vinculadas</span>
+</div>
+<button class="p-1 hover:bg-surface-container text-on-surface-variant hover:text-on-surface" title="Adicionar Nota Técnica" type="button">
+<span class="material-symbols-outlined text-sm">edit_note</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 6: Alvenaria de Vedação e Marcação de Parede -->
+<div class="bg-surface-container-low flex flex-col group shadow-sm hover:shadow-md transition-shadow">
+<div class="relative w-full h-64 overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="High precision construction photography inside a residential concrete apartment floor showing freshly laid ceramic block masonry walls with laser level tripod projecting green horizontal alignment lines, clean construction site without debris, professional architectural quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAviEbceC_aYbckHDpT9-YYjWSMc_lS21yRk5Y69cgzNE8x0W92Ld0w8x-Ibo0dohPDrhY3DkKM6xRxE98Hc7gQwlGRoRy9eEjjrybNcUINTHGDvs_niCxoBaZXhYl5BdfPQf0zuFGFO-YE9oipugSd5nNcV1oWucNjlm61s4kldAFJR3ihf9roJNRTdzLBIhnCKg_I7JArwpBuWqoC2ctevh_2roJ7joiU3kuyomuHt5zBZ9hO5BxM"/>
+<div class="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 bg-tertiary text-on-tertiary text-[11px] font-semibold tracking-wide uppercase shadow">
+<span class="material-symbols-outlined text-xs">check_circle</span>
+<span>Conforme</span>
+</div>
+<div class="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 bg-surface/90 backdrop-blur-sm text-[11px] font-mono font-bold text-on-surface shadow">
+<span class="material-symbols-outlined text-xs text-primary">bookmark</span>
+<span>RDO #184</span>
+</div>
+<div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-on-surface/95 via-on-surface/75 to-transparent p-3 text-white font-mono text-[10px] leading-tight">
+<div class="flex items-center justify-between font-semibold">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs text-tertiary-fixed">satellite_alt</span> -23.58744° S, -46.68230° W</span>
+<span class="text-tertiary-fixed">29/03/2024 • 08:05:33</span>
+</div>
+<div class="flex items-center justify-between text-surface-container-high mt-0.5">
+<span>Torre A • Apartamento 114 (Sala/Cozinha)</span>
+<span>Alt: 779.3m</span>
+</div>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-1 justify-between">
+<div>
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant mb-2">
+<span class="font-semibold text-primary uppercase">Alvenaria de Vedação</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">account_circle</span> Tec. Marcos Silva
+            </span>
+</div>
+<h3 class="text-sm font-bold text-on-surface tracking-tight mb-2">
+            Marcação da 1ª Fiada e Prumo a Laser
+          </h3>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+            Verificação dimensional e esquadro dos cômodos do apto 114 com trena laser. Desvio angular inferior a 1,5mm dentro da tolerância do PBQP-H e memorial descritivo.
+          </p>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-container-high flex items-center justify-between">
+<div class="flex items-center gap-2">
+<button class="text-xs font-semibold text-primary hover:underline flex items-center gap-0.5" type="button">
+<span class="material-symbols-outlined text-xs">visibility</span> Detalhes
+            </button>
+<span class="text-surface-container-highest">•</span>
+<button class="text-xs font-semibold text-on-surface hover:text-primary flex items-center gap-0.5" onclick="document.getElementById('compareDrawer').classList.remove('translate-x-full')" type="button">
+<span class="material-symbols-outlined text-xs">history</span> Comparar
+            </button>
+</div>
+<button class="p-1 hover:bg-surface-container text-on-surface-variant hover:text-on-surface" title="Adicionar Nota Técnica" type="button">
+<span class="material-symbols-outlined text-sm">edit_note</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- DRAWER / LATERAL PANEL: ANTES x DEPOIS (Comparativo Temporal de Frente de Obra) -->
+<div class="fixed inset-y-0 right-0 w-full max-w-2xl bg-surface shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col overflow-hidden" id="compareDrawer">
+<!-- Drawer Header -->
+<div class="p-5 bg-surface-container-low flex items-center justify-between border-b border-surface-container-high">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-xl">compare</span>
+<div>
+<h2 class="text-sm font-bold text-on-surface font-headline uppercase tracking-wide">Auditoria Visual: Comparativo Antes x Depois</h2>
+<span class="text-xs text-on-surface-variant">Frente de Serviço: Torre A - Subsolo 2 ao Pavimento 12</span>
+</div>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" onclick="document.getElementById('compareDrawer').classList.add('translate-x-full')" type="button">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Drawer Body -->
+<div class="flex-1 overflow-y-auto p-5 space-y-6">
+<!-- Selector of Pair / Front -->
+<div class="bg-surface-container-low p-4">
+<div class="flex items-center justify-between mb-2">
+<label class="text-xs font-bold uppercase text-on-surface">Ponto de Rastreabilidade Fixo #09</label>
+<span class="text-[11px] font-mono text-primary font-bold">Delta: +60 Dias Corridos</span>
+</div>
+<p class="text-xs text-on-surface-variant">
+          Ponto georreferenciado cravado via vértice de canteiro. Evolução da fundação profunda (estacas/blocos de coroamento) para a superestrutura do 12º pavimento.
+        </p>
+</div>
+<!-- Side-by-Side Visual Comparison -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- ANTES -->
+<div class="flex flex-col bg-surface-container-low">
+<div class="p-2.5 bg-surface-container-high flex items-center justify-between">
+<span class="text-xs font-bold text-on-surface flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+              ESTADO ANTERIOR (60 dias atrás)
+            </span>
+<span class="text-[11px] font-mono text-on-surface-variant">28/01/2024</span>
+</div>
+<div class="relative h-60 w-full overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="Civil construction site historical record showing deep foundations excavation, massive concrete pile caps excavation in red earth soil, rebar cages being inserted with mobile crane, clear industrial construction snapshot from 60 days prior." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvadylWuMUvpk_7KBG0uzJm05nUPqQmUcjbP172ZUDndOuZF5vLZ69i5L0d_7MdmfMZ7_7ykJWcicZugKtuTX-T8Wu4MPCEOGc7QdkAWVrhGTLLsjkpGEGh83tQjRTUNMptiINZ7pF_6q-o_HYKeBS3bGFW2H6D84JcjKrRYbSgRx6vdVYiQ2c_6ZzMka3h9aLO6_GD6s8LX4t4GnrmuqQ6z4Jy3QTJVmH3bI5D91ff0Ml_2AUKNDk"/>
+<div class="absolute bottom-2 left-2 bg-on-surface/80 text-white font-mono text-[10px] px-2 py-0.5">
+              Etapa: Fundação &amp; Blocos
+            </div>
+</div>
+<div class="p-3 text-xs text-on-surface-variant leading-relaxed">
+<div class="font-semibold text-on-surface mb-1">Início da Armação dos Blocos</div>
+            Escavação e regularização do lastro de brita no Subsolo 2. 12 sapatas isoladas e blocos de estacas com laudo de ensaio de integridade PIT aprovado.
+          </div>
+</div>
+<!-- DEPOIS -->
+<div class="flex flex-col bg-surface-container-low">
+<div class="p-2.5 bg-primary text-on-primary flex items-center justify-between">
+<span class="text-xs font-bold flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-white"></span>
+              ESTADO ATUAL (Hoje)
+            </span>
+<span class="text-[11px] font-mono">29/03/2024</span>
+</div>
+<div class="relative h-60 w-full overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="Modern high rise reinforced concrete building frame completed up to the 12th floor, safety perimeter nets installed, smooth formwork edges, clear bright sunlight over urban skyline, high engineering achievement comparison." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXB1WZG4rDx8e0MpVzow_X-BA1KGH_pEB8Eh1JNtPDmUDXgRLx9jertb1W1JVLHB9APgB4FFsSsS87AV4awRRuHaC7GRlLskiUgLbrJbdmXJrf5SBiV4rdlKEtmumtN88Grq-1RGYk_gx6Dr0WoYgmTxmZVmB1CJdjLJhmKac0bR1D5SuwkIPYnIN0D7bqMULbZSKo6jjeYOR56Rz1ReYUAVy6cI7aURtaX8PqOKoiKvfX-dyhh3fj"/>
+<div class="absolute bottom-2 left-2 bg-primary text-on-primary font-mono text-[10px] px-2 py-0.5 font-bold">
+              Etapa: Superestrutura Pav. 12
+            </div>
+</div>
+<div class="p-3 text-xs text-on-surface-variant leading-relaxed">
+<div class="font-semibold text-on-surface mb-1">Estrutura Concluída e Desformada</div>
+            Ciclo de 7 dias por laje atingido sem atraso no cronograma físico-financeiro. Concreto fck 35 MPa desformado com tolerância de prumo zero.
+          </div>
+</div>
+</div>
+<!-- Comparative Inspection Analysis -->
+<div class="bg-surface-container-low p-4">
+<h4 class="text-xs font-bold uppercase text-on-surface mb-2 tracking-wide">Parecer da Auditoria Fiscal</h4>
+<div class="space-y-2 text-xs text-on-surface-variant">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-tertiary text-base shrink-0 mt-0.5">task_alt</span>
+<p><strong>Aderência ao Cronograma:</strong> +3,2% adiantado em relação à linha de base pactuada no contrato de fiscalização.</p>
+</div>
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-tertiary text-base shrink-0 mt-0.5">task_alt</span>
+<p><strong>Rastreabilidade de Concreto:</strong> Rompimento dos corpos de prova de 28 dias atingiu média de 38,4 MPa (meta 35 MPa).</p>
+</div>
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">info</span>
+<p><strong>Assinatura Técnica:</strong> Registrado eletronicamente por Eng. Ricardo Souza (CREA-SP 506.912/D) vinculado à ART nº 2024/098124.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Drawer Footer Actions -->
+<div class="p-4 bg-surface-container-low border-t border-surface-container-high flex items-center justify-between gap-3">
+<button class="inline-flex items-center gap-1.5 px-3 py-2 bg-surface text-xs font-semibold text-on-surface hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-sm">download</span>
+<span>Exportar Par em Alta Definição</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-4 py-2 bg-primary text-xs font-semibold text-on-primary hover:bg-on-primary-fixed-variant transition-colors" type="button">
+<span class="material-symbols-outlined text-sm">print</span>
+<span>Inserir no Caderno Fiscal</span>
+</button>
+</div>
+</div>
+</div>
+<script>
+  // Simple micro-interaction for closing drawer on ESC
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+      const drawer = document.getElementById('compareDrawer');
+      if (drawer) {
+        drawer.classList.add('translate-x-full');
+      }
+    }
+  });
+</script></main><footer class="h-12 w-full bg-surface-container-low px-6 lg:px-8 flex items-center justify-between text-xs text-on-surface-variant"><div class="flex items-center gap-4"><span>ObraSync Enterprise v2.4.0</span><span class="hidden sm:inline">•</span><span class="hidden sm:inline flex items-center gap-1"><span class="material-symbols-outlined text-sm text-tertiary">verified</span>Integridade de Dados Auditada</span></div><div class="flex items-center gap-4"><span class="hidden md:inline">Ambiente Corporativo Seguro</span><span>Residencial Horizonte - Torre A &amp; B</span></div></footer></div></body></html>

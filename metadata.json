@@ -1,0 +1,6 @@
+{
+  "name": "ObraSync Enterprise",
+  "description": "Plataforma integrada de gestão de obras, RDO digital, controle de evidências fotográficas, painel de custos em tempo real, integração ERP e conformidade PBQP-H.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

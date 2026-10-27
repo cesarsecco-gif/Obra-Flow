@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-bright":"#ffffff","surface-container-low":"#f4f4f4","tertiary-fixed-dim":"#42be65","surface":"#ffffff","tertiary-fixed":"#a7f0ba","surface-variant":"#f4f4f4","on-primary":"#ffffff","on-error-container":"#750e13","on-secondary-container":"#525252","primary-fixed-dim":"#78a9ff","error":"#da1e28","on-surface":"#161616","background":"#ffffff","secondary-fixed-dim":"#c6c6c6","primary":"#0f62fe","secondary-container":"#e0e0e0","surface-container-high":"#e0e0e0","on-secondary":"#ffffff","on-error":"#ffffff","on-tertiary-fixed":"#022d0d","on-primary-container":"#161616","on-secondary-fixed":"#161616","surface-container":"#f4f4f4","secondary-fixed":"#e0e0e0","outline-variant":"#e0e0e0","outline":"#8d8d8d","on-primary-fixed-variant":"#0043ce","inverse-on-surface":"#f4f4f4","tertiary":"#198038","on-primary-fixed":"#001d6c","on-surface-variant":"#525252","surface-container-highest":"#c6c6c6","on-tertiary":"#ffffff","on-tertiary-fixed-variant":"#044317","surface-tint":"#0f62fe","inverse-surface":"#393939","on-secondary-fixed-variant":"#525252","primary-fixed":"#d0e2ff","on-background":"#161616","on-tertiary-container":"#044317","inverse-primary":"#78a9ff","tertiary-container":"#a7f0ba","primary-container":"#d0e2ff","surface-dim":"#e0e0e0","secondary":"#6f6f6f","surface-container-lowest":"#ffffff","error-container":"#fff1f1"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{},fontFamily:{headline:["IBM Plex Sans"],display:["IBM Plex Sans"],body:["IBM Plex Sans"],label:["IBM Plex Sans"]},fontSize:{}}}}</script></head><body class="bg-surface font-body text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 h-16 bg-surface z-50 flex items-center justify-between px-4 lg:px-6 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-4"><div class="flex items-center gap-3 pr-4"><img alt="ObraSync Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1V1rtPWhd7WNs8YkyzCaeFp-ulWzm0w3nQAZyFqauCXz5iL7vz-ghXMPYhHV0_qbo8cnuOHtbeQ4VmEHA9VQ7hCerNjMg9OVF5XOw-fWnZ9IDHsUni9EWpd8cUWF1VyUu7O4McUolzAuqUpBfyl4CPD6i_WEXLSvNYZmqa9fbgBMZqsRoHnOiH2kLwqmJ4NcOfwXzg5u7KUPj-WzctEO68g-WdJO4zTNGrIm3ZwZxuPoPoZX-Qi4EGSsI0"/><span class="font-headline font-semibold text-lg text-on-surface tracking-tight hidden sm:inline">ObraSync</span></div><div class="hidden md:flex items-center gap-2 bg-surface-container px-3 py-1.5"><span class="material-symbols-outlined text-primary text-xl">apartment</span><div class="flex flex-col"><span class="text-[11px] text-on-surface-variant leading-none uppercase font-semibold">Obra Ativa</span><span class="text-xs font-medium text-on-surface leading-tight">Residencial Horizonte - Torre A &amp; B</span></div><span class="material-symbols-outlined text-on-surface-variant text-base cursor-pointer ml-1">expand_more</span></div></div><div class="flex items-center gap-3 lg:gap-5"><div class="hidden xl:flex items-center gap-2 px-2.5 py-1 bg-surface-container"><span class="w-2 h-2 rounded-full bg-tertiary"></span><span class="text-xs font-medium text-on-surface">Online</span><span class="text-xs text-on-surface-variant font-light">• 14 itens sincronizados</span></div><div class="hidden sm:flex items-center gap-2"><a class="inline-flex items-center gap-1.5 px-3 py-2 bg-primary text-on-primary text-xs font-medium hover:bg-primary/90 transition-colors" data-path="diario-de-obra-rdo" href="#"><span class="material-symbols-outlined text-sm">post_add</span><span>+ Novo RDO</span></a><a class="inline-flex items-center gap-1.5 px-3 py-2 bg-surface-container text-on-surface text-xs font-medium hover:bg-surface-container-high transition-colors" data-path="relatorio-fotografico" href="#"><span class="material-symbols-outlined text-sm">add_a_photo</span><span>+ Subir Fotos</span></a></div><div class="flex items-center gap-1 text-on-surface-variant"><button aria-label="Notificações de Canteiro" class="p-2 hover:bg-surface-container transition-colors relative" type="button"><span class="material-symbols-outlined text-xl text-on-surface">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full"></span></button><button aria-label="Ajuda e Suporte" class="p-2 hover:bg-surface-container transition-colors hidden sm:block" type="button"><span class="material-symbols-outlined text-xl text-on-surface">help_outline</span></button></div><div class="flex items-center gap-3 pl-2 sm:pl-4 bg-surface"><div class="hidden lg:flex flex-col text-right"><span class="text-xs font-semibold text-on-surface leading-tight">Eng. Ricardo Souza</span><span class="text-[11px] text-on-surface-variant leading-none">Engenheiro Residente</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOGd0SEmkgPx7MrGzaf5IoWSQzu7CbKZzyJi_HPjeJTNnyNI8CqfbmreMfLvcwCjmOLuwbov9uUSRl-8IU2UA0EG7CYz0Wa_6Io7wxVujYfLueor9-aLfs-tBbiyMGayOM0fOrb03ckgrpJfUfFRm224tdxYKkgpbssppZxxXaxBCC9eWFXv0sKonkHFh7kdNQIATYzFSimPFV1FCIlsuEEnaeSAqqp_eFiJbBKu3OC6YWvKsBouE3"/></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-64 bg-surface-container-low z-40 flex flex-col justify-between overflow-y-auto"><div class="py-4"><div class="px-4 pb-3 mb-2"><span class="text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider">Navegação de Campo</span></div><nav class="space-y-0.5 px-2" data-active-classes="bg-primary-container text-on-primary-container font-semibold"><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="dashboard-gerencial" href="#"><span class="material-symbols-outlined text-lg">dashboard</span><span>Dashboard Gerencial</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="diario-de-obra-rdo" href="#"><span class="material-symbols-outlined text-lg">menu_book</span><span>Diário de Obra (RDO)</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="relatorio-fotografico" href="#"><span class="material-symbols-outlined text-lg">photo_camera</span><span>Relatório Fotográfico</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="efetivo-e-equipamentos" href="#"><span class="material-symbols-outlined text-lg">engineering</span><span>Efetivo &amp; Equipamentos</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="clima-e-chuvas" href="#"><span class="material-symbols-outlined text-lg">rainy</span><span>Clima &amp; Chuvas</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="relatorios-executivos" href="#"><span class="material-symbols-outlined text-lg">assessment</span><span>Relatórios Executivos</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="configuracoes" href="#"><span class="material-symbols-outlined text-lg">settings</span><span>Configurações</span></a></nav></div><div class="p-4 bg-surface-container m-3"><div class="flex items-center justify-between text-xs text-on-surface-variant mb-1.5"><span class="font-medium">Conexão Canteiro</span><span class="text-[11px] font-semibold text-tertiary">Ativa</span></div><div class="w-full bg-surface-container-highest h-1"><div class="bg-tertiary h-1 w-full"></div></div><p class="text-[11px] text-on-surface-variant mt-2 leading-relaxed">Sincronismo automático a cada 5 min. Modo offline operacional.</p></div></aside><div class="pl-64"><main class="relative pt-16 min-h-[calc(100vh-3rem)] w-full px-6 lg:px-8 py-6 bg-surface"><div class="flex flex-col w-full relative">
+<!-- DASHBOARD BACKGROUND CONTEXT (Representing the active workspace behind the slide-over drawer) -->
+<div class="w-full space-y-6 opacity-40 pointer-events-none select-none filter blur-[2px] transition-all duration-300">
+<div class="flex items-center justify-between">
+<div>
+<p class="text-[11px] font-semibold tracking-wider uppercase text-on-surface-variant">Painel Operacional Diário</p>
+<h1 class="text-2xl font-semibold text-on-surface tracking-tight">Residencial Horizonte - Torre A &amp; B</h1>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-3 py-1.5 bg-surface-container text-xs font-medium text-on-surface">Ciclo Diário #184</span>
+<span class="px-3 py-1.5 bg-primary text-xs font-medium text-on-primary">Relatório Ativo</span>
+</div>
+</div>
+<!-- Background metric cards skeleton -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="bg-surface-container p-4">
+<span class="text-[11px] uppercase text-on-surface-variant font-medium">Avanço Físico Global</span>
+<p class="text-2xl font-bold text-on-surface mt-1">72.4%</p>
+</div>
+<div class="bg-surface-container p-4">
+<span class="text-[11px] uppercase text-on-surface-variant font-medium">Efetivo de Campo</span>
+<p class="text-2xl font-bold text-on-surface mt-1">142 operários</p>
+</div>
+<div class="bg-surface-container p-4">
+<span class="text-[11px] uppercase text-on-surface-variant font-medium">Índice Pluviométrico</span>
+<p class="text-2xl font-bold text-on-surface mt-1">18.2 mm</p>
+</div>
+<div class="bg-surface-container p-4">
+<span class="text-[11px] uppercase text-on-surface-variant font-medium">RDOs Validados</span>
+<p class="text-2xl font-bold text-on-surface mt-1">184 / 210</p>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-4 h-96">
+<div class="col-span-2 bg-surface-container p-5">
+<span class="text-xs uppercase font-medium text-on-surface-variant">Cronograma Físico-Financeiro</span>
+</div>
+<div class="bg-surface-container p-5">
+<span class="text-xs uppercase font-medium text-on-surface-variant">Equipes em Serviço</span>
+</div>
+</div>
+</div>
+<!-- BACKDROP OVERLAY -->
+<div class="fixed inset-0 top-16 bg-on-surface/50 backdrop-blur-[3px] z-50 transition-opacity duration-300" id="drawer-backdrop"></div>
+<!-- SLIDE-OVER DRAWER (Right Flyout Panel: width 680px on desktop) -->
+<aside class="fixed top-16 right-0 bottom-0 w-full sm:w-[620px] lg:w-[680px] bg-surface shadow-2xl z-50 flex flex-col transform transition-transform duration-300 ease-out" id="projects-drawer">
+<!-- DRAWER HEADER (Carbon Pro Style) -->
+<div class="flex-none px-6 pt-5 pb-4 bg-surface-container-low shadow-sm">
+<div class="flex items-center justify-between mb-1.5">
+<div class="flex items-center gap-2">
+<span class="text-[11px] font-semibold tracking-wider uppercase text-on-surface-variant">CONSTRUTORA HORIZONTE</span>
+<span class="text-on-surface-variant text-[10px]">•</span>
+<span class="text-[11px] font-semibold tracking-wider uppercase text-primary">CARTEIRA ATIVA DE OBRAS</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="hidden sm:inline-flex text-[10px] font-mono uppercase bg-surface-container-high text-on-surface-variant px-1.5 py-0.5">ESC</span>
+<button class="p-1 hover:bg-surface-container-high text-on-surface transition-colors" id="close-drawer-btn" title="Fechar gaveta (Esc)">
+<span class="material-symbols-outlined text-xl leading-none">close</span>
+</button>
+</div>
+</div>
+<div class="flex flex-wrap items-end justify-between gap-3 mt-1">
+<div>
+<div class="flex items-center gap-2.5">
+<h2 class="text-xl font-bold text-on-surface tracking-tight">Empreendimentos Atribuídos</h2>
+<span class="inline-flex items-center px-2 py-0.5 text-xs font-semibold bg-primary-container text-on-primary-fixed leading-tight">
+              8 Obras Sob Sua Gestão
+            </span>
+</div>
+<p class="text-xs text-on-surface-variant mt-0.5">Selecione uma obra para alternar o contexto operacional do sistema</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-surface text-on-surface hover:bg-surface-container-high transition-colors text-xs font-semibold shadow-sm">
+<span class="material-symbols-outlined text-sm text-primary">sync</span>
+<span>Sincronizar Portfólio</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary text-on-primary hover:bg-primary/95 transition-colors text-xs font-semibold shadow-sm">
+<span class="material-symbols-outlined text-sm">add</span>
+<span>+ Novo Empreendimento</span>
+</button>
+</div>
+</div>
+<!-- SEARCH & FILTER TOOLBAR -->
+<div class="mt-4 pt-3 space-y-2.5">
+<!-- Search Input with Keyboard Shortcut Hint -->
+<div class="relative flex items-center bg-surface">
+<span class="material-symbols-outlined absolute left-3 text-secondary text-lg">search</span>
+<input class="w-full bg-surface py-2 pl-9 pr-16 text-xs text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest" id="search-input" placeholder="Buscar por nome, código (ex: OBR-2024), município ou cliente..." type="text"/>
+<span class="absolute right-2.5 text-[10px] font-mono bg-surface-container text-on-surface-variant px-1.5 py-0.5">Ctrl + K</span>
+</div>
+<!-- Filter Chips and Sorting Dropdown -->
+<div class="flex flex-wrap items-center justify-between gap-2 text-xs pt-1">
+<div class="flex items-center gap-1.5 overflow-x-auto pb-0.5" id="filter-tabs">
+<button class="filter-chip px-2.5 py-1 text-xs font-semibold bg-on-surface text-surface transition-colors" data-filter="all">
+              Todos (8)
+            </button>
+<button class="filter-chip px-2.5 py-1 text-xs font-medium bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-colors" data-filter="active">
+              Ativas (4)
+            </button>
+<button class="filter-chip px-2.5 py-1 text-xs font-medium bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-colors" data-filter="planning">
+              Em Planejamento (2)
+            </button>
+<button class="filter-chip px-2.5 py-1 text-xs font-medium bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-colors" data-filter="completed">
+              Concluídas (2)
+            </button>
+</div>
+<div class="flex items-center gap-1.5 ml-auto text-on-surface-variant text-xs">
+<span class="text-[11px] uppercase tracking-wider">Ordenar:</span>
+<select class="bg-surface-container text-on-surface text-xs py-1 px-2 focus:outline-none font-medium cursor-pointer">
+<option selected="">Recentes primeiro</option>
+<option>Maior avanço</option>
+<option>Menor avanço</option>
+<option>Criticidade / Pendências</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+<!-- DRAWER SCROLLABLE CONTENT (Project Groups) -->
+<div class="flex-1 overflow-y-auto px-6 py-4 space-y-6">
+<!-- GROUP 1: OBRAS ATIVAS / EM ANDAMENTO -->
+<section class="space-y-3 project-group" data-category="active">
+<div class="flex items-center justify-between pb-1">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<h3 class="text-xs font-bold text-on-surface uppercase tracking-wider">Obras Ativas / Em Andamento</h3>
+<span class="text-[11px] text-on-surface-variant font-mono">(4)</span>
+</div>
+<span class="text-[11px] text-on-surface-variant font-medium">Sincronismo prioritário diário</span>
+</div>
+<!-- Card 1: Currently Active Selected Project -->
+<article class="p-4 bg-surface-container-lowest shadow-md transition-all relative overflow-hidden" style="box-shadow: inset 4px 0 0 0 #0f62fe;">
+<div class="flex items-start justify-between gap-3">
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="text-[11px] font-mono font-semibold px-1.5 py-0.5 bg-primary-container text-on-primary-fixed">OBR-2024-08</span>
+<span class="inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 bg-tertiary-container text-on-tertiary-container">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                  EM ANDAMENTO • 72.4% Concluído
+                </span>
+<span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-1.5 py-0.5">Em Edição Agora</span>
+</div>
+<h4 class="text-base font-bold text-on-surface mt-1.5 tracking-tight truncate">Residencial Horizonte - Torre A &amp; B</h4>
+<p class="text-xs text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-sm text-secondary">location_on</span>
+<span class="truncate">Av. Pres. Juscelino Kubitschek, 1455 - Itaim Bibi, São Paulo - SP</span>
+</p>
+</div>
+<!-- Circular Progress Indicator SVG (72.4%) -->
+<div class="flex-none flex flex-col items-center justify-center relative w-12 h-12">
+<svg class="w-12 h-12 transform -rotate-90" viewbox="0 0 48 48">
+<circle class="text-surface-container-highest" cx="24" cy="24" fill="transparent" r="18.5" stroke="currentColor" stroke-width="3"></circle>
+<circle class="text-primary" cx="24" cy="24" fill="transparent" r="18.5" stroke="currentColor" stroke-dasharray="116.2" stroke-dashoffset="32.07" stroke-linecap="square" stroke-width="3.5"></circle>
+</svg>
+<span class="absolute text-[10px] font-bold text-on-surface">72%</span>
+</div>
+</div>
+<div class="mt-3 pt-3 bg-surface-container p-2.5 space-y-1.5 text-xs text-on-surface">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm text-tertiary">history_toggle_off</span>
+<span class="font-medium text-[11px]">Último RDO assinado há 18 min por Eng. Ricardo • 14 fotos hoje • Clima: Chuva (18mm)</span>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-2 pt-1">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 bg-surface text-[10px] font-semibold text-on-surface-variant">PBQP-H Nível A</span>
+<span class="px-2 py-0.5 bg-surface text-[10px] font-semibold text-on-surface-variant">Torre A (14º Pav.)</span>
+<span class="px-2 py-0.5 bg-surface text-[10px] font-semibold text-on-surface-variant">RDO #184</span>
+</div>
+<div class="inline-flex items-center gap-1.5 px-3 py-1 bg-tertiary text-on-tertiary text-xs font-semibold">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+<span>Obra Ativa (Selecionada)</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 2: Edifício Parque da Barra -->
+<article class="p-4 bg-surface-container-lowest shadow-sm hover:shadow-md transition-all">
+<div class="flex items-start justify-between gap-3">
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="text-[11px] font-mono font-semibold px-1.5 py-0.5 bg-surface-container text-on-surface-variant">OBR-2023-14</span>
+<span class="inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 bg-surface-container-high text-on-surface">
+                  EM ANDAMENTO • 41.8% Concluído
+                </span>
+</div>
+<h4 class="text-base font-bold text-on-surface mt-1.5 tracking-tight truncate">Edifício Parque da Barra</h4>
+<p class="text-xs text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-sm text-secondary">location_on</span>
+<span class="truncate">Av. Lúcio Costa, 3200 - Barra da Tijuca, Rio de Janeiro - RJ</span>
+</p>
+</div>
+<!-- Circular Progress Indicator SVG (41.8%) -->
+<div class="flex-none flex flex-col items-center justify-center relative w-12 h-12">
+<svg class="w-12 h-12 transform -rotate-90" viewbox="0 0 48 48">
+<circle class="text-surface-container-highest" cx="24" cy="24" fill="transparent" r="18.5" stroke="currentColor" stroke-width="3"></circle>
+<circle class="text-primary" cx="24" cy="24" fill="transparent" r="18.5" stroke="currentColor" stroke-dasharray="116.2" stroke-dashoffset="67.6" stroke-linecap="square" stroke-width="3.5"></circle>
+</svg>
+<span class="absolute text-[10px] font-bold text-on-surface">42%</span>
+</div>
+</div>
+<div class="mt-3 pt-2.5 flex flex-col gap-2">
+<div class="flex items-center gap-1.5 text-on-surface-variant text-xs">
+<span class="material-symbols-outlined text-sm text-secondary">engineering</span>
+<span class="text-[11px]">Concretagem da 3ª laje iniciada hoje às 08:30 • 38 operários</span>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-2">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 bg-surface-container text-[10px] font-medium text-on-surface-variant">Estrutural</span>
+<span class="px-2 py-0.5 bg-surface-container text-[10px] font-medium text-on-surface-variant">ART Ativa</span>
+</div>
+<button class="inline-flex items-center gap-1 px-3 py-1 bg-surface-container-high hover:bg-primary hover:text-on-primary text-on-surface text-xs font-semibold transition-colors">
+<span>Acessar Obra</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 3: Centro Logístico Bandeirantes -->
+<article class="p-4 bg-surface-container-lowest shadow-sm hover:shadow-md transition-all">
+<div class="flex items-start justify-between gap-3">
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="text-[11px] font-mono font-semibold px-1.5 py-0.5 bg-surface-container text-on-surface-variant">OBR-2024-02</span>
+<span class="inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 bg-surface-container-high text-on-surface">
+                  FASE FINAL • ACABAMENTO • 88.0%
+                </span>
+</div>
+<h4 class="text-base font-bold text-on-surface mt-1.5 tracking-tight truncate">Centro Logístico Bandeirantes</h4>
+<p class="text-xs text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-sm text-secondary">location_on</span>
+<span class="truncate">Rod. dos Bandeirantes, km 48 - Jundiaí - SP</span>
+</p>
+</div>
+<!-- Circular Progress Indicator SVG (88.0%) -->
+<div class="flex-none flex flex-col items-center justify-center relative w-12 h-12">
+<svg class="w-12 h-12 transform -rotate-90" viewbox="0 0 48 48">
+<circle class="text-surface-container-highest" cx="24" cy="24" fill="transparent" r="18.5" stroke="currentColor" stroke-width="3"></circle>
+<circle class="text-primary" cx="24" cy="24" fill="transparent" r="18.5" stroke="currentColor" stroke-dasharray="116.2" stroke-dashoffset="13.94" stroke-linecap="square" stroke-width="3.5"></circle>
+</svg>
+<span class="absolute text-[10px] font-bold text-on-surface">88%</span>
+</div>
+</div>
+<div class="mt-3 pt-2.5 flex flex-col gap-2">
+<div class="flex items-center gap-1.5 text-on-surface-variant text-xs">
+<span class="material-symbols-outlined text-sm text-secondary">verified_user</span>
+<span class="text-[11px]">Vistoria bombeiros agendada para sexta • Último relatório há 2h</span>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-2">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 bg-surface-container text-[10px] font-medium text-on-surface-variant">Galpão Industrial</span>
+<span class="px-2 py-0.5 bg-surface-container text-[10px] font-medium text-on-surface-variant">LEED Silver</span>
+</div>
+<button class="inline-flex items-center gap-1 px-3 py-1 bg-surface-container-high hover:bg-primary hover:text-on-primary text-on-surface text-xs font-semibold transition-colors">
+<span>Acessar Obra</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 4: Reserva das Palmeiras -->
+<article class="p-4 bg-surface-container-lowest shadow-sm hover:shadow-md transition-all">
+<div class="flex items-start justify-between gap-3">
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="text-[11px] font-mono font-semibold px-1.5 py-0.5 bg-surface-container text-on-surface-variant">OBR-2024-19</span>
+<span class="inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 bg-surface-container-high text-on-surface">
+                  FUNDAÇÃO / TERRACOM • 19.5%
+                </span>
+</div>
+<h4 class="text-base font-bold text-on-surface mt-1.5 tracking-tight truncate">Reserva das Palmeiras - Módulos 1 e 2</h4>
+<p class="text-xs text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-sm text-secondary">location_on</span>
+<span class="truncate">Rua das Figueiras, 890 - Campinas - SP</span>
+</p>
+</div>
+<!-- Circular Progress Indicator SVG (19.5%) -->
+<div class="flex-none flex flex-col items-center justify-center relative w-12 h-12">
+<svg class="w-12 h-12 transform -rotate-90" viewbox="0 0 48 48">
+<circle class="text-surface-container-highest" cx="24" cy="24" fill="transparent" r="18.5" stroke="currentColor" stroke-width="3"></circle>
+<circle class="text-primary" cx="24" cy="24" fill="transparent" r="18.5" stroke="currentColor" stroke-dasharray="116.2" stroke-dashoffset="93.54" stroke-linecap="square" stroke-width="3.5"></circle>
+</svg>
+<span class="absolute text-[10px] font-bold text-on-surface">20%</span>
+</div>
+</div>
+<div class="mt-3 pt-2.5 flex flex-col gap-2">
+<div class="flex items-center gap-1.5 text-on-surface-variant text-xs">
+<span class="material-symbols-outlined text-sm text-secondary">update</span>
+<span class="text-[11px]">Estaqueamento contínuo 60% concluído • Atualizado ontem às 17:40</span>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-2">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 bg-surface-container text-[10px] font-medium text-on-surface-variant">Residencial Horizontal</span>
+</div>
+<button class="inline-flex items-center gap-1 px-3 py-1 bg-surface-container-high hover:bg-primary hover:text-on-primary text-on-surface text-xs font-semibold transition-colors">
+<span>Acessar Obra</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</article>
+</section>
+<!-- GROUP 2: EM PLANEJAMENTO / MOBILIZAÇÃO -->
+<section class="space-y-3 project-group" data-category="planning">
+<div class="flex items-center justify-between pb-1">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<h3 class="text-xs font-bold text-on-surface uppercase tracking-wider">Em Planejamento / Mobilização</h3>
+<span class="text-[11px] text-on-surface-variant font-mono">(2)</span>
+</div>
+<span class="text-[11px] text-on-surface-variant font-medium">Pré-obra &amp; Licenciamento</span>
+</div>
+<!-- Card 5: Hospital Samaritano Expansão Norte -->
+<article class="p-4 bg-surface-container-lowest shadow-sm hover:shadow-md transition-all">
+<div class="flex items-start justify-between gap-3">
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="text-[11px] font-mono font-semibold px-1.5 py-0.5 bg-surface-container text-on-surface-variant">OBR-2025-01</span>
+<span class="inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 bg-surface-container-high text-on-surface">
+                  LICENCIAMENTO &amp; PROJETOS • 6.0%
+                </span>
+</div>
+<h4 class="text-base font-bold text-on-surface mt-1.5 tracking-tight truncate">Hospital Samaritano Expansão Norte</h4>
+<p class="text-xs text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-sm text-secondary">location_on</span>
+<span class="truncate">Rua Martiniano de Carvalho, 420 - Bela Vista, São Paulo - SP</span>
+</p>
+</div>
+<!-- Circular Progress Indicator SVG (6.0%) -->
+<div class="flex-none flex flex-col items-center justify-center relative w-12 h-12">
+<svg class="w-12 h-12 transform -rotate-90" viewbox="0 0 48 48">
+<circle class="text-surface-container-highest" cx="24" cy="24" fill="transparent" r="18.5" stroke="currentColor" stroke-width="3"></circle>
+<circle class="text-secondary" cx="24" cy="24" fill="transparent" r="18.5" stroke="currentColor" stroke-dasharray="116.2" stroke-dashoffset="109.22" stroke-linecap="square" stroke-width="3.5"></circle>
+</svg>
+<span class="absolute text-[10px] font-bold text-on-surface">6%</span>
+</div>
+</div>
+<div class="mt-3 pt-2.5 flex flex-col gap-2">
+<div class="flex items-center gap-1.5 text-on-surface-variant text-xs">
+<span class="material-symbols-outlined text-sm text-secondary">pending_actions</span>
+<span class="text-[11px]">Aprovação vigilância sanitária pendente • Canteiro em montagem</span>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-2">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 bg-surface-container text-[10px] font-medium text-on-surface-variant">Saúde / Alta Complexidade</span>
+<span class="px-2 py-0.5 bg-surface-container text-[10px] font-medium text-on-surface-variant">Início Nov/2024</span>
+</div>
+<button class="inline-flex items-center gap-1 px-3 py-1 bg-surface-container-high hover:bg-primary hover:text-on-primary text-on-surface text-xs font-semibold transition-colors">
+<span>Acessar Planejamento</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 6: Edifício Office Nova Faria Lima -->
+<article class="p-4 bg-surface-container-lowest shadow-sm hover:shadow-md transition-all">
+<div class="flex items-start justify-between gap-3">
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="text-[11px] font-mono font-semibold px-1.5 py-0.5 bg-surface-container text-on-surface-variant">OBR-2025-03</span>
+<span class="inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 bg-surface-container text-on-surface-variant">
+                  PLANEJAMENTO EXECUTIVO • 0%
+                </span>
+</div>
+<h4 class="text-base font-bold text-on-surface mt-1.5 tracking-tight truncate">Edifício Office Nova Faria Lima</h4>
+<p class="text-xs text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-sm text-secondary">location_on</span>
+<span class="truncate">Rua Funchal, 200 - Vila Olímpia, São Paulo - SP</span>
+</p>
+</div>
+<!-- Circular Progress Indicator SVG (0%) -->
+<div class="flex-none flex flex-col items-center justify-center relative w-12 h-12">
+<svg class="w-12 h-12 transform -rotate-90" viewbox="0 0 48 48">
+<circle class="text-surface-container-highest" cx="24" cy="24" fill="transparent" r="18.5" stroke="currentColor" stroke-width="3"></circle>
+</svg>
+<span class="absolute text-[10px] font-bold text-on-surface">0%</span>
+</div>
+</div>
+<div class="mt-3 pt-2.5 flex flex-col gap-2">
+<div class="flex items-center gap-1.5 text-on-surface-variant text-xs">
+<span class="material-symbols-outlined text-sm text-secondary">view_in_ar</span>
+<span class="text-[11px]">Compatibilização de projetos BIM em andamento</span>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-2">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 bg-surface-container text-[10px] font-medium text-on-surface-variant">Comercial Triplo A</span>
+</div>
+<button class="inline-flex items-center gap-1 px-3 py-1 bg-surface-container-high hover:bg-primary hover:text-on-primary text-on-surface text-xs font-semibold transition-colors">
+<span>Acessar Planejamento</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</article>
+</section>
+<!-- GROUP 3: CONCLUÍDAS / ENTREGUES -->
+<section class="space-y-3 project-group" data-category="completed">
+<div class="flex items-center justify-between pb-1">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<h3 class="text-xs font-bold text-on-surface uppercase tracking-wider">Concluídas / Entregues</h3>
+<span class="text-[11px] text-on-surface-variant font-mono">(2)</span>
+</div>
+<span class="text-[11px] text-on-surface-variant font-medium">Acervo &amp; Assistência Técnica</span>
+</div>
+<!-- Card 7: Torres da Villa Residencial -->
+<article class="p-4 bg-surface-container-lowest shadow-sm hover:shadow-md transition-all">
+<div class="flex items-start justify-between gap-3">
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="text-[11px] font-mono font-semibold px-1.5 py-0.5 bg-surface-container text-on-surface-variant">OBR-2022-11</span>
+<span class="inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 bg-tertiary-container text-on-tertiary-container">
+<span class="material-symbols-outlined text-xs">task_alt</span>
+                  ENTREGUE &amp; HABITE-SE • 100%
+                </span>
+</div>
+<h4 class="text-base font-bold text-on-surface mt-1.5 tracking-tight truncate">Torres da Villa Residencial</h4>
+<p class="text-xs text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-sm text-secondary">location_on</span>
+<span class="truncate">Rua Vergueiro, 2800 - Vila Mariana, São Paulo - SP</span>
+</p>
+</div>
+<!-- Circular Progress Indicator SVG (100% Complete) -->
+<div class="flex-none flex flex-col items-center justify-center relative w-12 h-12">
+<svg class="w-12 h-12 transform -rotate-90" viewbox="0 0 48 48">
+<circle class="text-tertiary" cx="24" cy="24" fill="transparent" r="18.5" stroke="currentColor" stroke-width="3.5"></circle>
+</svg>
+<span class="material-symbols-outlined text-tertiary text-base">check</span>
+</div>
+</div>
+<div class="mt-3 pt-2.5 flex flex-col gap-2">
+<div class="flex items-center gap-1.5 text-on-surface-variant text-xs">
+<span class="material-symbols-outlined text-sm text-tertiary">verified</span>
+<span class="text-[11px]">Garantia pós-obra ativa • Vistoria final realizada em 15/08/2024</span>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-2">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 bg-surface-container text-[10px] font-medium text-on-surface-variant">PBQP-H Auditado</span>
+</div>
+<button class="inline-flex items-center gap-1 px-3 py-1 bg-surface-container-high hover:bg-primary hover:text-on-primary text-on-surface text-xs font-semibold transition-colors">
+<span>Ver Histórico / As-Built</span>
+<span class="material-symbols-outlined text-sm">history_edu</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 8: Complexo Empresarial Alpha One -->
+<article class="p-4 bg-surface-container-lowest shadow-sm hover:shadow-md transition-all">
+<div class="flex items-start justify-between gap-3">
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="text-[11px] font-mono font-semibold px-1.5 py-0.5 bg-surface-container text-on-surface-variant">OBR-2021-05</span>
+<span class="inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 bg-tertiary-container text-on-tertiary-container">
+<span class="material-symbols-outlined text-xs">task_alt</span>
+                  ENTREGUE • 100%
+                </span>
+</div>
+<h4 class="text-base font-bold text-on-surface mt-1.5 tracking-tight truncate">Complexo Empresarial Alpha One</h4>
+<p class="text-xs text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-sm text-secondary">location_on</span>
+<span class="truncate">Alameda Rio Negro, 500 - Alphaville, Barueri - SP</span>
+</p>
+</div>
+<!-- Circular Progress Indicator SVG (100% Complete) -->
+<div class="flex-none flex flex-col items-center justify-center relative w-12 h-12">
+<svg class="w-12 h-12 transform -rotate-90" viewbox="0 0 48 48">
+<circle class="text-tertiary" cx="24" cy="24" fill="transparent" r="18.5" stroke="currentColor" stroke-width="3.5"></circle>
+</svg>
+<span class="material-symbols-outlined text-tertiary text-base">check</span>
+</div>
+</div>
+<div class="mt-3 pt-2.5 flex flex-col gap-2">
+<div class="flex items-center gap-1.5 text-on-surface-variant text-xs">
+<span class="material-symbols-outlined text-sm text-secondary">archive</span>
+<span class="text-[11px]">Encerramento formal de ART e documentação final arquivada</span>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-2">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 bg-surface-container text-[10px] font-medium text-on-surface-variant">Comercial</span>
+</div>
+<button class="inline-flex items-center gap-1 px-3 py-1 bg-surface-container-high hover:bg-primary hover:text-on-primary text-on-surface text-xs font-semibold transition-colors">
+<span>Ver Histórico</span>
+<span class="material-symbols-outlined text-sm">history_edu</span>
+</button>
+</div>
+</div>
+</article>
+</section>
+</div>
+<!-- DRAWER FOOTER (Status Summary & Global Export) -->
+<div class="flex-none px-6 py-3.5 bg-surface-container-low shadow-inner flex flex-wrap items-center justify-between gap-3 text-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-base text-tertiary">verified_user</span>
+<span class="text-on-surface-variant text-[11px]">
+          Exibindo <strong class="text-on-surface">8 de 8</strong> empreendimentos atribuídos à <strong>CREA-SP 506.924.810-D</strong>
+</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="inline-flex items-center gap-1.5 px-3 py-2 bg-surface text-on-surface hover:bg-surface-container-high font-medium text-xs shadow-sm transition-colors">
+<span class="material-symbols-outlined text-sm text-primary">download</span>
+<span>Exportar Relatório Consolidado (PDF/Excel)</span>
+</button>
+<button class="px-4 py-2 bg-on-surface text-surface hover:bg-on-surface/90 font-medium text-xs transition-colors" id="close-drawer-footer-btn">
+          Fechar
+        </button>
+</div>
+</div>
+</aside>
+</div>
+<script>
+  (function initDrawerInteractions() {
+    const backdrop = document.getElementById('drawer-backdrop');
+    const drawer = document.getElementById('projects-drawer');
+    const closeBtns = [
+      document.getElementById('close-drawer-btn'),
+      document.getElementById('close-drawer-footer-btn')
+    ];
+    const searchInput = document.getElementById('search-input');
+    const filterChips = document.querySelectorAll('.filter-chip');
+    const groups = document.querySelectorAll('.project-group');
+
+    function closeDrawer() {
+      drawer.classList.add('translate-x-full');
+      backdrop.classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    function openDrawer() {
+      drawer.classList.remove('translate-x-full');
+      backdrop.classList.remove('opacity-0', 'pointer-events-none');
+      if (searchInput) searchInput.focus();
+    }
+
+    closeBtns.forEach(btn => {
+      if (btn) btn.addEventListener('click', closeDrawer);
+    });
+
+    if (backdrop) {
+      backdrop.addEventListener('click', closeDrawer);
+    }
+
+    // Keyboard shortcut handlers (Esc to close, Ctrl+K to search)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeDrawer();
+      }
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        openDrawer();
+      }
+    });
+
+    // Simple Filter Chips Logic
+    filterChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        filterChips.forEach(c => {
+          c.classList.remove('bg-on-surface', 'text-surface', 'font-semibold');
+          c.classList.add('bg-surface-container', 'text-on-surface-variant', 'font-medium');
+        });
+        chip.classList.add('bg-on-surface', 'text-surface', 'font-semibold');
+        chip.classList.remove('bg-surface-container', 'text-on-surface-variant', 'font-medium');
+
+        const filter = chip.getAttribute('data-filter');
+        groups.forEach(group => {
+          if (filter === 'all' || group.getAttribute('data-category') === filter) {
+            group.classList.remove('hidden');
+          } else {
+            group.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    // Realtime Search Filter
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const val = e.target.value.toLowerCase().trim();
+        const articles = drawer.querySelectorAll('article');
+
+        articles.forEach(article => {
+          const text = article.textContent.toLowerCase();
+          if (text.includes(val)) {
+            article.style.display = '';
+          } else {
+            article.style.display = 'none';
+          }
+        });
+      });
+    }
+  })();
+</script></main><footer class="h-12 w-full bg-surface-container-low px-6 lg:px-8 flex items-center justify-between text-xs text-on-surface-variant"><div class="flex items-center gap-4"><span>ObraSync Enterprise v2.4.0</span><span class="hidden sm:inline">•</span><span class="hidden sm:inline flex items-center gap-1"><span class="material-symbols-outlined text-sm text-tertiary">verified</span>Integridade de Dados Auditada</span></div><div class="flex items-center gap-4"><span class="hidden md:inline">Ambiente Corporativo Seguro</span><span>Residencial Horizonte - Torre A &amp; B</span></div></footer></div></body></html>

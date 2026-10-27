@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-bright":"#ffffff","surface-container-low":"#f4f4f4","tertiary-fixed-dim":"#42be65","surface":"#ffffff","tertiary-fixed":"#a7f0ba","surface-variant":"#f4f4f4","on-primary":"#ffffff","on-error-container":"#750e13","on-secondary-container":"#525252","primary-fixed-dim":"#78a9ff","error":"#da1e28","on-surface":"#161616","background":"#ffffff","secondary-fixed-dim":"#c6c6c6","primary":"#0f62fe","secondary-container":"#e0e0e0","surface-container-high":"#e0e0e0","on-secondary":"#ffffff","on-error":"#ffffff","on-tertiary-fixed":"#022d0d","on-primary-container":"#161616","on-secondary-fixed":"#161616","surface-container":"#f4f4f4","secondary-fixed":"#e0e0e0","outline-variant":"#e0e0e0","outline":"#8d8d8d","on-primary-fixed-variant":"#0043ce","inverse-on-surface":"#f4f4f4","tertiary":"#198038","on-primary-fixed":"#001d6c","on-surface-variant":"#525252","surface-container-highest":"#c6c6c6","on-tertiary":"#ffffff","on-tertiary-fixed-variant":"#044317","surface-tint":"#0f62fe","inverse-surface":"#393939","on-secondary-fixed-variant":"#525252","primary-fixed":"#d0e2ff","on-background":"#161616","on-tertiary-container":"#044317","inverse-primary":"#78a9ff","tertiary-container":"#a7f0ba","primary-container":"#d0e2ff","surface-dim":"#e0e0e0","secondary":"#6f6f6f","surface-container-lowest":"#ffffff","error-container":"#fff1f1"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{},fontFamily:{headline:["IBM Plex Sans"],display:["IBM Plex Sans"],body:["IBM Plex Sans"],label:["IBM Plex Sans"]},fontSize:{}}}}</script></head><body class="bg-surface font-body text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 h-16 bg-surface z-50 flex items-center justify-between px-4 lg:px-6 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-4"><div class="flex items-center gap-3 pr-4"><img alt="ObraSync Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1V1rtPWhd7WNs8YkyzCaeFp-ulWzm0w3nQAZyFqauCXz5iL7vz-ghXMPYhHV0_qbo8cnuOHtbeQ4VmEHA9VQ7hCerNjMg9OVF5XOw-fWnZ9IDHsUni9EWpd8cUWF1VyUu7O4McUolzAuqUpBfyl4CPD6i_WEXLSvNYZmqa9fbgBMZqsRoHnOiH2kLwqmJ4NcOfwXzg5u7KUPj-WzctEO68g-WdJO4zTNGrIm3ZwZxuPoPoZX-Qi4EGSsI0"/><span class="font-headline font-semibold text-lg text-on-surface tracking-tight hidden sm:inline">ObraSync</span></div><div class="hidden md:flex items-center gap-2 bg-surface-container px-3 py-1.5"><span class="material-symbols-outlined text-primary text-xl">apartment</span><div class="flex flex-col"><span class="text-[11px] text-on-surface-variant leading-none uppercase font-semibold">Obra Ativa</span><span class="text-xs font-medium text-on-surface leading-tight">Residencial Horizonte - Torre A &amp; B</span></div><span class="material-symbols-outlined text-on-surface-variant text-base cursor-pointer ml-1">expand_more</span></div></div><div class="flex items-center gap-3 lg:gap-5"><div class="hidden xl:flex items-center gap-2 px-2.5 py-1 bg-surface-container"><span class="w-2 h-2 rounded-full bg-tertiary"></span><span class="text-xs font-medium text-on-surface">Online</span><span class="text-xs text-on-surface-variant font-light">• 14 itens sincronizados</span></div><div class="hidden sm:flex items-center gap-2"><a class="inline-flex items-center gap-1.5 px-3 py-2 bg-primary text-on-primary text-xs font-medium hover:bg-primary/90 transition-colors" data-path="diario-de-obra-rdo" href="#"><span class="material-symbols-outlined text-sm">post_add</span><span>+ Novo RDO</span></a><a class="inline-flex items-center gap-1.5 px-3 py-2 bg-surface-container text-on-surface text-xs font-medium hover:bg-surface-container-high transition-colors" data-path="relatorio-fotografico" href="#"><span class="material-symbols-outlined text-sm">add_a_photo</span><span>+ Subir Fotos</span></a></div><div class="flex items-center gap-1 text-on-surface-variant"><button aria-label="Notificações de Canteiro" class="p-2 hover:bg-surface-container transition-colors relative" type="button"><span class="material-symbols-outlined text-xl text-on-surface">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full"></span></button><button aria-label="Ajuda e Suporte" class="p-2 hover:bg-surface-container transition-colors hidden sm:block" type="button"><span class="material-symbols-outlined text-xl text-on-surface">help_outline</span></button></div><div class="flex items-center gap-3 pl-2 sm:pl-4 bg-surface"><div class="hidden lg:flex flex-col text-right"><span class="text-xs font-semibold text-on-surface leading-tight">Eng. Ricardo Souza</span><span class="text-[11px] text-on-surface-variant leading-none">Engenheiro Residente</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOGd0SEmkgPx7MrGzaf5IoWSQzu7CbKZzyJi_HPjeJTNnyNI8CqfbmreMfLvcwCjmOLuwbov9uUSRl-8IU2UA0EG7CYz0Wa_6Io7wxVujYfLueor9-aLfs-tBbiyMGayOM0fOrb03ckgrpJfUfFRm224tdxYKkgpbssppZxxXaxBCC9eWFXv0sKonkHFh7kdNQIATYzFSimPFV1FCIlsuEEnaeSAqqp_eFiJbBKu3OC6YWvKsBouE3"/></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-64 bg-surface-container-low z-40 flex flex-col justify-between overflow-y-auto"><div class="py-4"><div class="px-4 pb-3 mb-2"><span class="text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider">Navegação de Campo</span></div><nav class="space-y-0.5 px-2" data-active-classes="bg-primary-container text-on-primary-container font-semibold"><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="dashboard-gerencial" href="#"><span class="material-symbols-outlined text-lg">dashboard</span><span>Dashboard Gerencial</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="diario-de-obra-rdo" href="#"><span class="material-symbols-outlined text-lg">menu_book</span><span>Diário de Obra (RDO)</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="relatorio-fotografico" href="#"><span class="material-symbols-outlined text-lg">photo_camera</span><span>Relatório Fotográfico</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="efetivo-e-equipamentos" href="#"><span class="material-symbols-outlined text-lg">engineering</span><span>Efetivo &amp; Equipamentos</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="clima-e-chuvas" href="#"><span class="material-symbols-outlined text-lg">rainy</span><span>Clima &amp; Chuvas</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="relatorios-executivos" href="#"><span class="material-symbols-outlined text-lg">assessment</span><span>Relatórios Executivos</span></a><a class="flex items-center gap-3 px-3 py-2.5 text-xs text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="configuracoes" href="#"><span class="material-symbols-outlined text-lg">settings</span><span>Configurações</span></a></nav></div><div class="p-4 bg-surface-container m-3"><div class="flex items-center justify-between text-xs text-on-surface-variant mb-1.5"><span class="font-medium">Conexão Canteiro</span><span class="text-[11px] font-semibold text-tertiary">Ativa</span></div><div class="w-full bg-surface-container-highest h-1"><div class="bg-tertiary h-1 w-full"></div></div><p class="text-[11px] text-on-surface-variant mt-2 leading-relaxed">Sincronismo automático a cada 5 min. Modo offline operacional.</p></div></aside><div class="pl-64"><main class="relative pt-16 min-h-[calc(100vh-3rem)] w-full px-6 lg:px-8 py-6 bg-surface"><div class="flex flex-col w-full">
+<!-- Page Header & Action Bar -->
+<section class="flex flex-col lg:flex-row lg:items-center justify-between pb-6 gap-6 bg-surface">
+<div class="flex flex-col gap-1.5 min-w-0">
+<!-- Breadcrumb -->
+<nav class="flex items-center gap-2 text-xs text-on-surface-variant font-medium tracking-wide uppercase">
+<span>Sistema &amp; Preferências</span>
+<span class="material-symbols-outlined text-[13px] text-outline">chevron_right</span>
+<span class="text-primary font-semibold">Minha Conta &amp; Canteiro</span>
+</nav>
+<!-- Title & Security Badges -->
+<h1 class="text-2xl lg:text-3xl font-headline font-semibold text-on-surface tracking-tight leading-none mt-1">
+        Configurações da Conta &amp; Canteiro
+      </h1>
+<div class="flex flex-wrap items-center gap-3 mt-2 text-xs text-on-surface-variant">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 bg-surface-container font-medium text-on-surface">
+<span class="material-symbols-outlined text-sm text-tertiary">lock</span>
+          Ambiente Corporativo Seguro
+        </span>
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 bg-surface-container font-medium text-on-surface">
+<span class="material-symbols-outlined text-sm text-tertiary">verified_user</span>
+          Certificação CREA/CONFEA Ativa
+        </span>
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 bg-surface-container font-medium text-on-surface">
+<span class="material-symbols-outlined text-sm text-primary">shield</span>
+          Criptografia AES-256
+        </span>
+</div>
+</div>
+<!-- Header CTA Actions -->
+<div class="flex items-center gap-3 shrink-0">
+<button class="h-10 px-4 text-xs font-semibold text-on-surface bg-surface-container hover:bg-surface-container-high transition-colors flex items-center gap-2 focus:outline-none" type="button">
+<span class="material-symbols-outlined text-base">close</span>
+        Descartar Alterações
+      </button>
+<button class="h-10 px-5 text-xs font-semibold text-on-primary bg-primary hover:bg-on-primary-fixed-variant transition-colors flex items-center gap-2 shadow-sm focus:outline-none" id="saveTopBtn" type="button">
+<span class="material-symbols-outlined text-base">check</span>
+        Salvar Configurações
+      </button>
+</div>
+</section>
+<!-- Navigation Secondary Tabs -->
+<nav class="flex items-center gap-1 bg-surface-container-low p-1 overflow-x-auto text-xs font-medium scrollbar-none mb-8">
+<button class="tab-btn px-4 py-2.5 bg-surface text-primary font-semibold shadow-sm flex items-center gap-2 shrink-0 transition-all" data-target="tab-profile" type="button">
+<span class="material-symbols-outlined text-base">badge</span>
+      Perfil Profissional &amp; CREA
+    </button>
+<button class="tab-btn px-4 py-2.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all flex items-center gap-2 shrink-0" data-target="tab-notifications" type="button">
+<span class="material-symbols-outlined text-base">notifications_active</span>
+      Preferências de Alertas &amp; Notificações
+    </button>
+<button class="tab-btn px-4 py-2.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all flex items-center gap-2 shrink-0" data-target="tab-offline" type="button">
+<span class="material-symbols-outlined text-base">cloud_sync</span>
+      Sincronização Offline &amp; Armazenamento
+    </button>
+<button class="tab-btn px-4 py-2.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all flex items-center gap-2 shrink-0" data-target="tab-security" type="button">
+<span class="material-symbols-outlined text-base">gavel</span>
+      Segurança &amp; Assinatura ICP
+    </button>
+</nav>
+<!-- Main Settings Body Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Primary Sections (8 cols) -->
+<div class="lg:col-span-8 flex flex-col gap-10">
+<!-- SECTION 1: Dados do Perfil e Vínculo Profissional -->
+<section class="flex flex-col gap-6" id="tab-profile">
+<div class="flex items-center justify-between pb-3 bg-surface">
+<div>
+<div class="text-[11px] font-bold text-primary uppercase tracking-wider">Módulo 01</div>
+<h2 class="text-lg font-headline font-semibold text-on-surface">Perfil Profissional &amp; Vínculo CREA</h2>
+</div>
+<span class="text-xs text-on-surface-variant font-mono">ID: ENG-4882-SP</span>
+</div>
+<!-- Identity Banner Card -->
+<div class="bg-surface-container p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+<div class="flex items-center gap-5">
+<div class="relative shrink-0">
+<img class="w-20 h-20 object-cover shadow-sm" data-alt="Close-up professional portrait of a Brazilian male civil engineer in his late 30s wearing a clean white hardhat, navy safety vest, and high-visibility work shirt, confident look, crisp morning industrial site background, photorealistic style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9rcRTf2JlKHlMEvTURe2TZm98USsM0uXllHSlqZ8ZfmQkVUhYE78_HP6-rxirUbWKXL_N4r5ZEKj7OMEVFIcz0Y1crScwzQ8mIUvKoelwntmkZTA3jPJf77yZTQNeaM8l-lK72HGHAFXtg9xcAI9QesaBSYRiTcYOfyRSPQfdNIXJdnEle2ohxMn9vUhjqgG0z_-oNioaDzuorToZdz2pLjoNqfOBFNkcjKzJf8sS9_ida-t3KlhN"/>
+<span class="absolute -bottom-1.5 -right-1.5 bg-tertiary text-on-tertiary p-1 rounded-full flex items-center justify-center shadow-sm" title="Vínculo Ativo">
+<span class="material-symbols-outlined text-xs">verified</span>
+</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="text-base font-headline font-semibold text-on-surface leading-tight">Eng. Ricardo Alcantara Souza</span>
+<span class="px-2 py-0.5 text-[10px] uppercase font-bold tracking-wider bg-tertiary-container text-on-tertiary-container">
+                  CREA Regular / Ativo
+                </span>
+</div>
+<p class="text-xs text-on-surface-variant mt-1">Engenheiro Civil Pleno • Responsável Técnico de Obra</p>
+<div class="flex items-center gap-3 text-xs text-on-surface-variant mt-2 font-mono">
+<span>Último Login: Hoje, 06:42</span>
+<span>•</span>
+<span>Subsolo Torre B</span>
+</div>
+</div>
+</div>
+<div class="flex sm:flex-col gap-2 shrink-0">
+<button class="h-9 px-3.5 bg-surface text-on-surface text-xs font-medium hover:bg-surface-container-high transition-colors flex items-center justify-center gap-2 shadow-sm focus:outline-none" type="button">
+<span class="material-symbols-outlined text-sm text-primary">photo_camera</span>
+              Alterar Foto
+            </button>
+<button class="h-9 px-3.5 bg-surface text-on-surface text-xs font-medium hover:bg-surface-container-high transition-colors flex items-center justify-center gap-2 shadow-sm focus:outline-none" type="button">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">qr_code_2</span>
+              Crachá Digital de Campo
+            </button>
+</div>
+</div>
+<!-- Input Fields Form Matrix -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5 bg-surface-container-low p-6">
+<!-- Nome Completo -->
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-semibold text-on-surface">Nome Completo</label>
+<input class="h-10 px-3 text-xs bg-surface text-on-surface placeholder-on-surface-variant focus:bg-surface focus:outline-none focus:ring-1 focus:ring-primary transition-all font-body" type="text" value="Ricardo Alcantara Souza"/>
+<span class="text-[11px] text-on-surface-variant">Conforme documento oficial de registro federal.</span>
+</div>
+<!-- E-mail Corporativo -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<label class="text-xs font-semibold text-on-surface">E-mail Corporativo</label>
+<span class="text-[10px] font-bold tracking-wide uppercase text-tertiary bg-tertiary-container px-1.5 py-0.5">Verificado</span>
+</div>
+<div class="relative flex items-center">
+<input class="h-10 w-full pl-3 pr-9 text-xs bg-surface text-on-surface focus:bg-surface focus:outline-none focus:ring-1 focus:ring-primary transition-all font-body" type="email" value="ricardo.souza@construtora.com.br"/>
+<span class="material-symbols-outlined text-tertiary text-base absolute right-2.5">check_circle</span>
+</div>
+<span class="text-[11px] text-on-surface-variant">Canal direto para relatórios e atas deliberativas.</span>
+</div>
+<!-- Telefone / WhatsApp -->
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-semibold text-on-surface">Telefone de Campo / WhatsApp</label>
+<div class="relative flex items-center">
+<input class="h-10 w-full pl-3 pr-8 text-xs bg-surface text-on-surface focus:bg-surface focus:outline-none focus:ring-1 focus:ring-primary transition-all font-body" type="tel" value="+55 (11) 98765-4321"/>
+<span class="material-symbols-outlined text-on-surface-variant text-base absolute right-2.5">phone_iphone</span>
+</div>
+<span class="text-[11px] text-on-surface-variant">Utilizado para disparos emergenciais SMS e WhatsApp.</span>
+</div>
+<!-- Registro CREA -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<label class="text-xs font-semibold text-on-surface">Registro Profissional CREA / CAU</label>
+<span class="text-[10px] font-mono font-semibold text-primary bg-primary-container px-1.5 py-0.5">Homologado</span>
+</div>
+<div class="relative flex items-center">
+<input class="h-10 w-full pl-3 pr-8 text-xs bg-surface text-on-surface font-mono focus:bg-surface focus:outline-none focus:ring-1 focus:ring-primary transition-all" type="text" value="CREA-SP 506.924.810-D"/>
+<span class="material-symbols-outlined text-primary text-base absolute right-2.5">workspace_premium</span>
+</div>
+<span class="text-[11px] text-on-surface-variant">Visto regional emitido para São Paulo e Grande ABC.</span>
+</div>
+<!-- ART Principal -->
+<div class="flex flex-col gap-1.5 md:col-span-2">
+<label class="text-xs font-semibold text-on-surface">ART Principal Ativa (Anotação de Responsabilidade Técnica)</label>
+<div class="relative flex items-center">
+<input class="h-10 w-full pl-3 pr-8 text-xs bg-surface text-on-surface focus:bg-surface focus:outline-none focus:ring-1 focus:ring-primary transition-all font-body" type="text" value="ART nº 2024.08821 — Execução Residencial Horizonte"/>
+<span class="material-symbols-outlined text-on-surface-variant text-base absolute right-2.5">contract</span>
+</div>
+<span class="text-[11px] text-on-surface-variant">Vinculada à assinatura eletrônica diária dos relatórios RDO.</span>
+</div>
+<!-- Função Operacional -->
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-semibold text-on-surface">Função Operacional</label>
+<select class="h-10 px-3 text-xs bg-surface text-on-surface focus:outline-none focus:ring-1 focus:ring-primary transition-all">
+<option selected="">Engenheiro de Obra Residente</option>
+<option>Coordenador de Produção</option>
+<option>Mestre de Obras Geral</option>
+<option>Auditor de Qualidade e Segurança (SGI)</option>
+</select>
+</div>
+<!-- Canteiro Padrão -->
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-semibold text-on-surface">Canteiro Padrão Pré-carregado</label>
+<select class="h-10 px-3 text-xs bg-surface text-on-surface focus:outline-none focus:ring-1 focus:ring-primary transition-all">
+<option selected="">Residencial Horizonte - Torre A &amp; B</option>
+<option>Parque Jardins - Fase de Fundações</option>
+<option>Complexo Logístico Anhanguera</option>
+</select>
+</div>
+</div>
+</section>
+<!-- SECTION 2: Preferências de Notificações e Alertas Críticos -->
+<section class="flex flex-col gap-6" id="tab-notifications">
+<div class="flex items-center justify-between pb-3 bg-surface">
+<div>
+<div class="text-[11px] font-bold text-primary uppercase tracking-wider">Módulo 02</div>
+<h2 class="text-lg font-headline font-semibold text-on-surface">Alertas Críticos &amp; Notificações do Canteiro</h2>
+</div>
+<span class="text-xs text-on-surface-variant">4 de 5 canais ativos</span>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Item 1: Alertas Meteorológicos -->
+<div class="p-4 bg-surface-container flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex items-start gap-3.5">
+<div class="p-2 bg-surface text-error shrink-0">
+<span class="material-symbols-outlined text-xl">air</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="text-xs font-semibold text-on-surface">Alertas Meteorológicos Críticos (Tempestade / Vento &gt; 40 km/h)</span>
+<span class="text-[10px] font-bold tracking-wider uppercase bg-error-container text-on-error-container px-1.5 py-0.2">Prioridade Alta</span>
+</div>
+<p class="text-xs text-on-surface-variant mt-0.5 leading-relaxed">
+                  Disparo sonoro imediato no dispositivo para paralisação compulsória de gruas, guinchos cremalheira e andaimes suspensos.
+                </p>
+</div>
+</div>
+<button aria-checked="true" class="toggle-switch shrink-0 relative inline-flex h-6 w-11 items-center bg-primary transition-colors focus:outline-none" role="switch" type="button">
+<span class="translate-x-6 inline-block h-4 w-4 bg-white transition-transform"></span>
+</button>
+</div>
+<!-- Item 2: RNC Técnica -->
+<div class="p-4 bg-surface-container flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex items-start gap-3.5">
+<div class="p-2 bg-surface text-primary shrink-0">
+<span class="material-symbols-outlined text-xl">report_problem</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="text-xs font-semibold text-on-surface">Abertura de RNC Técnica (Não Conformidade Estrutural)</span>
+<span class="text-[10px] font-bold tracking-wider uppercase bg-primary-container text-on-primary-container px-1.5 py-0.2">Qualidade</span>
+</div>
+<p class="text-xs text-on-surface-variant mt-0.5 leading-relaxed">
+                  Notificação prioritária com envio instantâneo de foto, geolocalização da peça concretada e solicitação formal de parecer do calculista.
+                </p>
+</div>
+</div>
+<button aria-checked="true" class="toggle-switch shrink-0 relative inline-flex h-6 w-11 items-center bg-primary transition-colors focus:outline-none" role="switch" type="button">
+<span class="translate-x-6 inline-block h-4 w-4 bg-white transition-transform"></span>
+</button>
+</div>
+<!-- Item 3: Fechamento Diário RDO -->
+<div class="p-4 bg-surface-container flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex items-start gap-3.5">
+<div class="p-2 bg-surface text-tertiary shrink-0">
+<span class="material-symbols-outlined text-xl">schedule</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="text-xs font-semibold text-on-surface">Lembrete de Fechamento Diário do RDO (às 17h30)</span>
+<span class="text-[10px] font-bold tracking-wider uppercase bg-surface-container-high text-on-surface-variant px-1.5 py-0.2">Rotina</span>
+</div>
+<p class="text-xs text-on-surface-variant mt-0.5 leading-relaxed">
+                  Push notification com resumo pendente para consolidação do efetivo de terceiros e frentes de serviço antes do desmobilizar da equipe.
+                </p>
+</div>
+</div>
+<button aria-checked="true" class="toggle-switch shrink-0 relative inline-flex h-6 w-11 items-center bg-primary transition-colors focus:outline-none" role="switch" type="button">
+<span class="translate-x-6 inline-block h-4 w-4 bg-white transition-transform"></span>
+</button>
+</div>
+<!-- Item 4: Entrada de Cargas Críticas -->
+<div class="p-4 bg-surface-container flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex items-start gap-3.5">
+<div class="p-2 bg-surface text-on-surface shrink-0">
+<span class="material-symbols-outlined text-xl">local_shipping</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="text-xs font-semibold text-on-surface">Entrada de Cargas Críticas (Aço CA-50 / Concreto Usinado)</span>
+<span class="text-[10px] font-bold tracking-wider uppercase bg-surface-container-high text-on-surface-variant px-1.5 py-0.2">Logística</span>
+</div>
+<p class="text-xs text-on-surface-variant mt-0.5 leading-relaxed">
+                  Alerta integrado com a guarita para início imediato dos ensaios de Slump Test, moldagem de corpos de prova e conferência de lote de barras.
+                </p>
+</div>
+</div>
+<button aria-checked="true" class="toggle-switch shrink-0 relative inline-flex h-6 w-11 items-center bg-primary transition-colors focus:outline-none" role="switch" type="button">
+<span class="translate-x-6 inline-block h-4 w-4 bg-white transition-transform"></span>
+</button>
+</div>
+<!-- Item 5: Resumo Executivo Diário por E-mail -->
+<div class="p-4 bg-surface-container-low flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex items-start gap-3.5">
+<div class="p-2 bg-surface text-secondary shrink-0">
+<span class="material-symbols-outlined text-xl">forward_to_inbox</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="text-xs font-semibold text-on-surface">Resumo Executivo Diário por E-mail (Envio às 19h00)</span>
+<span class="text-[10px] font-bold tracking-wider uppercase bg-surface-container-high text-on-surface-variant px-1.5 py-0.2">Inativo</span>
+</div>
+<p class="text-xs text-on-surface-variant mt-0.5 leading-relaxed">
+                  Compilado automático em PDF contendo índice pluviométrico, curva de avanço físico e atas de segurança do trabalho do dia.
+                </p>
+</div>
+</div>
+<button aria-checked="false" class="toggle-switch shrink-0 relative inline-flex h-6 w-11 items-center bg-secondary transition-colors focus:outline-none" role="switch" type="button">
+<span class="translate-x-1 inline-block h-4 w-4 bg-white transition-transform"></span>
+</button>
+</div>
+</div>
+</section>
+<!-- SECTION 3: Sincronização Offline e Armazenamento Local -->
+<section class="flex flex-col gap-6" id="tab-offline">
+<div class="flex items-center justify-between pb-3 bg-surface">
+<div>
+<div class="text-[11px] font-bold text-primary uppercase tracking-wider">Módulo 03</div>
+<h2 class="text-lg font-headline font-semibold text-on-surface">Sincronização Offline &amp; Armazenamento em Campo</h2>
+</div>
+<span class="text-xs text-tertiary font-medium flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+            Motor PWA Estável
+          </span>
+</div>
+<div class="bg-surface-container p-6 flex flex-col gap-6">
+<!-- Engine Status Header -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 bg-surface-container">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">database</span>
+</div>
+<div>
+<span class="text-xs font-semibold text-on-surface">Motor de Persistência Local</span>
+<p class="text-xs text-on-surface-variant">IndexedDB v4.2 + ServiceWorker PWA Ativo (Saudável)</p>
+</div>
+</div>
+<span class="text-xs font-mono bg-surface px-2.5 py-1 text-on-surface self-start sm:self-center">
+              Revisão de Cache: #8849-REV
+            </span>
+</div>
+<!-- Configuration Controls -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5 pt-2">
+<!-- Sync Frequency -->
+<div class="flex flex-col gap-1.5 md:col-span-2">
+<label class="text-xs font-semibold text-on-surface">Frequência de Sincronização Automática em Background</label>
+<select class="h-10 px-3 text-xs bg-surface text-on-surface focus:outline-none focus:ring-1 focus:ring-primary transition-all">
+<option>A cada 2 minutos (Consumo elevado de bateria)</option>
+<option selected="">A cada 5 minutos (Recomendado para 4G de canteiro)</option>
+<option>A cada 15 minutos (Econômico)</option>
+<option>Apenas via Conexão Wi-Fi do Escritório</option>
+</select>
+<span class="text-[11px] text-on-surface-variant">Evita perda de notas técnicas mesmo em oscilações bruscas de sinal.</span>
+</div>
+<!-- Toggle Compressão -->
+<div class="p-4 bg-surface flex items-start justify-between gap-3">
+<div class="flex flex-col pr-2">
+<span class="text-xs font-semibold text-on-surface">Compressão Inteligente de Fotos</span>
+<p class="text-[11px] text-on-surface-variant mt-1 leading-snug">
+                  Redimensiona fotos para 1600px no dispositivo mantendo intactos metadados EXIF, GPS e carimbo de data.
+                </p>
+</div>
+<button aria-checked="true" class="toggle-switch shrink-0 relative inline-flex h-6 w-11 items-center bg-primary transition-colors focus:outline-none" role="switch" type="button">
+<span class="translate-x-6 inline-block h-4 w-4 bg-white transition-transform"></span>
+</button>
+</div>
+<!-- Toggle Modo Subsolo -->
+<div class="p-4 bg-surface flex items-start justify-between gap-3">
+<div class="flex flex-col pr-2">
+<span class="text-xs font-semibold text-on-surface">Modo Subsolo / Forçar Operação sem Rede</span>
+<p class="text-[11px] text-on-surface-variant mt-1 leading-snug">
+                  Bloqueia tentativas intermitentes de conexão que esgotam a bateria durante vistorias em poços e garagens.
+                </p>
+</div>
+<button aria-checked="true" class="toggle-switch shrink-0 relative inline-flex h-6 w-11 items-center bg-primary transition-colors focus:outline-none" role="switch" type="button">
+<span class="translate-x-6 inline-block h-4 w-4 bg-white transition-transform"></span>
+</button>
+</div>
+</div>
+<!-- Storage Meter & Actions -->
+<div class="bg-surface p-5 flex flex-col gap-4">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between text-xs gap-1">
+<span class="font-semibold text-on-surface">Capacidade de Armazenamento em Disco Local</span>
+<span class="font-mono text-on-surface-variant">342 MB utilizados de 2.048 MB (16.7%)</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full bg-surface-container-high h-2 overflow-hidden flex">
+<div class="bg-primary h-full" style="width: 16.7%"></div>
+<div class="bg-tertiary-fixed-dim h-full" style="width: 3.8%"></div>
+</div>
+<div class="flex flex-wrap items-center justify-between text-xs text-on-surface-variant gap-2">
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-1.5">
+<span class="w-2 h-2 bg-primary inline-block"></span>
+                  Relatórios &amp; Cadastros (280 MB)
+                </span>
+<span class="flex items-center gap-1.5">
+<span class="w-2 h-2 bg-tertiary-fixed-dim inline-block"></span>
+                  78 fotos pendentes na fila (62 MB)
+                </span>
+</div>
+<span class="font-mono text-primary font-medium">1.706 MB livres</span>
+</div>
+<!-- Action Buttons for Cache -->
+<div class="flex flex-wrap items-center gap-3 pt-2">
+<button class="h-9 px-4 bg-primary text-on-primary text-xs font-semibold hover:bg-on-primary-fixed-variant transition-colors flex items-center gap-2 focus:outline-none" type="button">
+<span class="material-symbols-outlined text-sm">sync</span>
+                Forçar Sincronização Agora
+              </button>
+<button class="h-9 px-4 bg-surface-container text-on-surface text-xs font-semibold hover:bg-surface-container-high transition-colors flex items-center gap-2 focus:outline-none" type="button">
+<span class="material-symbols-outlined text-sm">cleaning_services</span>
+                Limpar Cache de Fotos Locais
+              </button>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: Segurança, ICP-Brasil e Validação Jurídica -->
+<section class="flex flex-col gap-6" id="tab-security">
+<div class="flex items-center justify-between pb-3 bg-surface">
+<div>
+<div class="text-[11px] font-bold text-primary uppercase tracking-wider">Módulo 04</div>
+<h2 class="text-lg font-headline font-semibold text-on-surface">Segurança, ICP-Brasil &amp; Validação Jurídica</h2>
+</div>
+<span class="text-xs text-on-surface-variant">Conformidade ISO 27001</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Certificado ICP A3 -->
+<div class="bg-surface-container p-5 flex flex-col justify-between gap-4">
+<div class="flex items-start gap-3">
+<div class="p-2.5 bg-surface text-tertiary shrink-0">
+<span class="material-symbols-outlined text-2xl">verified</span>
+</div>
+<div>
+<span class="text-xs font-semibold text-on-surface">Certificado Digital A3 em Nuvem</span>
+<div class="text-xs text-on-surface-variant mt-1 leading-snug">
+                  Autoridade Certificadora: <span class="font-mono font-medium text-on-surface">AC SERPRO v5</span>
+</div>
+<div class="text-[11px] text-tertiary font-medium mt-1">
+                  Válido até 18/11/2026 (634 dias restantes)
+                </div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-2">
+<span class="text-[11px] text-on-surface-variant">Assinatura qualificada do RDO</span>
+<button class="text-xs font-semibold text-primary hover:underline flex items-center gap-1" type="button">
+                Ver Certificado
+                <span class="material-symbols-outlined text-xs">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- 2FA Autenticação -->
+<div class="bg-surface-container p-5 flex flex-col justify-between gap-4">
+<div class="flex items-start gap-3">
+<div class="p-2.5 bg-surface text-primary shrink-0">
+<span class="material-symbols-outlined text-2xl">password</span>
+</div>
+<div>
+<span class="text-xs font-semibold text-on-surface">Autenticação em Duas Etapas (2FA)</span>
+<div class="text-xs text-on-surface-variant mt-1 leading-snug">
+                  Status: <span class="font-medium text-tertiary">Ativado via Microsoft Authenticator</span>
+</div>
+<div class="text-[11px] text-on-surface-variant mt-1">
+                  Última validação com TOTP: Há 2 dias
+                </div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-2">
+<span class="text-[11px] text-on-surface-variant">Proteção de acesso a dados</span>
+<button class="text-xs font-semibold text-primary hover:underline flex items-center gap-1" type="button">
+                Gerenciar 2FA
+                <span class="material-symbols-outlined text-xs">settings</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Sessões Ativas em Dispositivos -->
+<div class="bg-surface-container-low p-5 flex flex-col gap-3">
+<span class="text-xs font-semibold text-on-surface uppercase tracking-wide text-on-surface-variant">Sessões Ativas em Dispositivos de Campo</span>
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between p-3 bg-surface">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">phone_android</span>
+<div>
+<div class="text-xs font-medium text-on-surface">Coletor Rugged CAT S62 Pro • ObraSync Mobile</div>
+<div class="text-[11px] text-on-surface-variant">IP: 177.136.92.14 • Residencial Horizonte (Subsolo)</div>
+</div>
+</div>
+<span class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 bg-tertiary-container text-on-tertiary-container">Esta Sessão</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">laptop_mac</span>
+<div>
+<div class="text-xs font-medium text-on-surface">Google Chrome 122 • macOS Sonona (Escritório Central)</div>
+<div class="text-[11px] text-on-surface-variant">IP: 201.83.104.22 • Ativo há 41 min</div>
+</div>
+</div>
+<button class="text-xs text-error font-medium hover:underline" type="button">Encerrar</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Contextual Card & Operational Summary (4 cols) -->
+<aside class="lg:col-span-4 flex flex-col gap-6">
+<!-- Obra Ativa Card -->
+<div class="bg-surface-container p-6 flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">Canteiro Operacional</span>
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary"></span>
+</div>
+<div class="relative w-full h-36 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="High quality aerial architectural photograph of a high-rise residential construction site in São Paulo Brazil with two towers under concrete slab construction, tower cranes, safety netting, bright daylight, realistic clean industrial style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8d09a5pwOjn7meeJI67pJBMUAOXJ-K5py8iRIBss4Pmmy_6nst1fUmXrRRMF2unqAgdxe5S8fhNTk_pL28VjCGGicNNYa7WauT5ijvzs6XAFQcm4gY-E5a-xwNFdzg-mwIaMXvvbNiNkOcXQtgZu5_ODN2LWZnODVSIlALw4vV0tN2VVC098g2d2CkJbvpdyImfAgoLliiEx4sDPKjOZjsUPdCqfqcOdOevXcxLTm6jlh1geJCwJr"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/80 via-transparent to-transparent flex items-end p-3">
+<span class="text-xs font-semibold text-white">Residencial Horizonte - Torre A &amp; B</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 text-xs">
+<div class="flex justify-between py-1 bg-surface-container">
+<span class="text-on-surface-variant">Endereço da Obra:</span>
+<span class="font-medium text-on-surface text-right">Av. Prestes Maia, 1420 - SP</span>
+</div>
+<div class="flex justify-between py-1 bg-surface-container">
+<span class="text-on-surface-variant">Avanço Físico Previsto:</span>
+<span class="font-mono font-semibold text-on-surface">42.8%</span>
+</div>
+<div class="flex justify-between py-1 bg-surface-container">
+<span class="text-on-surface-variant">Efetivo Médio Diário:</span>
+<span class="font-mono font-semibold text-on-surface">114 colaboradores</span>
+</div>
+<div class="flex justify-between py-1 bg-surface-container">
+<span class="text-on-surface-variant">Previsão Entrega:</span>
+<span class="font-medium text-on-surface">Novembro / 2025</span>
+</div>
+</div>
+<a class="h-9 w-full bg-surface text-primary text-xs font-semibold hover:bg-surface-container-high transition-colors flex items-center justify-center gap-2 focus:outline-none" href="#">
+<span class="material-symbols-outlined text-sm">apartment</span>
+          Trocar Canteiro Vinculado
+        </a>
+</div>
+<!-- Quick Metrics Vector Visual -->
+<div class="bg-surface-container p-6 flex flex-col gap-4">
+<span class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">Confiabilidade Técnica</span>
+<!-- Inline Metric Graph / Progress Rings -->
+<div class="flex items-center gap-4 py-2">
+<svg class="w-20 h-20 shrink-0 transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-container-highest" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-tertiary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="98, 100" stroke-width="3.5"></path>
+<text class="text-[8px] font-bold fill-current text-on-surface font-mono transform rotate-90" text-anchor="middle" x="18" y="21">98.4%</text>
+</svg>
+<div class="flex flex-col min-w-0">
+<span class="text-xs font-semibold text-on-surface leading-tight">Índice de RDO Sem Pendência</span>
+<span class="text-[11px] text-on-surface-variant mt-1 leading-snug">
+              214 diários de obra registrados nos últimos 218 dias sem autuações pelo agente fiscalizador.
+            </span>
+</div>
+</div>
+<div class="flex flex-col gap-2.5 pt-2">
+<div class="flex items-center justify-between text-xs">
+<span class="text-on-surface-variant">Taxa de Upload Offline:</span>
+<span class="font-mono font-semibold text-tertiary">100% Sucesso</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<span class="text-on-surface-variant">Tempo Médio de Sincronia:</span>
+<span class="font-mono font-medium text-on-surface">1.4 segundos</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<span class="text-on-surface-variant">Latência no Subsolo:</span>
+<span class="font-mono font-medium text-on-surface">Offline Cached</span>
+</div>
+</div>
+</div>
+<!-- Regulatory Compliance Box -->
+<div class="bg-surface-container-low p-6 flex flex-col gap-3">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-primary text-xl">policy</span>
+<span class="text-xs font-semibold">Normas Regulamentadoras Ativas</span>
+</div>
+<p class="text-[11px] text-on-surface-variant leading-relaxed">
+          O perfil atual está configurado para atender integralmente às exigências das diretrizes NR-18 (Condições e Meio Ambiente de Trabalho na Indústria da Construção) e NR-35 (Trabalho em Altura).
+        </p>
+<div class="flex flex-wrap gap-1.5 mt-1">
+<span class="px-2 py-0.5 text-[10px] font-mono bg-surface font-semibold text-on-surface">NR-18.1</span>
+<span class="px-2 py-0.5 text-[10px] font-mono bg-surface font-semibold text-on-surface">NR-35</span>
+<span class="px-2 py-0.5 text-[10px] font-mono bg-surface font-semibold text-on-surface">NBR 12721</span>
+<span class="px-2 py-0.5 text-[10px] font-mono bg-surface font-semibold text-on-surface">PBQP-H</span>
+</div>
+</div>
+</aside>
+</div>
+<!-- Integrated Bottom Action Confirmation Footer -->
+<section class="mt-12 mb-6 p-4 bg-surface-container flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-surface flex items-center justify-center text-tertiary shrink-0">
+<span class="material-symbols-outlined text-base">cloud_done</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-on-surface">Garantia de Persistência Local</span>
+<span class="text-[11px] text-on-surface-variant">Todas as alterações pendentes são sincronizadas localmente antes do envio à nuvem.</span>
+</div>
+</div>
+<div class="flex items-center gap-3 self-end sm:self-auto">
+<button class="h-10 px-4 text-xs font-semibold text-on-surface bg-surface hover:bg-surface-container-high transition-colors focus:outline-none" type="button">
+        Cancelar
+      </button>
+<button class="h-10 px-6 text-xs font-semibold text-on-primary bg-primary hover:bg-on-primary-fixed-variant transition-colors flex items-center gap-2 shadow-sm focus:outline-none" id="saveBottomBtn" type="button">
+<span class="material-symbols-outlined text-base">check</span>
+        Salvar Configurações
+      </button>
+</div>
+</section>
+<!-- Interactive JavaScript Behavior -->
+<script>
+    // Tab switching interactions
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => {
+          b.classList.remove('bg-surface', 'text-primary', 'font-semibold', 'shadow-sm');
+          b.classList.add('text-on-surface-variant');
+        });
+        btn.classList.add('bg-surface', 'text-primary', 'font-semibold', 'shadow-sm');
+        btn.classList.remove('text-on-surface-variant');
+        
+        const targetId = btn.getAttribute('data-target');
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Toggle switch interaction
+    document.querySelectorAll('.toggle-switch').forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const isChecked = toggle.getAttribute('aria-checked') === 'true';
+        const circle = toggle.querySelector('span');
+        
+        if (isChecked) {
+          toggle.setAttribute('aria-checked', 'false');
+          toggle.classList.remove('bg-primary');
+          toggle.classList.add('bg-secondary');
+          circle.classList.remove('translate-x-6');
+          circle.classList.add('translate-x-1');
+        } else {
+          toggle.setAttribute('aria-checked', 'true');
+          toggle.classList.remove('bg-secondary');
+          toggle.classList.add('bg-primary');
+          circle.classList.remove('translate-x-1');
+          circle.classList.add('translate-x-6');
+        }
+      });
+    });
+
+    // Save notification toast feedback
+    const triggerSave = (button) => {
+      const originalText = button.innerHTML;
+      button.innerHTML = '<span class="material-symbols-outlined text-base animate-spin">refresh</span> Salvando...';
+      button.disabled = true;
+
+      setTimeout(() => {
+        button.innerHTML = '<span class="material-symbols-outlined text-base">task_alt</span> Salvo com Sucesso!';
+        button.classList.remove('bg-primary');
+        button.classList.add('bg-tertiary');
+
+        setTimeout(() => {
+          button.innerHTML = originalText;
+          button.classList.remove('bg-tertiary');
+          button.classList.add('bg-primary');
+          button.disabled = false;
+        }, 2200);
+      }, 700);
+    };
+
+    const saveTop = document.getElementById('saveTopBtn');
+    const saveBottom = document.getElementById('saveBottomBtn');
+    if (saveTop) saveTop.addEventListener('click', () => triggerSave(saveTop));
+    if (saveBottom) saveBottom.addEventListener('click', () => triggerSave(saveBottom));
+  </script>
+</div></main><footer class="h-12 w-full bg-surface-container-low px-6 lg:px-8 flex items-center justify-between text-xs text-on-surface-variant"><div class="flex items-center gap-4"><span>ObraSync Enterprise v2.4.0</span><span class="hidden sm:inline">•</span><span class="hidden sm:inline flex items-center gap-1"><span class="material-symbols-outlined text-sm text-tertiary">verified</span>Integridade de Dados Auditada</span></div><div class="flex items-center gap-4"><span class="hidden md:inline">Ambiente Corporativo Seguro</span><span>Residencial Horizonte - Torre A &amp; B</span></div></footer></div></body></html>
