@@ -82,34 +82,59 @@ export const DashboardView: React.FC = () => {
       {/* Metric / KPI Cards Bento Grid */}
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3">
         {/* KPI 1: Avanço Físico */}
-        <div className="bg-surface-container-low p-4 shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
-          <div className="flex items-start justify-between">
-            <div className="flex flex-col">
-              <span className="text-[11px] font-semibold tracking-wider uppercase text-on-surface-variant">Avanço Físico</span>
-              <span className="text-[11px] text-on-surface-variant">Real vs. Linha Base</span>
+        {(() => {
+          const progressDeviation = Number((activeProject.progressPercent - activeProject.plannedPercent).toFixed(1));
+          const isAheadOrOnTrack = progressDeviation >= 0;
+          return (
+            <div className="bg-surface-container-low p-4 shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+              <div className="flex items-start justify-between">
+                <div className="flex flex-col">
+                  <span className="text-[11px] font-semibold tracking-wider uppercase text-on-surface-variant">Avanço Físico</span>
+                  <span className="text-[11px] text-on-surface-variant">Real vs. Linha Base</span>
+                </div>
+                <span className={`inline-flex items-center px-1.5 py-0.5 text-[10px] font-semibold font-mono ${
+                  isAheadOrOnTrack ? 'bg-tertiary-container text-on-tertiary-container' : 'bg-error-container text-on-error-container'
+                }`}>
+                  {progressDeviation > 0 ? `+${progressDeviation}%` : `${progressDeviation}%`} {isAheadOrOnTrack ? 'Adiantado' : 'Desvio'}
+                </span>
+              </div>
+              <div className="my-3">
+                <div className="flex items-baseline gap-2">
+                  <span className="text-3xl font-semibold tracking-tight text-on-surface">{activeProject.progressPercent}%</span>
+                  <span className="text-xs text-on-surface-variant">/ {activeProject.plannedPercent}% meta</span>
+                </div>
+                <div className="w-full bg-surface-container-highest h-1.5 mt-2 overflow-hidden flex">
+                  <div 
+                    className={`h-1.5 ${isAheadOrOnTrack ? 'bg-tertiary' : 'bg-primary'} transition-all`} 
+                    style={{ width: `${Math.min(100, activeProject.progressPercent)}%` }}
+                  ></div>
+                  {!isAheadOrOnTrack && (
+                    <div 
+                      className="bg-error/80 h-1.5" 
+                      style={{ width: `${Math.min(20, Math.abs(progressDeviation))}%` }}
+                    ></div>
+                  )}
+                </div>
+              </div>
+              <button 
+                type="button"
+                onClick={() => setActiveTab('cronograma-gantt')}
+                className="flex items-center justify-between text-[11px] text-on-surface-variant pt-2 border-t border-surface-container-high w-full hover:text-primary transition-colors cursor-pointer text-left"
+                title="Abrir Cronograma & Gantt para lançar medição ou ver etapas"
+              >
+                <span className={`flex items-center gap-1 font-medium ${isAheadOrOnTrack ? 'text-tertiary' : 'text-error'}`}>
+                  <span className="material-symbols-outlined text-xs">
+                    {isAheadOrOnTrack ? 'check_circle' : 'trending_down'}
+                  </span>
+                  {isAheadOrOnTrack ? 'Ritmo Normal / No Prazo' : 'Atenção Cronograma'}
+                </span>
+                <span className="font-mono text-primary flex items-center gap-0.5 text-[10px] font-semibold">
+                  Medição Gantt <span className="material-symbols-outlined text-[12px]">arrow_forward</span>
+                </span>
+              </button>
             </div>
-            <span className="inline-flex items-center px-1.5 py-0.5 text-[10px] font-semibold bg-error-container text-on-error-container">
-              -2.6% Desvio
-            </span>
-          </div>
-          <div className="my-3">
-            <div className="flex items-baseline gap-2">
-              <span className="text-3xl font-semibold tracking-tight text-on-surface">{activeProject.progressPercent}%</span>
-              <span className="text-xs text-on-surface-variant">/ {activeProject.plannedPercent}% meta</span>
-            </div>
-            <div className="w-full bg-surface-container-highest h-1.5 mt-2 overflow-hidden flex">
-              <div className="bg-primary h-1.5" style={{ width: `${activeProject.progressPercent}%` }}></div>
-              <div className="bg-error/70 h-1.5" style={{ width: '2.6%' }}></div>
-            </div>
-          </div>
-          <div className="flex items-center justify-between text-[11px] text-on-surface-variant pt-2 border-t border-surface-container-high">
-            <span className="flex items-center gap-1 text-error font-medium">
-              <span className="material-symbols-outlined text-xs">trending_down</span>
-              Atenção Cronograma
-            </span>
-            <span className="font-mono">TORRE A: 78%</span>
-          </div>
-        </div>
+          );
+        })()}
 
         {/* KPI 2: Efetivo Total Presente */}
         <div className="bg-surface-container-low p-4 shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">

@@ -9,7 +9,10 @@ import {
   ErpSyncLog, 
   AuditLogItem, 
   ChatChannel, 
-  ChatMessage 
+  ChatMessage,
+  WbsPhase,
+  BaselineSnapshot,
+  LookaheadRestriction 
 } from '../types';
 
 export const INITIAL_PROJECTS: Project[] = [
@@ -982,3 +985,263 @@ export const INITIAL_MESSAGES: ChatMessage[] = [
     text: 'Perfeito. Registrado no Diário de Obra de hoje.'
   }
 ];
+
+export const DEFAULT_WBS_PHASES: WbsPhase[] = [
+  {
+    id: 'phase-1',
+    order: 1,
+    name: '1. Serviços Preliminares & Canteiro',
+    period: '01/Jan/24 - 28/Fev/24',
+    progressPercent: 100,
+    weightPercent: 5,
+    status: 'concluido',
+    isCritical: false,
+    contractor: 'Construtora Horizonte',
+    dependencies: []
+  },
+  {
+    id: 'phase-2',
+    order: 2,
+    name: '2. Fundação & Contenções',
+    period: '01/Mar/24 - 15/Mai/24',
+    progressPercent: 100,
+    weightPercent: 15,
+    status: 'concluido',
+    milestoneCode: 'M1',
+    isCritical: false,
+    contractor: 'Geofund Fundações Especiais',
+    dependencies: ['phase-1']
+  },
+  {
+    id: 'phase-3',
+    order: 3,
+    name: '3. Estrutura Concreto Armado',
+    period: '16/Mai/24 - 30/Nov/24 (Pav. 14)',
+    progressPercent: 89.2,
+    weightPercent: 30,
+    status: 'em_andamento',
+    milestoneCode: 'M2',
+    isCritical: false,
+    contractor: 'Premoldados & Estruturas Brasil',
+    dependencies: ['phase-2']
+  },
+  {
+    id: 'phase-4',
+    order: 4,
+    name: '4. Alvenaria Estrutural & Vedação',
+    period: '01/Jul/24 - 15/Jan/25 (-14d atraso)',
+    progressPercent: 64.0,
+    weightPercent: 20,
+    status: 'atrasado',
+    milestoneCode: 'M3',
+    isCritical: true,
+    delayDays: -14,
+    contractor: 'Arte & Bloco Ltda.',
+    notes: 'Desabastecimento de blocos cerâmicos. Plano de mitigação aprovado com remanejamento de 6 pedreiros.',
+    dependencies: ['phase-3']
+  },
+  {
+    id: 'phase-5',
+    order: 5,
+    name: '5. Instalações Prediais MEP',
+    period: '01/Ago/24 - 30/Abr/25',
+    progressPercent: 38.5,
+    weightPercent: 12,
+    status: 'em_andamento',
+    isCritical: false,
+    contractor: 'HidroVolt Engenharia',
+    dependencies: ['phase-3', 'phase-4']
+  },
+  {
+    id: 'phase-6',
+    order: 6,
+    name: '6. Fachada, Pele de Vidro & Caixilhos',
+    period: '15/Set/24 - 30/Mai/25',
+    progressPercent: 22.0,
+    weightPercent: 10,
+    status: 'em_andamento',
+    isCritical: false,
+    contractor: 'Alumglass Fachadas',
+    dependencies: ['phase-4']
+  },
+  {
+    id: 'phase-7',
+    order: 7,
+    name: '7. Revestimentos e Acabamentos',
+    period: '01/Out/24 - 30/Jul/25',
+    progressPercent: 15.2,
+    weightPercent: 6,
+    status: 'em_andamento',
+    isCritical: false,
+    contractor: 'Acabamentos Nobres S/A',
+    dependencies: ['phase-5']
+  },
+  {
+    id: 'phase-8',
+    order: 8,
+    name: '8. Vistoria Final, AVCB & Chaves',
+    period: '01/Jun/25 - 15/Dez/25',
+    progressPercent: 0.0,
+    weightPercent: 2,
+    status: 'nao_iniciado',
+    milestoneCode: 'M5',
+    isCritical: false,
+    contractor: 'Comissão Técnica de Entrega',
+    dependencies: ['phase-6', 'phase-7']
+  }
+];
+
+export const DEFAULT_LOOKAHEAD_RESTRICTIONS: LookaheadRestriction[] = [
+  {
+    id: 'rest-1',
+    phaseId: 'phase-4',
+    phaseName: '4. Alvenaria Estrutural & Vedação',
+    category: 'suprimentos',
+    categoryLabel: 'Suprimentos & Materiais',
+    description: 'Entrega pendente de 4.500 blocos cerâmicos 14x19x29 cm (Cerâmica União lote 8821).',
+    responsible: 'Suprimentos (Pedro Lima)',
+    dueDate: '29/Out/2024',
+    status: 'em_tratativa',
+    weekLabel: 'Semana 44 (28/Out - 01/Nov)',
+    notes: 'Caminhão em rota de entrega com previsão para quarta-feira manhã.'
+  },
+  {
+    id: 'rest-2',
+    phaseId: 'phase-4',
+    phaseName: '4. Alvenaria Estrutural & Vedação',
+    category: 'mao_de_obra',
+    categoryLabel: 'Mão de Obra',
+    description: 'Mobilização de mais 4 pedreiros e 2 serventes pela subempreiteira Arte & Bloco.',
+    responsible: 'Empreiteira Arte & Bloco',
+    dueDate: '30/Out/2024',
+    status: 'em_tratativa',
+    weekLabel: 'Semana 44 (28/Out - 01/Nov)',
+    notes: 'Exames admissionais e integração de segurança agendados no SESMT.'
+  },
+  {
+    id: 'rest-3',
+    phaseId: 'phase-5',
+    phaseName: '5. Instalações Prediais MEP',
+    category: 'projetos',
+    categoryLabel: 'Projetos & Compatibilização',
+    description: 'Liberação de projeto executivo de shafts hidráulicos pavimentos 15 ao 18.',
+    responsible: 'Projetista Hidráulico (Eng. Fábio)',
+    dueDate: '04/Nov/2024',
+    status: 'pendente',
+    weekLabel: 'Semana 45 (04/Nov - 08/Nov)',
+    notes: 'Necessária revisão de interferência com duto de exaustão.'
+  },
+  {
+    id: 'rest-4',
+    phaseId: 'phase-6',
+    phaseName: '6. Fachada, Pele de Vidro & Caixilhos',
+    category: 'equipamentos',
+    categoryLabel: 'Equipamentos & Logística',
+    description: 'Inspeção e laudo de ancoragem dos balancins elétricos da fachada Norte.',
+    responsible: 'Eng. de Segurança (SESMT)',
+    dueDate: '08/Nov/2024',
+    status: 'pendente',
+    weekLabel: 'Semana 45 (04/Nov - 08/Nov)',
+    notes: 'Exigência NR-18 e NR-35 antes da subida dos montadores.'
+  },
+  {
+    id: 'rest-5',
+    phaseId: 'phase-3',
+    phaseName: '3. Estrutura Concreto Armado',
+    category: 'liberacao',
+    categoryLabel: 'Liberação de Frente & Qualidade',
+    description: 'Laudo de rompimento de corpos de prova (fck 35 MPa aos 28 dias) da laje L13.',
+    responsible: 'Laboratório ConcreTest',
+    dueDate: '25/Out/2024',
+    status: 'liberado',
+    weekLabel: 'Semana 43 (21/Out - 25/Out)',
+    notes: 'Resultado 38.2 MPa atendido conforme NBR 6118. Laje liberada para desforma parcial.'
+  },
+  {
+    id: 'rest-6',
+    phaseId: 'phase-5',
+    phaseName: '5. Instalações Prediais MEP',
+    category: 'suprimentos',
+    categoryLabel: 'Suprimentos & Materiais',
+    description: 'Chegada das prumadas de cobre e tubulação PPR água quente.',
+    responsible: 'Almoxarifado Central',
+    dueDate: '24/Out/2024',
+    status: 'liberado',
+    weekLabel: 'Semana 43 (21/Out - 25/Out)',
+    notes: 'Materiais descarregados e conferidos na NF 48102.'
+  }
+];
+
+
+export const DEFAULT_BASELINES: BaselineSnapshot[] = [
+  {
+    id: 'base-v1.0',
+    projectId: 'obr-094',
+    versionName: 'v1.0',
+    name: 'Linha de Base Inicial (Contrato)',
+    createdAt: '2024-01-10T10:00:00Z',
+    createdFormatted: '10/Jan/2024',
+    author: 'Eng. Ricardo Souza (CREA-SP)',
+    justification: 'Planejamento executivo inicial aprovado para concorrência e início de mobilização.',
+    cutoffDate: '2024-01-10',
+    isActive: false,
+    phasesCount: 8,
+    totalWeight: 100,
+    phases: DEFAULT_WBS_PHASES.map(p => ({
+      phaseId: p.id,
+      order: p.order,
+      name: p.name,
+      period: p.period,
+      baselineStart: p.baselineStart || '2024-01-01',
+      baselineEnd: p.baselineEnd || '2025-12-15',
+      weightPercent: p.weightPercent
+    }))
+  },
+  {
+    id: 'base-v1.1',
+    projectId: 'obr-094',
+    versionName: 'v1.1',
+    name: 'Revisão Fundações & Contenções',
+    createdAt: '2024-03-20T14:30:00Z',
+    createdFormatted: '20/Mar/2024',
+    author: 'Eng. Ricardo Souza (CREA-SP)',
+    justification: 'Revisão geotécnica após laudo de sondagem mista (ampliação da cortina de estacas em 15 dias).',
+    cutoffDate: '2024-03-20',
+    isActive: false,
+    phasesCount: 8,
+    totalWeight: 100,
+    phases: DEFAULT_WBS_PHASES.map(p => ({
+      phaseId: p.id,
+      order: p.order,
+      name: p.name,
+      period: p.period,
+      baselineStart: p.baselineStart || '2024-01-01',
+      baselineEnd: p.baselineEnd || '2025-12-15',
+      weightPercent: p.weightPercent
+    }))
+  },
+  {
+    id: 'base-v1.2',
+    projectId: 'obr-094',
+    versionName: 'v1.2',
+    name: 'Linha de Base Contratual Vigente',
+    createdAt: '2024-05-15T18:00:00Z',
+    createdFormatted: '15/Mai/2024',
+    author: 'Diretoria Técnica & Eng. Ricardo Souza',
+    justification: 'Linha de base contratual congelada com clientes e financiador (Caixa Econômica Federal).',
+    cutoffDate: '2024-10-24',
+    isActive: true,
+    phasesCount: 8,
+    totalWeight: 100,
+    phases: DEFAULT_WBS_PHASES.map(p => ({
+      phaseId: p.id,
+      order: p.order,
+      name: p.name,
+      period: p.period,
+      baselineStart: p.baselineStart || '2024-01-01',
+      baselineEnd: p.baselineEnd || '2025-12-15',
+      weightPercent: p.weightPercent
+    }))
+  }
+];
+

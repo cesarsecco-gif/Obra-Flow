@@ -5,6 +5,8 @@ import { Sidebar } from './components/Sidebar';
 import { ProjectSelectorDrawer } from './components/ProjectSelectorDrawer';
 import { PdfExportModal } from './components/PdfExportModal';
 import { Toast } from './components/Toast';
+import { FieldQuickCaptureModal } from './components/FieldQuickCaptureModal';
+import { AiEngineeringAssistant } from './components/AiEngineeringAssistant';
 
 // Views
 import { DashboardView } from './views/DashboardView';
@@ -103,6 +105,12 @@ const MainLayout: React.FC = () => {
 
       {/* Customizable PDF Export Modal */}
       <PdfExportModal />
+
+      {/* Field Quick Capture Modal */}
+      <FieldQuickCaptureModal />
+
+      {/* AI Civil Engineering Assistant Drawer */}
+      <AiEngineeringAssistant />
 
       {/* Global Interactive Toast Notification */}
       <Toast />
