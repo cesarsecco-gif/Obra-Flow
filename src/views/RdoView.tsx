@@ -9,19 +9,17 @@ export const RdoView: React.FC = () => {
     signRdo, 
     openPdfModal, 
     showToast,
-    addAuditLog
+    addAuditLog,
+    rdoNotes,
+    setRdoNotes,
+    setIsEngineeringAiOpen
   } = useApp();
-
-  const [notes, setNotes] = useState<string>(
-`1. DDS (Diálogo Diário de Segurança) realizado às 07:15 abordando Trabalho em Altura (NR-35) e uso de linha de vida para concretagem periférica.
-2. Recebimento de 2 caminhões betoneira da Usina Polimix (NF 89234 e 89235), com ensaios de Slump Test registrados em 12±2cm (Aprovados).
-3. Notificação expedida à Subempreiteira HidroVolt para ajuste na vedação acústica das prumadas do 4º pavimento até amanhã às 12h.`
-  );
 
   const [isDraftSaved, setIsDraftSaved] = useState(false);
 
   const handleSaveDraft = () => {
     setIsDraftSaved(true);
+    setRdoNotes(rdoNotes);
     showToast('Rascunho do RDO nº 184 gravado com sucesso no armazenamento local.', 'success');
     addAuditLog('Rascunho de RDO salvo', 'RDO', 'RDO nº 184 atualizado no canteiro');
     setTimeout(() => setIsDraftSaved(false), 2500);
@@ -513,21 +511,33 @@ export const RdoView: React.FC = () => {
 
         {/* Observações Gerais */}
         <div className="bg-surface p-4 shadow-sm space-y-3 border border-surface-container-high">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <label className="text-xs font-semibold uppercase tracking-wider text-on-surface flex items-center gap-2">
               <span className="material-symbols-outlined text-primary text-base">edit_note</span>
               Observações Técnicas, Segurança do Trabalho &amp; Diligências
             </label>
-            <span className="text-[11px] text-on-surface-variant font-mono">
-              Editado por {activeProject.engineer} hoje às 17:42
-            </span>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => setIsEngineeringAiOpen(true)}
+                className="px-2.5 py-1 bg-secondary-container text-on-secondary-container text-[11px] font-bold flex items-center gap-1 hover:bg-secondary-container/80 transition-colors border border-secondary/30"
+                title="Sintetizar observações e aplicar padrões ABNT/CREA com Gemini"
+              >
+                <span className="material-symbols-outlined text-sm text-secondary">auto_awesome</span>
+                <span>Sintetizar com IA</span>
+              </button>
+              <span className="text-[11px] text-on-surface-variant font-mono">
+                {activeProject.engineer} (Salvo automaticamente)
+              </span>
+            </div>
           </div>
 
           <textarea 
-            value={notes}
-            onChange={e => setNotes(e.target.value)}
-            rows={4}
-            className="w-full bg-surface-container-low text-xs text-on-surface p-3 outline-none focus:bg-surface-container transition-colors leading-relaxed resize-none border border-surface-container-high"
+            value={rdoNotes}
+            onChange={e => setRdoNotes(e.target.value)}
+            rows={5}
+            placeholder="Digite ou use o Copilot IA para redigir o diário técnico..."
+            className="w-full bg-surface-container-low text-xs text-on-surface p-3 outline-none focus:bg-surface-container transition-colors leading-relaxed resize-none border border-surface-container-high font-mono"
           />
         </div>
 

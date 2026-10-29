@@ -6,7 +6,10 @@ export const EvidenceView: React.FC = () => {
   const { 
     openPdfModal, 
     showToast, 
-    addAuditLog 
+    addAuditLog,
+    photoEvidences,
+    setIsQuickCaptureOpen,
+    setIsEngineeringAiOpen
   } = useApp();
 
   const [isCompareDrawerOpen, setIsCompareDrawerOpen] = useState(false);
@@ -20,112 +23,7 @@ export const EvidenceView: React.FC = () => {
   const [newFront, setNewFront] = useState('Torre A - 14º Pavimento');
   const [newDiscipline, setNewDiscipline] = useState('Estrutura de Concreto');
 
-  const photosList: PhotoEvidence[] = [
-    {
-      id: 'photo-1',
-      title: 'Inspeção de Armação Negativa Laje L-14',
-      description: 'Conferência dos espaçadores pastilha plástica (cobridor de 3,0 cm garantido) e reforços de punção nos pilares P-12 e P-14.',
-      discipline: 'Estrutura de Concreto',
-      status: 'conforme',
-      statusLabel: 'Conforme',
-      rdoNumber: '184',
-      author: 'Eng. Ricardo Souza',
-      timestamp: '14:32:08',
-      date: '24/10/2024',
-      location: 'Torre A • Laje Pav. 14 (Setor Sul)',
-      coords: '-23.58741° S, -46.68239° W',
-      altitude: '782.4m',
-      imageUrl: 'https://images.unsplash.com/photo-1541888946425-d0fbb18615f8?w=800&auto=format&fit=crop&q=80',
-      tags: ['Armação', 'Laje 14', 'FVS-EST-042']
-    },
-    {
-      id: 'photo-2',
-      title: 'Passagem de Tubulação Cortando Armadura Principal',
-      description: 'Identificado corte indevido de barra de aço Ø16mm para passagem de tubulação esgoto 100mm. Paralisação imediata até revisão de cálculo.',
-      discipline: 'Hidráulica x Estrutural',
-      status: 'rnc',
-      statusLabel: 'RNC #042 Aberta',
-      rdoNumber: '184',
-      author: 'Téc. Marcos Silva',
-      timestamp: '11:15:42',
-      date: '24/10/2024',
-      location: 'Torre A • Shaft Prumada Apt 122',
-      coords: '-23.58739° S, -46.68241° W',
-      altitude: '782.1m',
-      imageUrl: 'https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=800&auto=format&fit=crop&q=80',
-      tags: ['RNC', 'Shaft', 'Tubulação']
-    },
-    {
-      id: 'photo-3',
-      title: 'Teste de Estanqueidade da Laje do Barrilete',
-      description: 'Início do teste hidrostático de lâmina d\'água com carga de 72 horas. Aplicação de manta asfáltica 4mm poliéster concluída.',
-      discipline: 'Impermeabilização',
-      status: 'em_andamento',
-      statusLabel: 'Em Andamento (72h)',
-      rdoNumber: '183',
-      author: 'Eng. Ricardo Souza',
-      timestamp: '16:48:10',
-      date: '23/10/2024',
-      location: 'Torre B • Terraço Técnico Cobertura',
-      coords: '-23.58712° S, -46.68285° W',
-      altitude: '814.0m',
-      imageUrl: 'https://images.unsplash.com/photo-1590496793929-36417d3117de?w=800&auto=format&fit=crop&q=80',
-      tags: ['Estanqueidade', 'Manta Asfáltica']
-    },
-    {
-      id: 'photo-4',
-      title: 'Instalação de Proteção Coletiva de Periferia',
-      description: 'Fixação com parabolt dos montantes metálicos de 1,20m com rodapé de 20cm e tela de polietileno conforme NR-18.',
-      discipline: 'Segurança Ocupacional',
-      status: 'conforme',
-      statusLabel: 'NR-18 / Conforme',
-      rdoNumber: '184',
-      author: 'Téc. Seg. Fernanda Alencar',
-      timestamp: '09:20:14',
-      date: '24/10/2024',
-      location: 'Perímetro Fachada Sul • Pav. 14',
-      coords: '-23.58742° S, -46.68235° W',
-      altitude: '782.5m',
-      imageUrl: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&auto=format&fit=crop&q=80',
-      tags: ['SST', 'Guarda-corpo', 'NR-18']
-    },
-    {
-      id: 'photo-5',
-      title: 'Aplicação de Emboço Técnico e Revestimento',
-      description: 'Progresso semanal da fachada externa. Argamassa AC-III com dupla colagem para cerâmica. Comparativo de 45 dias registrado.',
-      discipline: 'Acabamento de Fachada',
-      status: 'antes_depois',
-      statusLabel: 'Antes x Depois',
-      rdoNumber: '182',
-      author: 'Eng. Ricardo Souza',
-      timestamp: '15:10:00',
-      date: '22/10/2024',
-      location: 'Fachada Leste • Eixo 03 ao 07',
-      coords: '-23.58750° S, -46.68260° W',
-      altitude: '770.2m',
-      imageUrl: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&auto=format&fit=crop&q=80',
-      tags: ['Fachada', 'Cerâmica', 'Comparativo']
-    },
-    {
-      id: 'photo-6',
-      title: 'Marcação da 1ª Fiada e Prumo a Laser',
-      description: 'Verificação dimensional e esquadro dos cômodos do apto 804 com trena laser. Desvio angular inferior a 1,5mm dentro da norma PBQP-H.',
-      discipline: 'Alvenaria de Vedação',
-      status: 'conforme',
-      statusLabel: 'Conforme',
-      rdoNumber: '184',
-      author: 'Téc. Marcos Silva',
-      timestamp: '08:05:33',
-      date: '24/10/2024',
-      location: 'Torre B • Apto 804 (Sala/Cozinha)',
-      coords: '-23.58744° S, -46.68230° W',
-      altitude: '779.3m',
-      imageUrl: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&auto=format&fit=crop&q=80',
-      tags: ['Alvenaria', 'Laser', 'PBQP-H']
-    }
-  ];
-
-  const filteredPhotos = photosList.filter(p => {
+  const filteredPhotos = photoEvidences.filter(p => {
     if (selectedFront !== 'all' && !p.location.toLowerCase().includes(selectedFront.toLowerCase())) return false;
     if (selectedStatus !== 'all' && p.status !== selectedStatus) return false;
     return true;
@@ -247,6 +145,16 @@ export const EvidenceView: React.FC = () => {
 
             <button 
               type="button"
+              onClick={() => setIsQuickCaptureOpen(true)}
+              className="inline-flex items-center gap-2 px-4 py-2.5 bg-secondary-container hover:bg-secondary-container/80 text-on-secondary-container text-xs font-bold shadow-sm transition-colors border border-secondary/20"
+              title="Registrar foto e analisar automaticamente com Gemini AI"
+            >
+              <span className="material-symbols-outlined text-base text-secondary">auto_awesome</span>
+              <span>Captura Rápida com IA</span>
+            </button>
+
+            <button 
+              type="button"
               onClick={() => setIsUploadModalOpen(true)}
               className="inline-flex items-center gap-2 px-4 py-2.5 bg-primary hover:bg-primary/90 text-on-primary text-xs font-semibold shadow-sm transition-colors"
             >
@@ -322,7 +230,7 @@ export const EvidenceView: React.FC = () => {
       {/* Gallery Header Viewport Mode */}
       <div className="flex items-center justify-between pb-1 text-xs text-on-surface-variant">
         <div className="flex items-center gap-3">
-          <span className="font-semibold text-on-surface">Exibindo {filteredPhotos.length} de {photosList.length} registros periciais</span>
+          <span className="font-semibold text-on-surface">Exibindo {filteredPhotos.length} de {photoEvidences.length} registros periciais</span>
           <span>•</span>
           <span className="hidden sm:inline">Ordem cronológica inversa (Mais recentes primeiro)</span>
         </div>

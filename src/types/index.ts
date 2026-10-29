@@ -204,3 +204,64 @@ export interface ChatChannel {
   hasRncAlert?: boolean;
   badge?: string;
 }
+
+export interface WbsPhase {
+  id: string;
+  order: number;
+  name: string;
+  period: string;
+  progressPercent: number;
+  weightPercent: number;
+  status: 'concluido' | 'em_andamento' | 'atrasado' | 'nao_iniciado';
+  milestoneCode?: string;
+  isCritical: boolean;
+  delayDays?: number;
+  contractor?: string;
+  notes?: string;
+  baselineStart?: string; // YYYY-MM-DD
+  baselineEnd?: string;   // YYYY-MM-DD
+  actualStart?: string;
+  actualEnd?: string;
+  dependencies?: string[]; // IDs das fases predecessoras
+}
+
+export interface LookaheadRestriction {
+  id: string;
+  phaseId: string;
+  phaseName: string;
+  category: 'projetos' | 'suprimentos' | 'mao_de_obra' | 'equipamentos' | 'liberacao';
+  categoryLabel: string;
+  description: string;
+  responsible: string;
+  dueDate: string;
+  status: 'pendente' | 'em_tratativa' | 'liberado';
+  weekLabel: string; // ex: 'Semana 44 (28/Out - 01/Nov)'
+  notes?: string;
+}
+
+export interface BaselineSnapshot {
+  id: string;
+  projectId: string;
+  versionName: string; // ex: 'v1.2'
+  name: string;        // ex: 'Linha de Base Contratual Homologada'
+  createdAt: string;
+  createdFormatted: string; // ex: '15/Mai/2024'
+  author: string;
+  justification: string;
+  cutoffDate: string;  // ex: '2024-10-24'
+  isActive: boolean;
+  phasesCount: number;
+  totalWeight: number;
+  phases: {
+    phaseId: string;
+    order: number;
+    name: string;
+    period: string;
+    baselineStart?: string;
+    baselineEnd?: string;
+    weightPercent: number;
+  }[];
+}
+
+
+

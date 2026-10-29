@@ -15,7 +15,10 @@ export const Header: React.FC = () => {
     setActiveTab,
     openPdfModal,
     login,
-    logout
+    logout,
+    setIsQuickCaptureOpen,
+    setIsEngineeringAiOpen,
+    lastSavedText
   } = useApp();
 
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
@@ -85,25 +88,35 @@ export const Header: React.FC = () => {
           </button>
         </div>
 
+        {/* Status de Persistência Local */}
+        <div className="hidden lg:flex items-center gap-1.5 px-2.5 py-1 text-[11px] text-on-surface-variant bg-surface-container border border-surface-container-high font-mono">
+          <span className="material-symbols-outlined text-xs text-primary">cloud_done</span>
+          <span>{lastSavedText}</span>
+        </div>
+
         {/* Action Shortcuts */}
         <div className="hidden sm:flex items-center gap-2">
           <button
-            onClick={() => setActiveTab('diario-de-obra-rdo')}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary text-on-primary text-xs font-medium hover:bg-primary/90 transition-colors shadow-sm"
+            onClick={() => setIsQuickCaptureOpen(true)}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary text-on-primary text-xs font-semibold hover:bg-primary/90 transition-colors shadow-sm"
+            title="Capturar foto e registrar evidência rápida com IA"
           >
-            <span className="material-symbols-outlined text-sm">post_add</span>
-            <span>+ Novo RDO</span>
+            <span className="material-symbols-outlined text-sm">photo_camera</span>
+            <span>+ Captura Rápida</span>
           </button>
+          
           <button
-            onClick={() => setActiveTab('relatorio-fotografico')}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-surface-container text-on-surface text-xs font-medium hover:bg-surface-container-high transition-colors"
+            onClick={() => setIsEngineeringAiOpen(true)}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-secondary-container text-on-secondary-container text-xs font-semibold hover:bg-secondary-container/80 transition-colors border border-secondary/20"
+            title="Abrir Assistente Técnico de Engenharia & Gemini"
           >
-            <span className="material-symbols-outlined text-sm">add_a_photo</span>
-            <span>+ Subir Fotos</span>
+            <span className="material-symbols-outlined text-sm text-secondary">auto_awesome</span>
+            <span>Copilot IA</span>
           </button>
+
           <button
             onClick={() => openPdfModal('executivo')}
-            className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 bg-surface-container text-on-surface text-xs font-medium hover:bg-surface-container-high transition-colors"
+            className="hidden xl:inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-surface-container text-on-surface text-xs font-medium hover:bg-surface-container-high transition-colors"
             title="Gerar e personalizar relatório executivo em PDF"
           >
             <span className="material-symbols-outlined text-sm text-primary">picture_as_pdf</span>
