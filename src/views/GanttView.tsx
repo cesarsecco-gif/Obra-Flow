@@ -893,10 +893,10 @@ export const GanttView: React.FC = () => {
                       ))}
                     </div>
 
-                    {/* Barra da Linha de Base (Baseline em Comparação) */}
+                    {/* Barra da Linha de Base (Baseline em Comparação), logo abaixo da barra programada para não ficar escondida */}
                     {showBaseline && (
                       <div 
-                        className="absolute h-2.5 bg-surface-container-highest top-7 opacity-75 rounded-xs" 
+                        className="absolute h-2 bg-on-surface-variant/45 top-[44px] rounded-xs z-0 pointer-events-auto" 
                         style={{ left: geomBaseline.left, width: geomBaseline.width }}
                         title={`Linha de Base (${comparisonBaseline.versionName}): ${baselinePeriodStr}`}
                       ></div>
@@ -904,7 +904,7 @@ export const GanttView: React.FC = () => {
 
                     {/* Barra de Progresso Realizado (com suporte ao Modo Raio-X Diff) */}
                     <div 
-                      className={`h-6 flex items-center justify-between px-2 text-[10px] font-bold shadow-xs transition-all rounded-xs z-10 ${
+                      className={`relative h-6 flex items-center justify-between px-2 text-[10px] font-bold shadow-xs transition-all rounded-xs z-10 ${
                         isXrayDiffMode
                           ? isDelay
                             ? 'bg-red-600 text-white ring-2 ring-red-400 shadow-md shadow-red-500/30'
@@ -922,6 +922,14 @@ export const GanttView: React.FC = () => {
                         width: geomRealized.width 
                       }}
                     >
+                      {/* Marca de avanço: traço vertical na posição proporcional ao % realizado */}
+                      {phase.progressPercent > 0 && phase.progressPercent < 100 && (
+                        <span
+                          className="absolute -top-1 -bottom-1 w-[3px] -translate-x-1/2 bg-on-surface ring-1 ring-surface pointer-events-none z-20"
+                          style={{ left: `${phase.progressPercent}%` }}
+                          title={`Avanço: ${phase.progressPercent.toFixed(1)}%`}
+                        />
+                      )}
                       <span className="truncate pr-1">
                         {isXrayDiffMode ? `[Raio-X] ${phase.name}` : phase.name}
                       </span>
@@ -978,8 +986,12 @@ export const GanttView: React.FC = () => {
                 <span>Atrasado (Caminho Crítico)</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="w-3 h-2 bg-surface-container-highest inline-block"></span>
+                <span className="w-3 h-2 bg-on-surface-variant/45 inline-block"></span>
                 <span>Baseline ({comparisonBaseline.versionName})</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <span className="w-[3px] h-3.5 bg-on-surface inline-block"></span>
+                <span>Marca de Avanço (%)</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <span className="w-2.5 h-2.5 rotate-45 bg-[#b28600] inline-block"></span>
