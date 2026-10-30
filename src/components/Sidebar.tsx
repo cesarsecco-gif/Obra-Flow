@@ -18,6 +18,7 @@ export const Sidebar: React.FC = () => {
   const navItems: NavItem[] = [
     { id: 'dashboard-gerencial', label: 'Dashboard Gerencial', icon: 'dashboard' },
     { id: 'diario-de-obra-rdo', label: 'Diário de Obra (RDO)', icon: 'menu_book' },
+    { id: 'pluviometria', label: 'Pluviometria & Clima', icon: 'rainy' },
     { id: 'painel-de-custos', label: 'Painel de Custos & ERP', icon: 'query_stats', badge: 'R$ 48.5M', badgeColor: 'bg-primary-container text-on-primary-fixed font-mono', highlight: true },
     { id: 'relatorio-fotografico', label: 'Relatório Fotográfico', icon: 'photo_camera' },
     { id: 'auditorias-inspecoes-fvs', label: 'Auditorias & FVS (PBQP-H)', icon: 'verified' },

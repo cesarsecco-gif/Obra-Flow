@@ -11,6 +11,7 @@ import { AiEngineeringAssistant } from './components/AiEngineeringAssistant';
 // Views
 import { DashboardView } from './views/DashboardView';
 import { RdoView } from './views/RdoView';
+import { PluviometriaView } from './views/PluviometriaView';
 import { CostIndicatorsView } from './views/CostIndicatorsView';
 import { EvidenceView } from './views/EvidenceView';
 import { FvsView } from './views/FvsView';
@@ -37,6 +38,8 @@ const MainLayout: React.FC = () => {
         return <DashboardView />;
       case 'diario-de-obra-rdo':
         return <RdoView />;
+      case 'pluviometria':
+        return <PluviometriaView />;
       case 'painel-de-custos':
         return <CostIndicatorsView />;
       case 'relatorio-fotografico':

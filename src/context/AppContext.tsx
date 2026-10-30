@@ -32,6 +32,7 @@ import { StorageService } from '../services/storageService';
 export type NavigationTab = 
   | 'dashboard-gerencial'
   | 'diario-de-obra-rdo'
+  | 'pluviometria'
   | 'painel-de-custos'
   | 'relatorio-fotografico'
   | 'auditorias-inspecoes-fvs'
