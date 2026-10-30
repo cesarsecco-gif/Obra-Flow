@@ -24,8 +24,10 @@ import {
   INITIAL_MESSAGES,
   DEFAULT_WBS_PHASES,
   DEFAULT_BASELINES,
-  DEFAULT_LOOKAHEAD_RESTRICTIONS 
+  DEFAULT_LOOKAHEAD_RESTRICTIONS,
+  DEFAULT_RAIN_RECORDS
 } from '../mock/data';
+import { RegistroChuva } from './pluviometria';
 
 
 const STORAGE_KEYS = {
@@ -46,6 +48,7 @@ const STORAGE_KEYS = {
   ACTIVE_BASELINE_ID: 'obrasync_v1_active_baseline_id',
   COMPARISON_BASELINE_ID: 'obrasync_v1_comparison_baseline_id',
   LOOKAHEAD_RESTRICTIONS: 'obrasync_v1_lookahead_restrictions',
+  RAIN_RECORDS: 'obrasync_v1_rain_records',
   LAST_SAVED: 'obrasync_v1_last_saved',
 } as const;
 
@@ -210,6 +213,16 @@ export const StorageService = {
   },
 
   // Metadados
+
+  // Registros Pluviométricos (por obra)
+  getRainRecords(projectId?: string): RegistroChuva[] {
+    const key = projectId ? `${STORAGE_KEYS.RAIN_RECORDS}_${projectId}` : STORAGE_KEYS.RAIN_RECORDS;
+    return safeGet<RegistroChuva[]>(key, DEFAULT_RAIN_RECORDS);
+  },
+  setRainRecords(records: RegistroChuva[], projectId?: string): void {
+    const key = projectId ? `${STORAGE_KEYS.RAIN_RECORDS}_${projectId}` : STORAGE_KEYS.RAIN_RECORDS;
+    safeSet(key, records);
+  },
 
   getLastSaved(): string | null {
     return localStorage.getItem(STORAGE_KEYS.LAST_SAVED);

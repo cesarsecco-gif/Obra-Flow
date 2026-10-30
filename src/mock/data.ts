@@ -1,3 +1,4 @@
+import { RegistroChuva, PLUVIOMETROS, LIMITE_PRATICABILIDADE_MM } from '../services/pluviometria';
 import { 
   Project, 
   UserProfile, 
@@ -1245,3 +1246,55 @@ export const DEFAULT_BASELINES: BaselineSnapshot[] = [
   }
 ];
 
+
+// ---- Pluviometria: registros de exemplo (Out/2024 detalhado + histórico de 11 meses) ----
+const RAIN_OUT_2024: Omit<RegistroChuva, 'id' | 'criadoEm'>[] = [
+  { data: '2024-10-03', inicio: '06:10', fim: '07:30', mm: 2.5, pluviometro: PLUVIOMETROS[0], frentes: [], solo: 'tratavel', horasParadas: 0, paralisacaoTotal: false, rdo: 'RDO-0512' },
+  { data: '2024-10-07', inicio: '13:40', fim: '16:00', mm: 6, pluviometro: PLUVIOMETROS[1], frentes: ['Pavimentação'], solo: 'saturado', horasParadas: 2.5, paralisacaoTotal: false, rdo: 'RDO-0516' },
+  { data: '2024-10-08', inicio: '05:00', fim: '15:20', mm: 12.5, pluviometro: PLUVIOMETROS[0], frentes: ['Terraplenagem', 'Pavimentação', 'Drenagem'], solo: 'impraticavel', horasParadas: 9, paralisacaoTotal: true, rdo: 'RDO-0517', obs: 'Trecho Km 10 a 14 alagado. Equipes remanejadas para pátio.' },
+  { data: '2024-10-14', inicio: '18:30', fim: '19:10', mm: 1.5, pluviometro: PLUVIOMETROS[1], frentes: [], solo: 'tratavel', horasParadas: 0, paralisacaoTotal: false, rdo: 'RDO-0523' },
+  { data: '2024-10-17', inicio: '10:15', fim: '17:00', mm: 8, pluviometro: PLUVIOMETROS[0], frentes: ['Terraplenagem', 'Pavimentação'], solo: 'saturado', horasParadas: 6, paralisacaoTotal: true, rdo: 'RDO-0526' },
+  { data: '2024-10-18', inicio: '04:30', fim: '12:00', mm: 9.5, pluviometro: PLUVIOMETROS[0], frentes: ['Terraplenagem', 'Pavimentação', 'Obras de Arte'], solo: 'impraticavel', horasParadas: 8, paralisacaoTotal: true, rdo: 'RDO-0527' },
+  { data: '2024-10-21', inicio: '15:00', fim: '16:20', mm: 3, pluviometro: PLUVIOMETROS[1], frentes: ['Sinalização'], solo: 'tratavel', horasParadas: 1, paralisacaoTotal: false, rdo: 'RDO-0530' },
+  { data: '2024-10-23', inicio: '12:00', fim: '14:30', mm: 5, pluviometro: PLUVIOMETROS[1], frentes: ['Drenagem'], solo: 'tratavel', horasParadas: 2, paralisacaoTotal: false, rdo: 'RDO-0532' },
+];
+
+// Totais mensais (mm) usados para gerar o histórico de exemplo
+const RAIN_HISTORY_TOTALS: [string, number][] = [
+  ['2023-11', 110], ['2023-12', 185], ['2024-01', 210], ['2024-02', 140], ['2024-03', 95], ['2024-04', 60],
+  ['2024-05', 140], ['2024-06', 70], ['2024-07', 45], ['2024-08', 30], ['2024-09', 85],
+];
+
+function gerarHistoricoChuva(): Omit<RegistroChuva, 'id' | 'criadoEm'>[] {
+  const out: Omit<RegistroChuva, 'id' | 'criadoEm'>[] = [];
+  RAIN_HISTORY_TOTALS.forEach(([mes, total], mi) => {
+    const eventos = Math.max(3, Math.round(total / 18));
+    const pesos = Array.from({ length: eventos }, (_, i) => 1 + ((i * 7 + mi * 3) % 5));
+    const somaPesos = pesos.reduce((a, b) => a + b, 0);
+    let restante = total;
+    pesos.forEach((p, i) => {
+      const mm = i === eventos - 1 ? restante : Math.round((total * p) / somaPesos * 2) / 2;
+      restante = Math.round((restante - mm) * 10) / 10;
+      const dia = Math.min(28, 2 + Math.floor((i * 26) / eventos) + (mi % 3));
+      const forte = mm > LIMITE_PRATICABILIDADE_MM * 2;
+      out.push({
+        data: `${mes}-${String(dia).padStart(2, '0')}`,
+        inicio: '08:00',
+        fim: forte ? '16:00' : '10:00',
+        mm,
+        pluviometro: PLUVIOMETROS[i % 2],
+        frentes: forte ? ['Terraplenagem', 'Pavimentação'] : [],
+        solo: forte ? 'impraticavel' : 'tratavel',
+        horasParadas: forte ? 8 : 0,
+        paralisacaoTotal: forte,
+      });
+    });
+  });
+  return out;
+}
+
+export const DEFAULT_RAIN_RECORDS: RegistroChuva[] = [...gerarHistoricoChuva(), ...RAIN_OUT_2024].map((r, i) => ({
+  ...r,
+  id: `rain-${String(i + 1).padStart(3, '0')}`,
+  criadoEm: `${r.data}T18:00:00.000Z`,
+}));

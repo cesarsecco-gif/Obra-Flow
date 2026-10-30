@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useApp } from '../context/AppContext';
+import { StorageService } from '../services/storageService';
+import { mesReferencia, resumir, rotuloMes, formatarMm, hojeIso, SOLO_LABEL } from '../services/pluviometria';
 
 export const DashboardView: React.FC = () => {
   const { 
@@ -12,6 +14,18 @@ export const DashboardView: React.FC = () => {
   } = useApp();
 
   const openRncCount = rncList.filter(r => r.status !== 'encerrada').length;
+
+  // Card de Pluviometria: resumo do mês do registro mais recente (normalmente o mês atual)
+  const chuva = useMemo(() => {
+    const registros = StorageService.getRainRecords(activeProject.id);
+    const mes = mesReferencia(registros);
+    return {
+      mes,
+      ehMesAtual: mes === hojeIso().slice(0, 7),
+      resumoMes: resumir(registros.filter(r => r.data.startsWith(mes))),
+      soloAtual: resumir(registros).soloAtual,
+    };
+  }, [activeProject.id]);
   const criticalRncCount = rncList.filter(r => r.severity === 'critica' && r.status !== 'encerrada').length;
 
   return (
@@ -167,11 +181,16 @@ export const DashboardView: React.FC = () => {
         </div>
 
         {/* KPI 3: Pluviometria */}
-        <div className="bg-surface-container-low p-4 shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
-          <div className="flex items-start justify-between">
+        <button
+          type="button"
+          onClick={() => setActiveTab('pluviometria')}
+          title="Abrir Pluviometria & Clima"
+          className="text-left bg-surface-container-low p-4 shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow cursor-pointer"
+        >
+          <div className="flex items-start justify-between w-full">
             <div className="flex flex-col">
               <span className="text-[11px] font-semibold tracking-wider uppercase text-on-surface-variant">Pluviometria Acumulada</span>
-              <span className="text-[11px] text-on-surface-variant">Estação Meteorológica Local</span>
+              <span className="text-[11px] text-on-surface-variant">Pluviômetros da obra</span>
             </div>
             <span className="p-1 bg-surface-container text-primary">
               <span className="material-symbols-outlined text-base">cloud</span>
@@ -179,16 +198,24 @@ export const DashboardView: React.FC = () => {
           </div>
           <div className="my-3">
             <div className="flex items-baseline gap-2">
-              <span className="text-3xl font-semibold tracking-tight text-on-surface">{activeProject.pluviometryMm}<span className="text-lg font-normal">mm</span></span>
-              <span className="text-xs text-on-surface-variant">no mês atual</span>
+              <span className="text-3xl font-semibold tracking-tight text-on-surface">{formatarMm(chuva.resumoMes.acumuladoMm)}<span className="text-lg font-normal">mm</span></span>
+              <span className="text-xs text-on-surface-variant">{chuva.ehMesAtual ? 'no mês atual' : `em ${rotuloMes(chuva.mes)}`}</span>
             </div>
-            <p className="text-[11px] text-error font-medium mt-1">3 dias de paralisação total</p>
+            <p className={`text-[11px] font-medium mt-1 ${chuva.resumoMes.diasParalisacaoTotal > 0 ? 'text-error' : 'text-tertiary'}`}>
+              {chuva.resumoMes.diasParalisacaoTotal === 0
+                ? 'Sem paralisação total no mês'
+                : `${chuva.resumoMes.diasParalisacaoTotal} ${chuva.resumoMes.diasParalisacaoTotal === 1 ? 'dia' : 'dias'} de paralisação total`}
+            </p>
           </div>
-          <div className="flex items-center justify-between text-[11px] text-on-surface-variant pt-2 border-t border-surface-container-high">
-            <span className="text-on-surface font-medium">Solo: Tratável</span>
-            <span className="text-error font-semibold">Impacto: -14h</span>
+          <div className="flex items-center justify-between w-full text-[11px] text-on-surface-variant pt-2 border-t border-surface-container-high">
+            <span className={`font-medium ${chuva.soloAtual === 'impraticavel' ? 'text-error' : 'text-on-surface'}`}>
+              Solo: {chuva.soloAtual ? SOLO_LABEL[chuva.soloAtual] : '—'}
+            </span>
+            <span className={`font-semibold ${chuva.resumoMes.horasParadas > 0 ? 'text-error' : 'text-on-surface-variant'}`}>
+              Impacto: {chuva.resumoMes.horasParadas > 0 ? `-${formatarMm(chuva.resumoMes.horasParadas)}h` : '0h'}
+            </span>
           </div>
-        </div>
+        </button>
 
         {/* KPI 4: RDOs Emitidos */}
         <div className="bg-surface-container-low p-4 shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
