@@ -66,6 +66,8 @@ export interface WorkerEntry {
   catracaPoint: string;
   matricula: string;
   avatarInitials: string;
+  projectId?: string; // sem projectId: colaborador disponível em todas as obras
+  ativo?: boolean; // false = desligado/desmobilizado
 }
 
 export interface PhotoEvidence {

@@ -5,6 +5,7 @@ import { listarDiarios, salvarDiario, excluirDiario } from '../services/storage'
 import { comprimirImagem } from '../services/imageUtils';
 import { resumir, SOLO_LABEL, formatarMm, hojeIso, LIMITE_PRATICABILIDADE_MM } from '../services/pluviometria';
 import { criarRdoExemplo } from '../mock/data';
+import { EfetivoStorage, colaboradoresDaObra } from '../services/efetivo';
 import {
   RdoDiario,
   CondicaoClimatica,
@@ -85,6 +86,7 @@ export const RdoView: React.FC = () => {
     setRdoNotes,
     setIsEngineeringAiOpen,
     setActiveTab,
+    workers,
   } = useApp();
 
   const [diarios, setDiarios] = useState<RdoDiario[]>([]);
@@ -253,25 +255,47 @@ export const RdoView: React.FC = () => {
   const editarServico = (i: number, p: Partial<OcorrenciaFrente>) =>
     rdo && atualizar({ servicos: rdo.servicos.map((e, idx) => (idx === i ? { ...e, ...p } : e)) });
 
+  // Importa o apontamento do dia feito em "Efetivo & Equipamentos"
   const importarEfetivo = () => {
     if (!rdo) return;
-    const presentes = StorageService.getWorkers().filter(w => w.status === 'presente');
-    if (presentes.length === 0) return showToast('Nenhum colaborador presente no controle de efetivo.', 'warning');
-    const grupos = new Map<string, EfetivoAlocado>();
+    const dia = EfetivoStorage.getApontamentos(activeProject.id)?.[rdo.data] || {};
+    const presentes = colaboradoresDaObra(workers, activeProject.id).filter(w => dia[w.id]?.status === 'presente');
+    if (presentes.length === 0) {
+      return showToast(`Não há presença apontada em ${dataCurta(rdo.data)}. Faça o apontamento em Efetivo & Equipamentos.`, 'warning');
+    }
+    const grupos = new Map<string, EfetivoAlocado & { hh: number }>();
     presentes.forEach(w => {
+      const h = dia[w.id].horasNormais + dia[w.id].horasExtras;
       const chave = `${w.company}|${w.role}`;
       const g = grupos.get(chave);
-      if (g) {
-        g.horasPorPessoa = ((g.horasPorPessoa || 0) * g.quantidade + w.workHours) / (g.quantidade + 1);
-        g.quantidade += 1;
-      } else {
-        grupos.set(chave, { empresa: w.company, funcao: w.role, quantidade: 1, horasPorPessoa: w.workHours, proprio: w.contractType === 'clt' });
-      }
+      if (g) { g.quantidade += 1; g.hh += h; }
+      else grupos.set(chave, { empresa: w.company, funcao: w.role, quantidade: 1, hh: h, proprio: w.contractType === 'clt' });
     });
-    const lista = [...grupos.values()].map(g => ({ ...g, horasPorPessoa: Math.round((g.horasPorPessoa || 0) * 10) / 10 }));
-    if (rdo.efetivo.length && !window.confirm('Substituir o efetivo atual pelos presentes no controle de efetivo?')) return;
+    const lista: EfetivoAlocado[] = [...grupos.values()].map(({ hh, ...g }) => ({ ...g, horasPorPessoa: Math.round((hh / g.quantidade) * 10) / 10 }));
+    if (rdo.efetivo.length && !window.confirm(`Substituir o efetivo do RDO pelo apontamento de ${dataCurta(rdo.data)}?`)) return;
     atualizar({ efetivo: lista });
-    showToast(`${presentes.length} colaboradores presentes importados em ${lista.length} funções.`, 'success');
+    showToast(`${presentes.length} presentes importados em ${lista.length} funções.`, 'success');
+  };
+
+  const importarEquipamentos = () => {
+    if (!rdo) return;
+    const cadastro = EfetivoStorage.getEquipamentos(activeProject.id) || [];
+    const dia = EfetivoStorage.getApontEquip(activeProject.id)[rdo.data] || {};
+    const lista: EquipamentoAlocado[] = cadastro
+      .filter(eq => dia[eq.id])
+      .map(eq => ({
+        tipo: eq.tipo,
+        identificacao: eq.prefixo,
+        horasOperativas: dia[eq.id].horasOperando,
+        horasParadas: dia[eq.id].horasParadas,
+        motivoParada: dia[eq.id].motivoParada || '',
+      }));
+    if (lista.length === 0) {
+      return showToast(`Não há equipamentos apontados em ${dataCurta(rdo.data)}. Faça o apontamento em Efetivo & Equipamentos.`, 'warning');
+    }
+    if (rdo.equipamentos.length && !window.confirm(`Substituir os equipamentos do RDO pelo apontamento de ${dataCurta(rdo.data)}?`)) return;
+    atualizar({ equipamentos: lista });
+    showToast(`${lista.length} equipamentos importados.`, 'success');
   };
 
   const adicionarFoto = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -486,7 +510,7 @@ export const RdoView: React.FC = () => {
             <div className="flex items-center gap-2">
               <span className="text-xs font-semibold bg-surface-container px-2.5 py-1 text-on-surface font-mono">{formatarMm(Math.round(totais.hh * 10) / 10)} Hh</span>
               <button type="button" onClick={importarEfetivo} className="no-print inline-flex items-center gap-1 px-3 py-1.5 text-xs font-medium bg-surface hover:bg-surface-container-high border border-surface-container-high">
-                <span className="material-symbols-outlined text-sm text-primary">download</span>Importar presentes do Efetivo
+                <span className="material-symbols-outlined text-sm text-primary">download</span>Importar apontamento do dia
               </button>
               {botaoAdicionar('Função', () => atualizar({ efetivo: [...rdo.efetivo, { empresa: rdo.efetivo[rdo.efetivo.length - 1]?.empresa || '', funcao: '', quantidade: 1, horasPorPessoa: 8, proprio: true }] }))}
             </div>
@@ -537,8 +561,14 @@ export const RdoView: React.FC = () => {
 
         {/* Bloco 3: Equipamentos */}
         <section className="bg-surface-container-low p-5 shadow-sm space-y-4 border border-surface-container-high">
-          {tituloBloco('precision_manufacturing', '3. Máquinas & Equipamentos',
-            botaoAdicionar('Equipamento', () => atualizar({ equipamentos: [...rdo.equipamentos, { tipo: '', identificacao: '', horasOperativas: 8, horasParadas: 0 }] })))}
+          {tituloBloco('precision_manufacturing', '3. Máquinas & Equipamentos', (
+            <div className="flex items-center gap-2">
+              <button type="button" onClick={importarEquipamentos} className="no-print inline-flex items-center gap-1 px-3 py-1.5 text-xs font-medium bg-surface hover:bg-surface-container-high border border-surface-container-high">
+                <span className="material-symbols-outlined text-sm text-primary">download</span>Importar apontamento do dia
+              </button>
+              {botaoAdicionar('Equipamento', () => atualizar({ equipamentos: [...rdo.equipamentos, { tipo: '', identificacao: '', horasOperativas: 8, horasParadas: 0 }] }))}
+            </div>
+          ))}
           <div className="overflow-x-auto bg-surface border border-surface-container-high">
             <table className="w-full text-xs text-left">
               <thead className="bg-surface-container text-on-surface uppercase text-[10px] font-semibold tracking-wider">

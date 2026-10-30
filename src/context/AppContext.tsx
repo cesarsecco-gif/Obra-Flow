@@ -80,6 +80,7 @@ interface AppContextType {
   // Data & Mutators
   workers: WorkerEntry[];
   addWorker: (w: Omit<WorkerEntry, 'id'>) => void;
+  updateWorker: (id: string, changes: Partial<WorkerEntry>) => void;
   reallocateWorkers: (fromFront: string, toFront: string, count: number, reason: string) => void;
   
   fvsList: FvsItem[];
@@ -300,6 +301,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setWorkers(prev => [newWorker, ...prev]);
     addAuditLog('CADASTRO DE EFETIVO', 'RDO', `Operário ${w.name} adicionado à frente ${w.front}`);
     showToast(`Colaborador ${w.name} cadastrado com sucesso!`, 'success');
+  };
+
+  const updateWorker = (id: string, changes: Partial<WorkerEntry>) => {
+    setWorkers(prev => prev.map(w => (w.id === id ? { ...w, ...changes } : w)));
   };
 
   const reallocateWorkers = (fromFront: string, toFront: string, count: number, reason: string) => {
@@ -703,6 +708,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         lastSavedText,
         workers,
         addWorker,
+        updateWorker,
         reallocateWorkers,
         fvsList,
         approveFvs,
