@@ -5,6 +5,8 @@ export interface EfetivoAlocado {
   funcao: string;
   quantidade: number;
   proprio: boolean;
+  empresa?: string;
+  horasPorPessoa?: number;
 }
 
 export interface EquipamentoAlocado {
@@ -21,6 +23,8 @@ export interface OcorrenciaFrente {
   servico: string;
   descricao: string;
   status: 'em_andamento' | 'concluido' | 'interrompido';
+  quantidade?: number;
+  unidade?: string;
 }
 
 export interface RegistroFotografico {
@@ -47,4 +51,28 @@ export interface RDOItem {
   observacoesFiscais: string;
   criadoEm: string;
   sincronizado: boolean;
+}
+
+export type StatusDiario = 'rascunho' | 'assinado';
+
+/** RDO completo de um dia, guardado por obra no IndexedDB do aparelho. */
+export interface RdoDiario {
+  id: string;
+  projectId: string;
+  numero: number;
+  data: string; // YYYY-MM-DD
+  turno: TurnoTrabalho;
+  climaManha: CondicaoClimatica;
+  climaTarde: CondicaoClimatica;
+  condicaoTrecho: 'praticavel' | 'impraticavel' | 'parcial';
+  efetivo: EfetivoAlocado[];
+  equipamentos: EquipamentoAlocado[];
+  servicos: OcorrenciaFrente[];
+  fotos: RegistroFotografico[];
+  observacoes: string;
+  status: StatusDiario;
+  assinadoPor?: string;
+  assinadoEm?: string;
+  criadoEm: string;
+  atualizadoEm: string;
 }

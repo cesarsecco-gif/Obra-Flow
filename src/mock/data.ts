@@ -1,4 +1,5 @@
 import { RegistroChuva, PLUVIOMETROS, LIMITE_PRATICABILIDADE_MM } from '../services/pluviometria';
+import type { RdoDiario } from '../types/rdo';
 import { 
   Project, 
   UserProfile, 
@@ -1257,6 +1258,7 @@ const RAIN_OUT_2024: Omit<RegistroChuva, 'id' | 'criadoEm'>[] = [
   { data: '2024-10-18', inicio: '04:30', fim: '12:00', mm: 9.5, pluviometro: PLUVIOMETROS[0], frentes: ['Terraplenagem', 'Pavimentação', 'Obras de Arte'], solo: 'impraticavel', horasParadas: 8, paralisacaoTotal: true, rdo: 'RDO-0527' },
   { data: '2024-10-21', inicio: '15:00', fim: '16:20', mm: 3, pluviometro: PLUVIOMETROS[1], frentes: ['Sinalização'], solo: 'tratavel', horasParadas: 1, paralisacaoTotal: false, rdo: 'RDO-0530' },
   { data: '2024-10-23', inicio: '12:00', fim: '14:30', mm: 5, pluviometro: PLUVIOMETROS[1], frentes: ['Drenagem'], solo: 'tratavel', horasParadas: 2, paralisacaoTotal: false, rdo: 'RDO-0532' },
+  { data: '2024-10-24', inicio: '14:45', fim: '17:00', mm: 18, pluviometro: PLUVIOMETROS[0], frentes: ['Obras de Arte'], solo: 'saturado', horasParadas: 2.5, paralisacaoTotal: false, rdo: 'RDO-184', obs: 'Concretagem da laje suspensa às 15h. Rajadas acima de 42 km/h.' },
 ];
 
 // Totais mensais (mm) usados para gerar o histórico de exemplo
@@ -1298,3 +1300,43 @@ export const DEFAULT_RAIN_RECORDS: RegistroChuva[] = [...gerarHistoricoChuva(), 
   id: `rain-${String(i + 1).padStart(3, '0')}`,
   criadoEm: `${r.data}T18:00:00.000Z`,
 }));
+
+// ---- RDO de exemplo (nº 184) usado quando a obra ainda não tem diários no aparelho ----
+export function criarRdoExemplo(projectId: string): RdoDiario {
+  const agora = '2024-10-24T18:00:00.000Z';
+  return {
+    id: `rdo-${projectId}-184`,
+    projectId,
+    numero: 184,
+    data: '2024-10-24',
+    turno: 'integral',
+    climaManha: 'bom',
+    climaTarde: 'chuva_forte',
+    condicaoTrecho: 'parcial',
+    efetivo: [
+      { empresa: 'Construtora Horizonte (Própria)', funcao: 'Engenheiro Residente', quantidade: 1, horasPorPessoa: 8, proprio: true },
+      { empresa: 'Construtora Horizonte (Própria)', funcao: 'Mestres de Obra & TST', quantidade: 3, horasPorPessoa: 8, proprio: true },
+      { empresa: 'Construtora Horizonte (Própria)', funcao: 'Encarregados de Campo', quantidade: 4, horasPorPessoa: 8, proprio: true },
+      { empresa: 'Construtora Horizonte (Própria)', funcao: 'Pedreiros', quantidade: 12, horasPorPessoa: 8, proprio: true },
+      { empresa: 'Construtora Horizonte (Própria)', funcao: 'Serventes', quantidade: 18, horasPorPessoa: 8, proprio: true },
+      { empresa: 'Aço & Forma Estruturas', funcao: 'Armadores', quantidade: 8, horasPorPessoa: 6, proprio: false },
+      { empresa: 'Aço & Forma Estruturas', funcao: 'Carpinteiros de Fôrma', quantidade: 6, horasPorPessoa: 6, proprio: false },
+      { empresa: 'HidroVolt Instalações', funcao: 'Eletricistas e Encanadores', quantidade: 14, horasPorPessoa: 8, proprio: false },
+    ],
+    equipamentos: [
+      { tipo: 'Grua Torre', identificacao: 'GRU-01 Torre A', horasOperativas: 6, horasParadas: 2, motivoParada: 'Ventos acima de 42 km/h' },
+      { tipo: 'Betoneira 400L', identificacao: 'BET-02', horasOperativas: 8, horasParadas: 0 },
+      { tipo: 'Mini Carregadeira', identificacao: 'Bobcat S650', horasOperativas: 7, horasParadas: 1, motivoParada: 'Manutenção preventiva' },
+    ],
+    servicos: [
+      { estacaInicial: '14º Pav.', estacaFinal: 'Torre A', servico: 'Concretagem de vigas e laje', descricao: 'Concretagem interrompida às 15h por chuva. Retomada às 07h do dia seguinte.', status: 'interrompido', quantidade: 38, unidade: 'm³' },
+      { estacaInicial: '8º Pav.', estacaFinal: 'Apto 801/802', servico: 'Alvenaria estrutural e vergas', descricao: 'Prumo e nível conforme NBR 15961, sem desvios.', status: 'concluido', quantidade: 142, unidade: 'm²' },
+      { estacaInicial: '6º Pav.', estacaFinal: 'Prumada', servico: 'Infraestrutura elétrica e hidráulica', descricao: 'Dutos corrugados nas lajes e prumadas de esgoto. Teste aprovado no ramal 604.', status: 'em_andamento' },
+    ],
+    fotos: [],
+    observacoes: 'Chuva forte a partir das 14h45 com rajadas acima de 42 km/h. Concretagem da laje do 14º pavimento suspensa às 15h para preservar o traço e a segurança da equipe. Equipes de alvenaria remanejadas para áreas cobertas.',
+    status: 'rascunho',
+    criadoEm: agora,
+    atualizadoEm: agora,
+  };
+}
